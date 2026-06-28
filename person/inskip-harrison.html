@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inskip Harrison — English Settlement Cemetery</title>
+  <meta name="description" content="Biography of Inskip Harrison (1812–1888), pioneer and patriarch of the Harrison family, English Settlement Cemetery, Crawford County, Pennsylvania.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* ── BIO PAGE SPECIFIC ── */
+    :root{
+      --pg:#F4F0E8;--card:#FDFAF4;--border2:#D4C9B0;
+      --text2:#2C1F0E;--muted2:#6B5A3E;--accent:#2A5A3A;
+      --doc:#3B6D11;--prob:#854F0B;--unv:#A32D2D;
+    }
+    body{background:var(--pg);color:var(--text2);}
+    .bio-wrap{max-width:900px;margin:0 auto;padding:0 0 3rem;}
+
+    /* back link */
+    .bio-back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted2);text-decoration:none;transition:color 0.15s;}
+    .bio-back:hover{color:var(--accent);}
+
+    /* header */
+    .bio-header{display:flex;gap:20px;align-items:flex-start;padding:0 20px 20px;border-bottom:2px solid var(--border2);}
+    .bio-photo-col{flex-shrink:0;width:140px;text-align:center;}
+    .bio-photo{width:140px;height:180px;background:var(--card);border:1px solid var(--border2);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--muted2);text-align:center;padding:12px;overflow:hidden;position:relative;}
+    .bio-photo img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+    .bio-photo-credit{font-size:9px;color:var(--muted2);margin-top:6px;line-height:1.4;}
+    .bio-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);margin-bottom:6px;}
+    .bio-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text2);margin-bottom:4px;letter-spacing:0.02em;}
+    .bio-dates{font-size:15px;color:var(--muted2);margin-bottom:8px;font-family:'Source Serif 4',serif;}
+    .bio-age{font-size:12px;color:var(--muted2);margin-bottom:8px;}
+    .bio-fam-tag{display:inline-block;font-size:10px;padding:3px 10px;border:1px solid var(--border2);color:var(--muted2);background:var(--card);letter-spacing:0.06em;}
+
+    /* vital strip */
+    .vital-strip{display:flex;gap:20px;flex-wrap:wrap;margin-top:12px;}
+    .vital-block{display:flex;align-items:flex-start;gap:6px;}
+    .vital-ico{font-size:14px;color:var(--muted2);margin-top:1px;}
+    .vital-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted2);}
+    .vital-val{font-size:12px;color:var(--text2);font-weight:500;}
+    .vital-sub{font-size:10px;color:var(--muted2);}
+
+    /* confidence badges */
+    .conf{display:inline-block;font-size:8px;padding:1px 5px;border-radius:1px;margin-left:4px;vertical-align:middle;letter-spacing:0.06em;text-transform:uppercase;}
+    .conf-doc{color:var(--doc);border:1px solid var(--doc);}
+    .conf-prob{color:var(--prob);border:1px solid var(--prob);}
+    .conf-unv{color:var(--unv);border:1px solid var(--unv);}
+
+    /* sections */
+    .bio-section{padding:16px 20px;border-bottom:1px solid var(--border2);}
+    .section-label{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+    .section-label::after{content:'';flex:1;height:0.5px;background:var(--border2);}
+
+    /* prose */
+    .bio-prose{font-size:13px;line-height:1.85;color:var(--text2);}
+    .bio-prose p+p{margin-top:10px;}
+    .bio-prose .placeholder{color:var(--muted2);font-style:italic;font-size:12px;}
+
+    /* life timeline */
+    .lt-wrap{background:var(--card);border:1px solid var(--border2);padding:14px;border-radius:2px;overflow-x:auto;}
+    .lt-track{position:relative;padding-bottom:28px;min-width:500px;}
+    .lt-line{position:absolute;top:6px;left:0;right:0;height:1px;background:var(--border2);}
+    .lt-dots{display:flex;justify-content:space-between;position:relative;}
+    .lt-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
+    .lt-dot{width:10px;height:10px;border-radius:50%;background:#2A5A3A;border:2px solid var(--card);position:relative;z-index:1;flex-shrink:0;}
+    .lt-dot.death{background:var(--unv);}
+    .lt-year{font-size:9px;font-weight:600;color:var(--text2);}
+    .lt-event{font-size:9px;color:var(--muted2);text-align:center;line-height:1.3;max-width:80px;}
+    .lt-event.death{color:var(--unv);}
+
+    /* family grid */
+    .fam-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .fam-group-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted2);margin-bottom:8px;}
+    .fam-person{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+    .fam-avatar{width:30px;height:30px;border-radius:50%;background:var(--pg);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
+    .fam-name{font-size:11px;color:#1A3A6A;font-weight:500;}
+    .fam-name.ext{color:var(--muted2);font-weight:400;}
+    .fam-dates{font-size:9px;color:var(--muted2);}
+    .fam-link-note{font-size:10px;color:var(--muted2);font-style:italic;}
+    .fam-key{font-size:10px;color:var(--muted2);margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;}
+    .fam-key-item{display:flex;align-items:center;gap:4px;}
+    .fam-key-solid{width:16px;height:1px;background:var(--muted2);}
+    .fam-key-dashed{width:16px;height:1px;border-top:1px dashed var(--muted2);}
+    .children-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+    .child-item{display:flex;align-items:center;gap:4px;padding:2px 0;}
+    .child-name{font-size:10px;color:#1A3A6A;}
+    .child-dates{font-size:9px;color:var(--muted2);}
+
+    /* docs */
+    .doc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+    .doc-thumb{background:var(--card);border:1px solid var(--border2);padding:8px;cursor:pointer;}
+    .doc-img{width:100%;aspect-ratio:4/3;background:#E8E0D0;display:flex;align-items:center;justify-content:center;margin-bottom:6px;font-size:22px;}
+    .doc-title{font-size:10px;font-weight:500;color:var(--text2);}
+    .doc-sub{font-size:9px;color:var(--muted2);}
+    .doc-link{font-size:9px;color:#1A3A6A;cursor:pointer;text-decoration:none;}
+    .doc-placeholder{color:var(--muted2);font-style:italic;font-size:9px;}
+
+    /* photos */
+    .photo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+    .photo-item{cursor:pointer;}
+    .photo-img{width:100%;aspect-ratio:1;background:#E8E0D0;display:flex;align-items:center;justify-content:center;border-radius:2px;font-size:20px;}
+    .photo-cap{font-size:9px;color:var(--text2);line-height:1.3;margin-top:3px;}
+    .photo-sub{font-size:9px;color:var(--muted2);}
+
+    /* sources */
+    .sources-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .source-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+    .source-item{font-size:10px;color:var(--muted2);padding-left:12px;position:relative;line-height:1.5;}
+    .source-item::before{content:'·';position:absolute;left:0;color:var(--muted2);}
+    .research-note{font-size:10px;color:var(--muted2);line-height:1.6;background:var(--card);border:1px solid var(--border2);padding:10px;border-radius:2px;}
+    .last-updated{font-size:9px;color:var(--muted2);text-align:right;margin-top:8px;}
+
+    /* contribute */
+    .contrib-intro{font-size:11px;color:var(--muted2);margin-bottom:12px;line-height:1.6;}
+    .contrib-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+    .contrib-field{display:flex;flex-direction:column;gap:3px;}
+    .contrib-field.full{grid-column:1/-1;}
+    .contrib-lbl{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted2);}
+    .contrib-input{font-size:11px;padding:6px 8px;border:1px solid var(--border2);background:var(--pg);color:var(--text2);width:100%;font-family:'Inter',sans-serif;}
+    .contrib-input:focus{outline:none;border-color:var(--accent);}
+    textarea.contrib-input{resize:vertical;min-height:70px;}
+    .file-area{border:1.5px dashed var(--border2);padding:14px;text-align:center;cursor:pointer;background:var(--pg);transition:border-color 0.15s;}
+    .file-area:hover{border-color:var(--accent);}
+    .file-area .icon{font-size:22px;display:block;margin-bottom:4px;}
+    .file-area span{font-size:10px;color:var(--muted2);line-height:1.5;display:block;}
+    .file-area input{display:none;}
+    .file-list{font-size:10px;color:var(--accent);margin-top:4px;min-height:14px;}
+    .contrib-footer{display:flex;align-items:center;gap:12px;margin-top:10px;}
+    .contrib-note{font-size:9px;color:var(--muted2);flex:1;line-height:1.5;}
+    .contrib-btn{font-size:11px;padding:8px 20px;background:#1B3028;color:#fff;border:none;cursor:pointer;letter-spacing:0.06em;flex-shrink:0;font-family:'Inter',sans-serif;}
+    .contrib-btn:hover{background:#3D6B50;}
+
+    @media(max-width:600px){
+      .bio-header{flex-direction:column;}
+      .fam-grid,.contrib-grid{grid-template-columns:1fr;}
+      .doc-grid{grid-template-columns:repeat(2,1fr);}
+      .photo-grid{grid-template-columns:repeat(2,1fr);}
+      .sources-cols{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="bio-wrap">
+
+  <a class="bio-back" href="../index.html">← Back to timeline</a>
+
+  <!-- HEADER -->
+  <div class="bio-header">
+    <div class="bio-photo-col">
+      <div class="bio-photo">
+        <!-- Replace with actual photo when available -->
+        <!-- <img src="../images/people/inskip-harrison.jpg" alt="Inskip Harrison"> -->
+        <span style="font-size:36px;">👤</span>
+        <span style="font-size:10px;margin-top:6px;">Photograph<br>courtesy<br>Find A Grave</span>
+      </div>
+      <div class="bio-photo-credit">Photo contributed by Bob<br>Find A Grave</div>
+    </div>
+    <div>
+      <div class="bio-eyebrow">English Settlement Cemetery · Crawford County, PA</div>
+      <div class="bio-name">Inskip Harrison</div>
+      <div class="bio-dates">16 September 1812 – 25 November 1888</div>
+      <div class="bio-age">Aged 76 years</div>
+      <div class="bio-fam-tag">Harrison family</div>
+      <div class="vital-strip">
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Born</div>
+            <div class="vital-val">16 Sep 1812 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">England</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">📍</div>
+          <div>
+            <div class="vital-label">Died</div>
+            <div class="vital-val">25 Nov 1888 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Harrison Township, PA</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">🪦</div>
+          <div>
+            <div class="vital-label">Buried</div>
+            <div class="vital-val">English Settlement Cemetery</div>
+            <div class="vital-sub">Harrison Township, PA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BIOGRAPHY -->
+  <div class="bio-section">
+    <div class="section-label">Biography</div>
+    <div class="bio-prose">
+      <p>Inskip Harrison was born on 16 September 1812, most likely in England, and came to America as part of the early wave of English settlers who would establish what became known as the English Settlement in Rome Township, Crawford County, Pennsylvania.</p>
+      <p>His name — Inskip — became one of the most enduring in the Harrison family line. It was carried forward by his son Edward Inskip Harrison, appeared again in Jane Inskip Harrison a generation before him, and crossed into the Morris family through marriage, appearing still in Harold Inskip Morris decades after Inskip's death. Few names in this cemetery tell a family story so clearly.</p>
+      <p>Inskip Harrison died on 25 November 1888, aged 76, and was among the early burials in what would become Harrison Cemetery — a cemetery that would eventually bear his family's name.</p>
+      <p class="placeholder">Additional biography will be added as monument examination and archival research deepens. Immigration date, occupation, and community role are under active research. If you have information about Inskip Harrison, please use the contribution form below.</p>
+    </div>
+  </div>
+
+  <!-- LIFE TIMELINE -->
+  <div class="bio-section">
+    <div class="section-label">Life timeline</div>
+    <div class="lt-wrap">
+      <div class="lt-track">
+        <div class="lt-line"></div>
+        <div class="lt-dots">
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1812</div>
+            <div class="lt-event">Born<br>England</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">c.1831</div>
+            <div class="lt-event">Immigrated<br>to America</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1830s</div>
+            <div class="lt-event">Settled<br>Crawford Co., PA</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">c.1835</div>
+            <div class="lt-event">Married<br>Isabella Nesbitt</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1840s–80s</div>
+            <div class="lt-event">Family &amp;<br>Community</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot death"></div>
+            <div class="lt-year" style="color:#A32D2D;">1888</div>
+            <div class="lt-event death">Died<br>25 Nov 1888</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAMILY CONNECTIONS -->
+  <div class="bio-section">
+    <div class="section-label">Family connections</div>
+    <div class="fam-grid">
+      <div>
+        <div class="fam-group-label">👥 Parents</div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <a class="fam-name" href="richard-harrison.html">Richard Harrison</a>
+            <div class="fam-dates">1785 – 1867 · Buried here</div>
+          </div>
+        </div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <a class="fam-name" href="nancy-brown-harrison.html">Nancy Brown Harrison</a>
+            <div class="fam-dates">1794 – 1840 · Buried here</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;">
+          <div class="fam-group-label">❤️ Spouse</div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <a class="fam-name" href="isabella-nesbitt-harrison.html">Isabella Nesbitt Harrison</a>
+              <div class="fam-dates">1809 – 1875 · Buried here</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="fam-group-label">👶 Children</div>
+        <div class="children-grid">
+          <div class="child-item">
+            <div>
+              <a class="child-name" href="edward-inskip-harrison.html">Edward Inskip Harrison</a>
+              <div class="child-dates">1840 – 1914</div>
+            </div>
+          </div>
+          <div class="child-item">
+            <div>
+              <a class="child-name" href="sarah-harrison-harrison.html">Sarah Harrison Harrison</a>
+              <div class="child-dates">1830 – 1887</div>
+            </div>
+          </div>
+          <div class="child-item">
+            <div>
+              <a class="child-name" href="richard-christopher-harrison.html">Richard C. Harrison</a>
+              <div class="child-dates">1838 – 1911</div>
+            </div>
+          </div>
+          <div class="child-item">
+            <div>
+              <a class="child-name" href="nancy-harrison-1.html">Nancy Harrison</a>
+              <div class="child-dates">1851 – 1860</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fam-key">
+      <div class="fam-key-item"><div class="fam-key-solid"></div><span>Buried in English Settlement Cemetery</span></div>
+      <div class="fam-key-item"><div class="fam-key-dashed"></div><span>Not buried here</span></div>
+    </div>
+  </div>
+
+  <!-- MONUMENT -->
+  <div class="bio-section">
+    <div class="section-label">Monument</div>
+    <div style="background:var(--card);border:1px solid var(--border2);padding:12px;border-radius:2px;">
+      <div style="font-size:11px;color:var(--muted2);font-style:italic;text-align:center;padding:10px;border:1px dashed var(--border2);margin-bottom:10px;">Monument photograph pending field visit</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
+        <div><span style="color:var(--muted2);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Type</span>Not yet recorded</div>
+        <div><span style="color:var(--muted2);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Condition</span>Not yet recorded</div>
+        <div><span style="color:var(--muted2);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Epitaph</span>Pending examination</div>
+        <div><span style="color:var(--muted2);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Find A Grave ID</span>Pending</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOCUMENTS -->
+  <div class="bio-section">
+    <div class="section-label">Documents &amp; records</div>
+    <div class="doc-grid">
+      <div class="doc-thumb">
+        <div class="doc-img">📄</div>
+        <div class="doc-title">1850 Census</div>
+        <div class="doc-sub">Crawford County, PA</div>
+        <span class="doc-placeholder">Pending research</span>
+      </div>
+      <div class="doc-thumb">
+        <div class="doc-img">📄</div>
+        <div class="doc-title">1860 Census</div>
+        <div class="doc-sub">Rome Township, PA</div>
+        <span class="doc-placeholder">Pending research</span>
+      </div>
+      <div class="doc-thumb">
+        <div class="doc-img">🗺</div>
+        <div class="doc-title">Land Record</div>
+        <div class="doc-sub">Rome Township</div>
+        <span class="doc-placeholder">Pending research</span>
+      </div>
+      <div class="doc-thumb">
+        <div class="doc-img">📰</div>
+        <div class="doc-title">Death Notice</div>
+        <div class="doc-sub">Nov 1888</div>
+        <span class="doc-placeholder">Pending research</span>
+      </div>
+      <div class="doc-thumb">
+        <div class="doc-img">🚢</div>
+        <div class="doc-title">Immigration Record</div>
+        <div class="doc-sub">England to America</div>
+        <span class="doc-placeholder">Pending research</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTOS -->
+  <div class="bio-section">
+    <div class="section-label">Photos &amp; images</div>
+    <div class="photo-grid">
+      <div class="photo-item">
+        <div class="photo-img">🪦</div>
+        <div class="photo-cap">Gravestone</div>
+        <div class="photo-sub">Harrison Cemetery</div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-img">🏡</div>
+        <div class="photo-cap">Family home area</div>
+        <div class="photo-sub">Rome Township</div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-img">🗺</div>
+        <div class="photo-cap">Rome Township</div>
+        <div class="photo-sub">Circa 1860s</div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-img" style="background:var(--border2);">+</div>
+        <div class="photo-cap" style="color:#1A3A6A;">Add a photo</div>
+        <div class="photo-sub">via contribution form</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="bio-section">
+    <div class="section-label">Sources &amp; notes</div>
+    <div class="sources-cols">
+      <ul class="source-list">
+        <li class="source-item">Find A Grave · Photo contributed by Bob</li>
+        <li class="source-item">English Settlement Cemetery master record</li>
+        <li class="source-item">1850 United States Census · Crawford County, PA · pending</li>
+        <li class="source-item">1860 United States Census · Rome Township, PA · pending</li>
+        <li class="source-item">Rome Township Deed Records · pending</li>
+        <li class="source-item">Research by Scott Morris</li>
+      </ul>
+      <div>
+        <div class="research-note">Inskip Harrison is among the earliest documented members of the Harrison family in Crawford County. His name persists through four generations of the family tree, making him a critical anchor for the genealogical record of the English Settlement.</div>
+        <div class="last-updated">Last updated: June 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTRIBUTE -->
+  <div class="bio-section">
+    <div class="section-label">Contribute information</div>
+    <div class="contrib-intro">Do you have photographs, documents, family memories, or corrections relating to Inskip Harrison? Submissions are reviewed by the museum curator before publication and will be credited to you by name.</div>
+    <div class="contrib-grid">
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your name</div>
+        <input class="contrib-input" type="text" placeholder="Jane Smith">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Email address</div>
+        <input class="contrib-input" type="email" placeholder="jane@example.com">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your connection</div>
+        <input class="contrib-input" type="text" placeholder="Descendant, historian, researcher…">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Source or evidence</div>
+        <input class="contrib-input" type="text" placeholder="Census record, family Bible, photograph…">
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Information or correction</div>
+        <textarea class="contrib-input" placeholder="Describe what you know and where the information comes from…"></textarea>
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Attach photos or documents</div>
+        <div class="file-area" onclick="document.getElementById('file-in').click()">
+          <span class="icon">📎</span>
+          <span>Click to attach photos, scanned documents, or other files</span>
+          <span style="font-size:9px;">JPG, PNG, PDF, TIFF · max 10MB per file</span>
+          <input id="file-in" type="file" multiple accept="image/*,.pdf,.tiff" onchange="showFiles(this)">
+        </div>
+        <div class="file-list" id="file-list"></div>
+      </div>
+    </div>
+    <div class="contrib-footer">
+      <div class="contrib-note">Submissions are reviewed before publication. You will be contacted at your email address if we have questions or wish to use your contribution.</div>
+      <button class="contrib-btn" onclick="submitContribution()">Submit for review →</button>
+    </div>
+  </div>
+
+</div><!-- /bio-wrap -->
+
+<footer id="footer">
+  <div id="ft-l">English Settlement Cemetery Digital Museum · Harrison Township, Crawford County, Pennsylvania</div>
+  <div id="ft-r">Research &nbsp;·&nbsp; Preserve &nbsp;·&nbsp; Remember</div>
+</footer>
+
+<script>
+function showFiles(input) {
+  const list = document.getElementById('file-list');
+  if (input.files.length === 0) { list.textContent = ''; return; }
+  list.textContent = input.files.length + ' file(s) selected: ' + [...input.files].map(f => f.name).join(', ');
+}
+function submitContribution() {
+  // In production this will POST to a form handler
+  // For MVP, opens email client with the form data
+  const name    = document.querySelector('input[placeholder="Jane Smith"]').value;
+  const email   = document.querySelector('input[type="email"]').value;
+  const connect = document.querySelector('input[placeholder="Descendant, historian, researcher…"]').value;
+  const source  = document.querySelector('input[placeholder="Census record, family Bible, photograph…"]').value;
+  const info    = document.querySelector('textarea').value;
+  const subject = encodeURIComponent('Contribution: Inskip Harrison — English Settlement Cemetery');
+  const body    = encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\nConnection: ${connect}\nSource: ${source}\n\nInformation:\n${info}`
+  );
+  window.location.href = `mailto:scotty8828@gmail.com?subject=${subject}&body=${body}`;
+}
+</script>
+
+</body>
+</html>

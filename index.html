@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Settlement Cemetery — A Digital Museum</title>
+  <meta name="description" content="A digital museum preserving the stories of the 141 people buried in English Settlement Cemetery, Harrison Township, Crawford County, Pennsylvania.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div id="hero">
+  <div id="hero-atm"></div>
+  <!-- Replace src below with your drone photo when available -->
+  <img id="hero-drone-img" src="images/cemetery-aerial.jpg" alt="Aerial view of English Settlement Cemetery">
+  <div id="hero-stones">
+    <div class="st" style="width:18px;height:34px;"></div>
+    <div class="st" style="width:14px;height:28px;"></div>
+    <div class="st" style="width:22px;height:44px;border-radius:50% 50% 0 0/40% 40% 0 0"></div>
+    <div class="st" style="width:16px;height:32px;"></div>
+    <div class="st" style="width:28px;height:52px;border-radius:50% 50% 0 0/40% 40% 0 0"></div>
+    <div class="st" style="width:14px;height:26px;"></div>
+    <div class="st" style="width:20px;height:38px;"></div>
+    <div class="st" style="width:24px;height:48px;border-radius:50% 50% 0 0/40% 40% 0 0"></div>
+    <div class="st" style="width:12px;height:24px;"></div>
+    <div class="st" style="width:18px;height:36px;"></div>
+    <div class="st" style="width:16px;height:30px;"></div>
+    <div class="st" style="width:26px;height:50px;border-radius:50% 50% 0 0/40% 40% 0 0"></div>
+    <div class="st" style="width:14px;height:28px;"></div>
+    <div class="st" style="width:20px;height:40px;"></div>
+    <div class="st" style="width:16px;height:32px;"></div>
+    <div class="st" style="width:22px;height:42px;"></div>
+    <div class="st" style="width:18px;height:36px;border-radius:50% 50% 0 0/40% 40% 0 0"></div>
+  </div>
+  <div id="hero-mist"></div>
+  <div id="hero-content">
+    <div id="hero-text">
+      <div class="h-ey">Harrison Township · Crawford County · Pennsylvania</div>
+      <div class="h-ti">The English<br>Settlement</div>
+      <div class="h-su">A Digital Museum of Rome Township's English Pioneers</div>
+      <div class="h-lo">English Settlement Cemetery &nbsp;·&nbsp; Est. mid-1800s</div>
+      <a id="hero-cta" href="#timeline">Enter the Cemetery Museum</a>
+      <span id="hero-replay">▶ Opening Film — Coming Soon</span>
+    </div>
+    <div id="hero-card">
+      <div class="hc-ic">🌳</div>
+      <div class="hc-ti">Harrison Cemetery</div>
+      <div class="hc-bo">Resting place of the English families who built a community, raised their families, and helped shape northwestern Pennsylvania.</div>
+      <div class="hc-st">
+        <div class="hc-s"><strong>141</strong> Known Burials</div>
+        <div class="hc-s"><strong>26</strong> Family Names</div>
+        <div class="hc-s"><strong>200</strong> Years of History</div>
+        <div class="hc-s">Est. <strong>mid-1800s</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <div id="nav-in">
+    <a class="ni on" href="index.html">👥 People Timeline</a><div class="ns"></div>
+    <a class="ni" href="#">📷 The Cemetery</a><div class="ns"></div>
+    <a class="ni" href="#">👨‍👩‍👧 Families</a><div class="ns"></div>
+    <a class="ni" href="#">🗺 Historical Maps</a><div class="ns"></div>
+    <a class="ni" href="#">🖼 Photo Gallery</a><div class="ns"></div>
+    <a class="ni" href="#">📄 Documents</a><div class="ns"></div>
+    <a class="ni" href="about.html">ℹ About</a>
+  </div>
+</nav>
+
+<!-- ══ TIMELINE ══ -->
+<section id="tl-sec">
+  <div id="tl-hd">
+    <div id="tl-ti">People of Harrison Cemetery</div>
+    <div id="tl-de">The lives of 141 men, women, and children buried here.<br>Scroll up and down through the people · Scroll left and right through time.</div>
+  </div>
+
+  <div id="tl-ct">
+    <input type="text" id="tl-si" class="tc" placeholder="Search people…" oninput="applyFilters()">
+    <select id="tl-fm" class="tc" onchange="applyFilters()"><option value="">All families</option></select>
+    <select id="tl-fi" class="tc" onchange="applyFilters()">
+      <option value="">All 141</option>
+      <option value="veteran">Veterans only</option>
+      <option value="child">Died under 18</option>
+      <option value="unknown">Unknown dates</option>
+    </select>
+    <span id="tl-cn"></span>
+  </div>
+
+  <div id="tl-lg">
+    <div class="lg"><div class="lg-sw" style="background:#4A3FB5"></div>Harrison</div>
+    <div class="lg"><div class="lg-sw" style="background:#8B3A1C"></div>Morris</div>
+    <div class="lg"><div class="lg-sw" style="background:#0F6E56"></div>Hopkins</div>
+    <div class="lg"><div class="lg-sw" style="background:#6B3FA0"></div>Crossley</div>
+    <div class="lg"><div class="lg-sw" style="background:#2E7D6B"></div>Sedden</div>
+    <div class="lg"><div class="lg-sw" style="background:#1A5C8A"></div>Gregory</div>
+    <div class="lg"><div class="lg-sw" style="background:#888"></div>Other families</div>
+    <div class="lg"><span style="color:#C8A84B;font-size:10px;">★</span>&nbsp;Veteran</div>
+    <div class="lg"><div class="lg-sw" style="background:repeating-linear-gradient(90deg,#888 0,#888 3px,transparent 3px,transparent 6px);border:1px solid #aaa;opacity:0.6;"></div>Uncertain</div>
+  </div>
+
+  <div id="tl-hi">
+    <span>↕</span> Scroll up &amp; down through people &nbsp;·&nbsp;
+    <span>↔</span> Scroll left &amp; right through time &nbsp;·&nbsp;
+    Click any name to read their story
+  </div>
+
+  <div id="tl-box">
+    <div id="tl-left">
+      <div id="tl-nh">Name</div>
+      <div id="tl-nl"></div>
+    </div>
+    <div id="tl-right">
+      <div id="tl-ax-strip"><canvas id="tl-ax-cv"></canvas></div>
+      <div id="tl-bo"><div id="tl-bi"></div></div>
+    </div>
+  </div>
+
+  <div id="tl-mo" onclick="showAll()">↓ Show all <span id="tl-mo-n"></span> more people</div>
+  <div id="tl-tg">"Every stone has a story. Every story deserves to be preserved."</div>
+</section>
+
+<!-- ══ FAMILY TILES ══ -->
+<section id="fam-sec">
+  <div id="fam-hd">
+    <h2>Explore the Families</h2>
+    <p>The founding families of the English Settlement</p>
+  </div>
+  <div id="fam-gr">
+    <a class="ft" href="#">
+      <div class="ft-ic">🌳</div>
+      <div class="ft-nm">Harrison Family</div>
+      <div class="ft-su">23 members · Est. 1766</div>
+      <div class="ft-bt">Explore Family</div>
+      <div class="ft-br" style="background:#4A3FB5;"></div>
+    </a>
+    <a class="ft" href="#">
+      <div class="ft-ic">⚒</div>
+      <div class="ft-nm">Morris Family</div>
+      <div class="ft-su">39 members · Est. 1782</div>
+      <div class="ft-bt">Explore Family</div>
+      <div class="ft-br" style="background:#8B3A1C;"></div>
+    </a>
+    <a class="ft" href="#">
+      <div class="ft-ic">🌿</div>
+      <div class="ft-nm">Sedden Family</div>
+      <div class="ft-su">7 members · Est. 1810</div>
+      <div class="ft-bt">Explore Family</div>
+      <div class="ft-br" style="background:#2E7D6B;"></div>
+    </a>
+    <a class="ft" href="#">
+      <div class="ft-ic">🗺</div>
+      <div class="ft-nm">Historical Maps</div>
+      <div class="ft-su">Rome Township · Crawford Co.</div>
+      <div class="ft-bt">Explore Maps</div>
+      <div class="ft-br" style="background:#C8A84B;"></div>
+    </a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer id="footer">
+  <div id="ft-l">This project is dedicated to preserving the memory of the English pioneers of Harrison Township and the legacy they left for future generations.</div>
+  <div id="ft-r">Research &nbsp;·&nbsp; Preserve &nbsp;·&nbsp; Remember</div>
+</footer>
+
+<!-- ══ POPUP ══ -->
+<div id="pop-ov" onclick="closePopup()"></div>
+<div id="popup" role="dialog" aria-modal="true">
+  <button id="pop-x" onclick="closePopup()" aria-label="Close">✕</button>
+  <div id="pop-im">👤</div>
+  <div id="pop-bd">
+    <div id="pop-nm"></div>
+    <div id="pop-dt"></div>
+    <div id="pop-fm"></div>
+    <div id="pop-tg"></div>
+    <a id="pop-bt" href="#">View Full Story →</a>
+  </div>
+</div>
+
+<script src="js/timeline.js"></script>
+</body>
+</html>
