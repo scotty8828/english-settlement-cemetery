@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jane Inskip Harrison — English Settlement Cemetery</title>
+  <meta name="description" content="Biography of Jane Inskip Harrison (1766–1845), matriarch of the Harrison family, Bolton by Bowland, Yorkshire to Rome Township, Crawford County, Pennsylvania.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;1,8..60,300&family=Inter:wght@300;400;500;600&display=swap">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --forest:#1B3028;--forest-light:#3D6B50;
+      --cream:#F2EDE3;--parch:#E8E0D0;--white:#FDFAF4;
+      --gold:#C8A84B;--text:#1C1408;--muted:#6B5A3E;
+      --border:#D0C4A8;--border-dk:#B8A888;
+      --doc:#3B6D11;--prob:#854F0B;--unv:#A32D2D;
+      --link:#1A3A6A;
+    }
+    html,body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);font-size:14px;line-height:1.6;}
+
+    /* NAV */
+    #nav{background:#243D30;border-bottom:1px solid rgba(200,168,75,0.15);position:sticky;top:0;z-index:100;}
+    #nav-in{display:flex;align-items:center;max-width:900px;margin:0 auto;padding:0 20px;overflow-x:auto;gap:0;}
+    #nav-in::-webkit-scrollbar{display:none;}
+    .ni{font-size:9px;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.48);padding:11px 10px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.15s;font-weight:500;flex-shrink:0;text-decoration:none;display:block;}
+    .ni:hover{color:#fff;border-bottom-color:var(--gold);}
+    .ns{width:1px;height:14px;background:rgba(255,255,255,0.1);flex-shrink:0;margin:auto 0;}
+
+    /* WRAP */
+    .bio-wrap{max-width:900px;margin:0 auto;padding:0 0 3rem;}
+    .bio-back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+    .bio-back:hover{color:var(--forest);}
+
+    /* HEADER */
+    .bio-header{display:flex;gap:20px;align-items:flex-start;padding:0 20px 20px;border-bottom:2px solid var(--border);}
+    .bio-photo-col{flex-shrink:0;width:140px;text-align:center;}
+    .bio-photo{width:140px;height:180px;background:var(--parch);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--muted);text-align:center;padding:12px;overflow:hidden;position:relative;}
+    .bio-photo img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+    .bio-photo-credit{font-size:9px;color:var(--muted);margin-top:6px;line-height:1.4;}
+    .bio-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    .bio-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text);margin-bottom:4px;letter-spacing:0.02em;}
+    .bio-tagline{font-family:'Source Serif 4',serif;font-style:italic;font-size:13px;color:var(--muted);margin-bottom:8px;}
+    .bio-dates{font-size:15px;color:var(--muted);margin-bottom:4px;font-family:'Source Serif 4',serif;}
+    .bio-age{font-size:12px;color:var(--muted);margin-bottom:8px;}
+    .bio-fam-tag{display:inline-block;font-size:10px;padding:3px 10px;border:1px solid var(--border);color:var(--muted);background:var(--white);letter-spacing:0.06em;}
+    .vital-strip{display:flex;gap:20px;flex-wrap:wrap;margin-top:12px;}
+    .vital-block{display:flex;align-items:flex-start;gap:6px;}
+    .vital-ico{font-size:14px;color:var(--muted);margin-top:1px;}
+    .vital-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .vital-val{font-size:12px;color:var(--text);font-weight:500;}
+    .vital-sub{font-size:10px;color:var(--muted);}
+    .conf{display:inline-block;font-size:8px;padding:1px 5px;border-radius:1px;margin-left:4px;vertical-align:middle;letter-spacing:0.06em;text-transform:uppercase;}
+    .conf-doc{color:var(--doc);border:1px solid var(--doc);}
+    .conf-prob{color:var(--prob);border:1px solid var(--prob);}
+    .conf-unv{color:var(--unv);border:1px solid var(--unv);}
+
+    /* SECTIONS */
+    .bio-section{padding:16px 20px;border-bottom:1px solid var(--border);}
+    .section-label{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+    .section-label::after{content:'';flex:1;height:0.5px;background:var(--border);}
+
+    /* PROSE */
+    .bio-prose{font-size:13px;line-height:1.85;color:var(--text);}
+    .bio-prose p+p{margin-top:10px;}
+    .bio-prose .placeholder{color:var(--muted);font-style:italic;font-size:12px;}
+
+    /* LIFE TIMELINE */
+    .lt-wrap{background:var(--white);border:1px solid var(--border);padding:14px;overflow-x:auto;}
+    .lt-track{position:relative;padding-bottom:28px;min-width:600px;}
+    .lt-line{position:absolute;top:6px;left:0;right:0;height:1px;background:var(--border);}
+    .lt-dots{display:flex;justify-content:space-between;position:relative;}
+    .lt-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
+    .lt-dot{width:10px;height:10px;border-radius:50%;background:#2A5A3A;border:2px solid var(--white);position:relative;z-index:1;flex-shrink:0;}
+    .lt-dot.death{background:var(--unv);}
+    .lt-dot.marriage{background:var(--gold);}
+    .lt-year{font-size:9px;font-weight:600;color:var(--text);}
+    .lt-event{font-size:9px;color:var(--muted);text-align:center;line-height:1.3;max-width:80px;}
+    .lt-event.death{color:var(--unv);}
+    .lt-event.marriage{color:#7A5C00;}
+
+    /* FAMILY */
+    .fam-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .fam-group-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
+    .fam-person{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+    .fam-avatar{width:30px;height:30px;border-radius:50%;background:var(--parch);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
+    .fam-name{font-size:11px;color:var(--link);font-weight:500;text-decoration:none;display:block;}
+    .fam-name:hover{text-decoration:underline;}
+    .fam-name.ext{color:var(--muted);font-weight:400;}
+    .fam-dates{font-size:9px;color:var(--muted);}
+    .children-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+    .child-item{padding:3px 0;}
+    .child-name{font-size:10px;color:var(--link);text-decoration:none;display:block;}
+    .child-name:hover{text-decoration:underline;}
+    .child-dates{font-size:9px;color:var(--muted);}
+    .fam-key{font-size:10px;color:var(--muted);margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;}
+
+    /* SOURCES */
+    .sources-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .source-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+    .source-item{font-size:10px;color:var(--muted);padding-left:12px;position:relative;line-height:1.5;}
+    .source-item::before{content:'·';position:absolute;left:0;}
+    .research-note{font-size:10px;color:var(--muted);line-height:1.6;background:var(--white);border:1px solid var(--border);padding:10px;}
+    .last-updated{font-size:9px;color:var(--muted);text-align:right;margin-top:8px;}
+
+    /* CONTRIBUTE */
+    .contrib-intro{font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.6;}
+    .contrib-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+    .contrib-field{display:flex;flex-direction:column;gap:3px;}
+    .contrib-field.full{grid-column:1/-1;}
+    .contrib-lbl{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .contrib-input{font-size:11px;padding:6px 8px;border:1px solid var(--border);background:var(--cream);color:var(--text);width:100%;font-family:'Inter',sans-serif;}
+    .contrib-input:focus{outline:none;border-color:var(--forest-light);}
+    textarea.contrib-input{resize:vertical;min-height:70px;}
+    .file-area{border:1.5px dashed var(--border);padding:14px;text-align:center;cursor:pointer;background:var(--cream);transition:border-color 0.15s;}
+    .file-area:hover{border-color:var(--forest-light);}
+    .file-area span{font-size:10px;color:var(--muted);line-height:1.5;display:block;}
+    .file-area input{display:none;}
+    .file-list{font-size:10px;color:var(--forest-light);margin-top:4px;min-height:14px;}
+    .contrib-footer{display:flex;align-items:center;gap:12px;margin-top:10px;}
+    .contrib-note{font-size:9px;color:var(--muted);flex:1;line-height:1.5;}
+    .contrib-btn{font-size:11px;padding:8px 20px;background:var(--forest);color:#fff;border:none;cursor:pointer;letter-spacing:0.06em;flex-shrink:0;font-family:'Inter',sans-serif;}
+    .contrib-btn:hover{background:var(--forest-light);}
+
+    /* FOOTER */
+    #footer{background:var(--forest);border-top:1px solid rgba(200,168,75,0.1);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+    #ft-l{font-size:10px;color:rgba(255,255,255,0.32);font-family:'Source Serif 4',serif;font-style:italic;max-width:380px;line-height:1.6;}
+    #ft-r{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(200,168,75,0.45);}
+
+    @media(max-width:600px){
+      .bio-header{flex-direction:column;}
+      .fam-grid,.contrib-grid,.sources-cols{grid-template-columns:1fr;}
+      .children-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <div id="nav-in">
+    <a class="ni" href="../index.html">👥 People Timeline</a><div class="ns"></div>
+    <a class="ni" href="#">📷 The Cemetery</a><div class="ns"></div>
+    <a class="ni" href="#">👨‍👩‍👧 Families</a><div class="ns"></div>
+    <a class="ni" href="#">🗺 Historical Maps</a><div class="ns"></div>
+    <a class="ni" href="#">🖼 Photo Gallery</a><div class="ns"></div>
+    <a class="ni" href="#">📄 Documents</a><div class="ns"></div>
+    <a class="ni" href="../about.html">ℹ About</a>
+  </div>
+</nav>
+
+<div class="bio-wrap">
+
+  <a class="bio-back" href="../index.html">← Back to timeline</a>
+
+  <!-- HEADER -->
+  <div class="bio-header">
+    <div class="bio-photo-col">
+      <div class="bio-photo">
+        <span style="font-size:36px;">👤</span>
+        <span style="font-size:10px;margin-top:6px;">No photograph<br>yet found</span>
+      </div>
+      <div class="bio-photo-credit">English Settlement Cemetery<br>Rome Township, PA</div>
+    </div>
+    <div>
+      <div class="bio-eyebrow">English Settlement Cemetery · Crawford County, PA</div>
+      <div class="bio-name">Jane Inskip Harrison</div>
+      <div class="bio-tagline">Matriarch. Immigrant. Pioneer.</div>
+      <div class="bio-dates">1766 – 13 October 1845</div>
+      <div class="bio-age">Aged approximately 79 years</div>
+      <div class="bio-fam-tag">Harrison family</div>
+      <div class="vital-strip">
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Born</div>
+            <div class="vital-val">1766 <span class="conf conf-prob">Probable</span></div>
+            <div class="vital-sub">Bolton by Bowland, Yorkshire, England</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">💍</div>
+          <div>
+            <div class="vital-label">Married</div>
+            <div class="vital-val">27 Jul 1784 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Bolton by Bowland, Yorkshire, England</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Died</div>
+            <div class="vital-val">13 Oct 1845 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Rome Township, PA</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">🪦</div>
+          <div>
+            <div class="vital-label">Buried</div>
+            <div class="vital-val">English Settlement Cemetery</div>
+            <div class="vital-sub">Rome Township, Crawford County, PA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BIOGRAPHY -->
+  <div class="bio-section">
+    <div class="section-label">Biography</div>
+    <div class="bio-prose">
+      <p>Jane Inskip was born in 1766 in Bolton by Bowland, a small village in the Ribble Valley of the Yorkshire Dales in northern England. She married Benjamin Harrison on 27 July 1784 in that same village, beginning a partnership that would eventually carry their family across an ocean to build new lives in the American wilderness.</p>
+      <p>The name she carried into marriage — Inskip — was not forgotten. It would be given to her son, who became Inskip Harrison, one of the foundational figures of the Rome Township community. From him it passed to Edward Inskip Harrison, and eventually crossed into the Morris family through marriage, appearing as late as Harold Inskip Morris in the twentieth century. Jane Inskip Harrison may never have known how far her name would travel through time.</p>
+      <p>At some point after their marriage Jane and Benjamin Harrison left England for America, joining the wave of English settlers who made their way to northwestern Pennsylvania in the early nineteenth century. The precise year of their immigration is not yet confirmed, but by the time their children were establishing families of their own, the Harrisons were deeply rooted in what would become Rome Township — a community that would eventually bear their name.</p>
+      <p>Jane Inskip Harrison died on 13 October 1845. She was among the earliest burials in what would become English Settlement Cemetery, and her stone marks the beginning of the Harrison family's long presence there. She was born before the American Revolution. She died the year James K. Polk was President. In between she crossed an ocean, raised six children, and helped found a community in Crawford County, Pennsylvania.</p>
+      <p class="placeholder">Additional biography will be added as monument examination and archival research deepens. If you have information about Jane Inskip Harrison, please use the contribution form below.</p>
+    </div>
+  </div>
+
+  <!-- LIFE TIMELINE -->
+  <div class="bio-section">
+    <div class="section-label">Life timeline</div>
+    <div class="lt-wrap">
+      <div class="lt-track">
+        <div class="lt-line"></div>
+        <div class="lt-dots">
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1766</div>
+            <div class="lt-event">Born<br>Yorkshire, England</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot marriage"></div>
+            <div class="lt-year">1784</div>
+            <div class="lt-event marriage">Married<br>Benjamin Harrison<br>Bolton by Bowland</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">c.1800s</div>
+            <div class="lt-event">Immigrated<br>to America</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1800s</div>
+            <div class="lt-event">Settled<br>Crawford Co., PA</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1800s–1845</div>
+            <div class="lt-event">Raised six<br>children</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot death"></div>
+            <div class="lt-year" style="color:#A32D2D;">1845</div>
+            <div class="lt-event death">Died<br>13 Oct 1845</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAMILY CONNECTIONS -->
+  <div class="bio-section">
+    <div class="section-label">Family connections</div>
+    <div class="fam-grid">
+      <div>
+        <div class="fam-group-label">❤️ Spouse</div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <span class="fam-name ext">Benjamin Harrison</span>
+            <div class="fam-dates">m. 27 Jul 1784 · Bolton by Bowland, Yorkshire</div>
+            <div class="fam-dates">Not buried here</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="fam-group-label">📍 Origin</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6;">
+            Bolton by Bowland<br>
+            Ribble Valley, Yorkshire Dales<br>
+            England
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="fam-group-label">👶 Children — 6 known</div>
+        <div class="children-grid">
+          <div class="child-item">
+            <a class="child-name" href="richard-harrison.html">Richard Harrison</a>
+            <div class="child-dates">1785 – 1867 · Buried here</div>
+          </div>
+          <div class="child-item">
+            <a class="child-name" href="nancy-brown-harrison.html">Nancy Brown Harrison</a>
+            <div class="child-dates">1794 – 1840 · Buried here</div>
+          </div>
+          <div class="child-item">
+            <a class="child-name" href="benjamin-inskip-harrison.html">Benjamin Inskip Harrison</a>
+            <div class="child-dates">1797 – 1875 · Buried here</div>
+          </div>
+          <div class="child-item">
+            <a class="child-name" href="inskip-harrison.html">Inskip Harrison</a>
+            <div class="child-dates">1812 – 1888 · Buried here</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name" style="color:var(--muted);">Mary Ellen Harrison Vroman</span>
+            <div class="child-dates">1817 – 1898 · Buried here</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name" style="color:var(--muted);">Additional children</span>
+            <div class="child-dates">Under research</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fam-key">
+      <span>Names in blue = buried in English Settlement Cemetery</span>
+      <span>Grey names = not yet confirmed buried here</span>
+    </div>
+  </div>
+
+  <!-- MONUMENT -->
+  <div class="bio-section">
+    <div class="section-label">Monument</div>
+    <div style="background:var(--white);border:1px solid var(--border);padding:12px;">
+      <div style="font-size:11px;color:var(--muted);font-style:italic;text-align:center;padding:10px;border:1px dashed var(--border);margin-bottom:10px;">Monument photograph pending field visit</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Type</span>Not yet recorded</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Condition</span>Not yet recorded</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Epitaph</span>Pending examination</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Find A Grave</span><a href="https://www.findagrave.com/cemetery/45042/memorial-search?firstname=Jane&lastname=Harrison" target="_blank" style="color:var(--link);font-size:10px;">View memorial</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="bio-section">
+    <div class="section-label">Sources &amp; notes</div>
+    <div class="sources-cols">
+      <ul class="source-list">
+        <li class="source-item">Find A Grave · English Settlement Cemetery memorial listing</li>
+        <li class="source-item">Marriage record: Benjamin Harrison &amp; Jane Inskip · 27 Jul 1784 · Bolton by Bowland, Yorkshire, England</li>
+        <li class="source-item">English Settlement Cemetery master record</li>
+        <li class="source-item">GPS coordinates recorded from Find A Grave</li>
+        <li class="source-item">Research by Scott Morris</li>
+      </ul>
+      <div>
+        <div class="research-note">Jane Inskip Harrison is the earliest documented birth in English Settlement Cemetery (1766) and is almost certainly the origin of the Inskip name that appears across four generations of the Harrison and Morris families. Her marriage record in Bolton by Bowland, Yorkshire provides the earliest confirmed geographic origin for the Harrison family's English roots. Bolton by Bowland remains a small village in the Ribble Valley today.</div>
+        <div class="last-updated">Last updated: June 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTRIBUTE -->
+  <div class="bio-section">
+    <div class="section-label">Contribute information</div>
+    <div class="contrib-intro">Do you have photographs, documents, family memories, or corrections relating to Jane Inskip Harrison? Submissions are reviewed by the museum curator before publication and will be credited to you by name.</div>
+    <div class="contrib-grid">
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your name</div>
+        <input class="contrib-input" type="text" placeholder="Jane Smith">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Email address</div>
+        <input class="contrib-input" type="email" placeholder="jane@example.com">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your connection</div>
+        <input class="contrib-input" type="text" placeholder="Descendant, historian, researcher…">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Source or evidence</div>
+        <input class="contrib-input" type="text" placeholder="Census record, family Bible, photograph…">
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Information or correction</div>
+        <textarea class="contrib-input" placeholder="Describe what you know and where the information comes from…"></textarea>
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Attach photos or documents</div>
+        <div class="file-area" onclick="document.getElementById('file-in').click()">
+          <span style="font-size:20px;display:block;margin-bottom:4px;">📎</span>
+          <span>Click to attach photos, scanned documents, or other files</span>
+          <span style="font-size:9px;">JPG, PNG, PDF, TIFF · max 10MB per file</span>
+          <input id="file-in" type="file" multiple accept="image/*,.pdf,.tiff" onchange="showFiles(this)">
+        </div>
+        <div class="file-list" id="file-list"></div>
+      </div>
+    </div>
+    <div class="contrib-footer">
+      <div class="contrib-note">Submissions are reviewed before publication. You will be contacted at your email address if we have questions or wish to use your contribution.</div>
+      <button class="contrib-btn" onclick="submitContribution()">Submit for review →</button>
+    </div>
+  </div>
+
+</div>
+
+<footer id="footer">
+  <div id="ft-l">English Settlement Cemetery Digital Museum · Rome Township, Crawford County, Pennsylvania</div>
+  <div id="ft-r">Research &nbsp;·&nbsp; Preserve &nbsp;·&nbsp; Remember</div>
+</footer>
+
+<script>
+function showFiles(input){
+  const list=document.getElementById('file-list');
+  if(input.files.length===0){list.textContent='';return;}
+  list.textContent=input.files.length+' file(s) selected: '+[...input.files].map(f=>f.name).join(', ');
+}
+function submitContribution(){
+  const name=document.querySelector('input[placeholder="Jane Smith"]').value;
+  const email=document.querySelector('input[type="email"]').value;
+  const connect=document.querySelector('input[placeholder="Descendant, historian, researcher…"]').value;
+  const source=document.querySelector('input[placeholder="Census record, family Bible, photograph…"]').value;
+  const info=document.querySelector('textarea').value;
+  const subject=encodeURIComponent('Contribution: Jane Inskip Harrison — English Settlement Cemetery');
+  const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nConnection: '+connect+'\nSource: '+source+'\n\nInformation:\n'+info);
+  window.location.href='mailto:scotty8828@gmail.com?subject='+subject+'&body='+body;
+}
+</script>
+
+</body>
+</html>
