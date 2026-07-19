@@ -108,6 +108,22 @@ html,body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--tex
 #pop-tg{font-size:11px;color:var(--muted);font-family:'Source Serif 4',serif;font-style:italic;border-top:0.5px solid var(--border);padding-top:8px;margin-bottom:10px;line-height:1.5;}
 #pop-bt{display:block;width:100%;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:8px;background:var(--forest);color:#fff;border:none;cursor:pointer;transition:background 0.15s;text-decoration:none;text-align:center;}
 #pop-bt:hover{background:var(--forest-light);}
+
+/* OPENING FILM MODAL */
+#film-ov{position:fixed;inset:0;background:rgba(5,10,6,0.92);z-index:300;display:none;align-items:center;justify-content:center;padding:24px;}
+#film-ov.show{display:flex;}
+#film-box{position:relative;width:100%;max-width:820px;background:#000;border:1px solid var(--gold-dim);box-shadow:0 20px 60px rgba(0,0,0,0.6);}
+#film-box video{display:block;width:100%;max-height:70vh;background:#000;}
+#film-close{position:absolute;top:-36px;right:0;background:none;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1;padding:4px 8px;}
+#film-close:hover{color:var(--gold);}
+#film-skip{display:inline-block;margin-top:14px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.65);text-decoration:none;background:rgba(255,255,255,0.08);padding:8px 16px;border:1px solid rgba(255,255,255,0.25);cursor:pointer;}
+#film-skip:hover{color:#fff;border-color:#fff;}
+#film-fallback{padding:60px 30px;text-align:center;color:rgba(255,255,255,0.75);}
+#film-fallback .ff-ic{font-size:28px;margin-bottom:14px;}
+#film-fallback strong{display:block;color:var(--gold);font-family:'Playfair Display',serif;font-size:19px;font-weight:400;margin-bottom:10px;}
+#film-fallback p{font-family:'Source Serif 4',serif;font-style:italic;font-size:12px;line-height:1.7;max-width:420px;margin:0 auto;}
+#hero-replay{cursor:pointer;text-decoration:none;}
+#hero-replay:hover{color:rgba(255,255,255,0.6);}
 </style>
 </head>
 <body>
@@ -138,7 +154,7 @@ html,body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--tex
       <div class="h-su">A Digital Museum of Rome Township's English Pioneers</div>
       <div class="h-lo">English Settlement Cemetery &nbsp;·&nbsp; Est. mid-1800s</div>
       <a id="hero-cta" href="#tl-sec">Enter the Cemetery Museum</a>
-      <span id="hero-replay">▶ Opening Film — Coming Soon</span>
+      <span id="hero-replay" role="button" tabindex="0">▶ Opening Film</span>
     </div>
     <div id="hero-card">
       <div class="hc-ic">🌳</div>
@@ -230,6 +246,106 @@ html,body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--tex
     <a id="pop-bt" href="#">View Full Story →</a>
   </div>
 </div>
+
+<!-- OPENING FILM MODAL -->
+<div id="film-ov">
+  <div id="film-box">
+    <button id="film-close" onclick="closeFilm()">✕</button>
+    <video id="film-video" playsinline controls>
+      <source src="media/opening-film.mp4" type="video/mp4">
+    </video>
+    <div id="film-fallback" style="display:none;">
+      <div class="ff-ic">🎬</div>
+      <strong>The Opening Film Is Still Being Made</strong>
+      <p>Scott is filming the cemetery from the ground and by drone to create this introduction. Once it's ready, this is where it will play. Check back soon.</p>
+      <button id="film-skip" onclick="closeFilm()">Continue to the Museum →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const SEEN_KEY='esc_intro_seen_v1';
+  const ov=document.getElementById('film-ov');
+  const video=document.getElementById('film-video');
+  const fallback=document.getElementById('film-fallback');
+  const cta=document.getElementById('hero-cta');
+  const replay=document.getElementById('hero-replay');
+  let advanceAfterClose=false;
+  let videoFailed=false;
+  let loadCheckTimer=null;
+
+  function showFallback(){
+    videoFailed=true;
+    video.style.display='none';
+    fallback.style.display='block';
+  }
+  video.addEventListener('error',showFallback);
+  video.addEventListener('loadeddata',function(){ clearTimeout(loadCheckTimer); });
+
+  function openFilm(advanceOnEnd){
+    advanceAfterClose=advanceOnEnd;
+    ov.classList.add('show');
+    if(!videoFailed){
+      video.style.display='block';
+      fallback.style.display='none';
+      video.currentTime=0;
+      video.play().catch(function(){/* autoplay may be blocked; controls let the visitor press play */});
+      // Safety net: if the film hasn't actually started loading within a few
+      // seconds (e.g. the file is missing), don't leave visitors staring at
+      // a spinner — show the "still being made" message instead.
+      clearTimeout(loadCheckTimer);
+      loadCheckTimer=setTimeout(function(){
+        if(video.readyState===0){ showFallback(); }
+      },2500);
+    }else{
+      video.style.display='none';
+      fallback.style.display='block';
+    }
+  }
+
+  function closeFilm(){
+    clearTimeout(loadCheckTimer);
+    ov.classList.remove('show');
+    video.pause();
+    if(advanceAfterClose){
+      localStorage.setItem(SEEN_KEY,'1');
+      updateReplayLabel();
+      document.getElementById('tl-sec').scrollIntoView({behavior:'smooth'});
+    }
+  }
+  window.closeFilm=closeFilm;
+
+  video.addEventListener('ended',function(){
+    if(advanceAfterClose){
+      localStorage.setItem(SEEN_KEY,'1');
+      updateReplayLabel();
+    }
+    closeFilm();
+  });
+
+  function updateReplayLabel(){
+    const seen=localStorage.getItem(SEEN_KEY);
+    replay.textContent=seen?'▶ Watch the Opening Film Again':'▶ Opening Film';
+  }
+
+  cta.addEventListener('click',function(e){
+    const seen=localStorage.getItem(SEEN_KEY);
+    if(!seen){
+      e.preventDefault();
+      openFilm(true);
+    }
+    // if already seen, let the link behave normally (jump straight to the timeline)
+  });
+
+  replay.addEventListener('click',function(){
+    openFilm(false);
+  });
+
+  updateReplayLabel();
+})();
+</script>
+
 <script>
 const FC={Harrison:"#4A3FB5",Hopkins:"#0F6E56",Morris:"#8B3A1C",Gregory:"#1A5C8A",Crossley:"#6B3FA0",Sedden:"#2E7D6B",Gilson:"#7A5C1E",Halfast:"#C06030",Alston:"#3D7A3D",Shaw:"#8A5A8A",Vroman:"#2E6A8A",Stearns:"#6A3D3D",Reynolds:"#5A7A3D",Owens:"#8A6A2E",Russ:"#3D6A7A",Edmond:"#7A3D6A",Nelson:"#4A7A5A",Rieck:"#7A4A3D",Shumake:"#3D4A7A",Dailey:"#6A7A3D",Graham:"#5A3D7A",Hasson:"#7A5A3D",Heliker:"#3D7A6A",Wheatall:"#6A3D7A",Burns:"#888",Carey:"#888"};
 const TAGS={Harrison:"Pioneer. Patriarch. Foundation of Rome Township.",Morris:"Blacksmith. Pioneer. Family man.",Hopkins:"Farmer. Community leader.",Crossley:"Settler. Family patriarch.",Sedden:"Pioneer family of the English Settlement.",Gregory:"Physician and community pillar.",default:"Buried at English Settlement Cemetery."};
