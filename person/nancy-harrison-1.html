@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nancy Brown Harrison — English Settlement Cemetery</title>
-  <meta name="description" content="Biography of Nancy Brown Harrison (1794–1840), first wife of Benjamin Inskip Harrison, English Settlement Cemetery, Rome Township, Crawford County, Pennsylvania.">
+  <title>Nancy Harrison — English Settlement Cemetery</title>
+  <meta name="description" content="Biography of Nancy Harrison (1851–1860), daughter of William and Sarah Harrison, English Settlement Cemetery, Rome Township, Crawford County, Pennsylvania.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;1,8..60,300&family=Inter:wght@300;400;500;600&display=swap">
   <style>
@@ -30,7 +30,6 @@
     .bio-header{display:flex;gap:20px;align-items:flex-start;padding:0 20px 20px;border-bottom:2px solid var(--border);}
     .bio-photo-col{flex-shrink:0;width:140px;text-align:center;}
     .bio-photo{width:140px;height:180px;background:var(--parch);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--muted);text-align:center;padding:12px;overflow:hidden;position:relative;}
-    .bio-photo img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
     .bio-photo-credit{font-size:9px;color:var(--muted);margin-top:6px;line-height:1.4;}
     .bio-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
     .bio-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text);margin-bottom:4px;letter-spacing:0.02em;}
@@ -54,18 +53,6 @@
     .bio-prose{font-size:13px;line-height:1.85;color:var(--text);}
     .bio-prose p+p{margin-top:10px;}
     .bio-prose .placeholder{color:var(--muted);font-style:italic;font-size:12px;}
-    .lt-wrap{background:var(--white);border:1px solid var(--border);padding:14px;overflow-x:auto;}
-    .lt-track{position:relative;padding-bottom:28px;min-width:600px;}
-    .lt-line{position:absolute;top:6px;left:0;right:0;height:1px;background:var(--border);}
-    .lt-dots{display:flex;justify-content:space-between;position:relative;}
-    .lt-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
-    .lt-dot{width:10px;height:10px;border-radius:50%;background:#2A5A3A;border:2px solid var(--white);position:relative;z-index:1;flex-shrink:0;}
-    .lt-dot.death{background:var(--unv);}
-    .lt-dot.marriage{background:var(--gold);}
-    .lt-year{font-size:9px;font-weight:600;color:var(--text);}
-    .lt-event{font-size:9px;color:var(--muted);text-align:center;line-height:1.3;max-width:90px;}
-    .lt-event.death{color:var(--unv);}
-    .lt-event.marriage{color:#7A5C00;}
     .fam-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
     .fam-group-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
     .fam-person{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
@@ -74,12 +61,6 @@
     .fam-name:hover{text-decoration:underline;}
     .fam-name.ext{color:var(--muted);font-weight:400;}
     .fam-dates{font-size:9px;color:var(--muted);}
-    .children-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
-    .child-item{padding:3px 0;}
-    .child-name{font-size:10px;color:var(--link);text-decoration:none;display:block;}
-    .child-name:hover{text-decoration:underline;}
-    .child-dates{font-size:9px;color:var(--muted);}
-    .fam-key{font-size:10px;color:var(--muted);margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;}
     .sources-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
     .source-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
     .source-item{font-size:10px;color:var(--muted);padding-left:12px;position:relative;line-height:1.5;}
@@ -109,7 +90,6 @@
     @media(max-width:600px){
       .bio-header{flex-direction:column;}
       .fam-grid,.contrib-grid,.sources-cols{grid-template-columns:1fr;}
-      .children-grid{grid-template-columns:1fr;}
     }
   </style>
 </head>
@@ -141,42 +121,26 @@
       <div class="bio-photo-credit">English Settlement Cemetery<br>Rome Township, PA</div>
     </div>
     <div>
-      <div class="bio-eyebrow">English Settlement Cemetery · Crawford County, PA · Burial #001</div>
-      <div class="bio-name">Nancy Brown Harrison</div>
-      <div class="bio-tagline">One of the founding families of the English Settlement.</div>
-      <div class="bio-dates">1794 – 9 September 1840</div>
-      <div class="bio-age">Aged 45–46 years at death</div>
-      <div class="bio-fam-tag">Harrison family · born Brown</div>
+      <div class="bio-eyebrow">English Settlement Cemetery · Crawford County, PA</div>
+      <div class="bio-name">Nancy Harrison</div>
+      <div class="bio-tagline">Daughter of William and Sarah Harrison.</div>
+      <div class="bio-dates">27 April 1851 – 9 May 1860</div>
+      <div class="bio-age">Died at age 9</div>
+      <div class="bio-fam-tag">Harrison family</div>
       <div class="vital-strip">
         <div class="vital-block">
           <div class="vital-ico">📅</div>
           <div>
             <div class="vital-label">Born</div>
-            <div class="vital-val">1794 <span class="conf conf-prob">Probable</span></div>
-            <div class="vital-sub">England — possibly Lancashire, parentage unconfirmed</div>
-          </div>
-        </div>
-        <div class="vital-block">
-          <div class="vital-ico">💍</div>
-          <div>
-            <div class="vital-label">Married</div>
-            <div class="vital-val">1 Jan 1818 <span class="conf conf-doc">Documented</span></div>
-            <div class="vital-sub">To Benjamin Inskip Harrison</div>
-          </div>
-        </div>
-        <div class="vital-block">
-          <div class="vital-ico">🌾</div>
-          <div>
-            <div class="vital-label">Settled</div>
-            <div class="vital-val">1833 <span class="conf conf-doc">Documented</span></div>
-            <div class="vital-sub">Rome Township — one of three founding families</div>
+            <div class="vital-val">27 Apr 1851 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Crawford County, PA</div>
           </div>
         </div>
         <div class="vital-block">
           <div class="vital-ico">📅</div>
           <div>
             <div class="vital-label">Died</div>
-            <div class="vital-val">9 Sep 1840 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-val">9 May 1860 <span class="conf conf-doc">Documented</span></div>
             <div class="vital-sub">Crawford County, PA</div>
           </div>
         </div>
@@ -196,47 +160,8 @@
   <div class="bio-section">
     <div class="section-label">Biography</div>
     <div class="bio-prose">
-      <p>Nancy Brown was born in England in 1794. On 1 January 1818, she married Benjamin Inskip Harrison (1797–1875), son of Benjamin and Jane Inskip Harrison — meaning the marriage took place nearly a decade before the wider Harrison family's 1827 emigration to America.</p>
-      <p>Nancy was one of the three women of the founding journey into the Rome Township wilderness in 1833 — alongside her mother-in-law Jane Inskip Harrison and her sister-in-law Jane Harrison Morris — as her husband Benjamin, his brother Inskip Harrison, and brother-in-law Richard Morris carved out what became the English Settlement. Together, Nancy and Benjamin had nine children: Jane, Benjamin, John, Elizabeth, Thomas, Sarah, Ellen, Richard, and Edward, born between 1818 and 1840.</p>
-      <p>Nancy died on 9 September 1840 in Crawford County, Pennsylvania, at approximately 45 or 46 years old — just days after the birth of her youngest child, Edward, suggesting she likely died of childbirth complications, the leading cause of death for women of her age in this era. She was buried at what is now English Settlement Cemetery, among the earliest recorded burials at the site. Benjamin Inskip Harrison remarried some years later, to Isabella Nesbitt (1809–1875), a twice-widowed Irish immigrant whose own family had already settled land in Rome Township; they had one son together.</p>
-      <p class="placeholder">Nancy's own parents, place of birth in England, and the circumstances of her death are not yet documented. If you have information, please use the contribution form below.</p>
-    </div>
-  </div>
-
-  <!-- LIFE TIMELINE -->
-  <div class="bio-section">
-    <div class="section-label">Life timeline</div>
-    <div class="lt-wrap">
-      <div class="lt-track">
-        <div class="lt-line"></div>
-        <div class="lt-dots">
-          <div class="lt-dot-wrap">
-            <div class="lt-dot"></div>
-            <div class="lt-year">1794</div>
-            <div class="lt-event">Born<br>England</div>
-          </div>
-          <div class="lt-dot-wrap">
-            <div class="lt-dot marriage"></div>
-            <div class="lt-year">1818</div>
-            <div class="lt-event marriage">Married<br>Benjamin Inskip Harrison</div>
-          </div>
-          <div class="lt-dot-wrap">
-            <div class="lt-dot"></div>
-            <div class="lt-year">1818–40</div>
-            <div class="lt-event">Nine children born</div>
-          </div>
-          <div class="lt-dot-wrap">
-            <div class="lt-dot"></div>
-            <div class="lt-year">1833</div>
-            <div class="lt-event">Settled<br>Rome Township, PA</div>
-          </div>
-          <div class="lt-dot-wrap">
-            <div class="lt-dot death"></div>
-            <div class="lt-year" style="color:#A32D2D;">1840</div>
-            <div class="lt-event death">Died<br>9 Sep 1840</div>
-          </div>
-        </div>
-      </div>
+      <p>Nancy Harrison was born 27 April 1851 in Crawford County, Pennsylvania, daughter of William Harrison (1821–1894) and Sarah Harrison Harrison (1830–1887). She died 9 May 1860, at nine years old, and was buried at what is now English Settlement Cemetery.</p>
+      <p>Through her mother, Nancy was a granddaughter of Nancy Brown Harrison (1794–1840) — one of the settlement's founding women — and a great-granddaughter of Jane Inskip Harrison and Benjamin Harrison, whose descendants make up much of the cemetery's Harrison family line.</p>
     </div>
   </div>
 
@@ -245,83 +170,28 @@
     <div class="section-label">Family connections</div>
     <div class="fam-grid">
       <div>
-        <div class="fam-group-label">👨‍👩‍👦 Parents (potential, unconfirmed)</div>
-        <div style="font-size:11px;line-height:1.9;margin-bottom:14px;">
-          <span class="fam-name ext">William Brown</span> <span style="color:var(--muted);font-size:9px;">c. 1777 – 14 May 1864 (aged 87) · Lancashire, England</span><br>
-          <span class="fam-name ext">Mary Rogerson Brown</span> <span style="color:var(--muted);font-size:9px;">c. 1774 – c. 1856 · Lancashire, England</span>
-        </div>
-        <div class="fam-group-label">❤️ Spouse</div>
+        <div class="fam-group-label">👨‍👩‍👦 Parents</div>
         <div class="fam-person">
           <div class="fam-avatar">👤</div>
           <div>
-            <a class="fam-name" href="benjamin-inskip-harrison.html">Benjamin Inskip Harrison</a>
-            <div class="fam-dates">1797 – 1875 · m. 1 Jan 1818 · Buried here</div>
+            <span class="fam-name ext">William Harrison</span>
+            <div class="fam-dates">1821 – 1894</div>
           </div>
         </div>
-        <div style="margin-top:14px;">
-          <div class="fam-group-label">👨‍👩‍👦 Parents-in-law</div>
-          <div style="font-size:11px;line-height:1.9;">
-            <a class="fam-name" href="jane-inskip-harrison.html">Jane Inskip Harrison</a> <span style="color:var(--muted);font-size:9px;">1766 – 1845 · Buried here</span><br>
-            <span class="fam-name ext">Benjamin Harrison</span> <span style="color:var(--muted);font-size:9px;">1759 – 1824 · Not buried here</span>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <a class="fam-name" href="sarah-harrison-harrison.html">Sarah Harrison Harrison</a>
+            <div class="fam-dates">1830 – 1887</div>
           </div>
         </div>
       </div>
       <div>
-        <div class="fam-group-label">👶 Children — 9 named</div>
-        <div class="children-grid">
-          <div class="child-item">
-            <a class="child-name" href="jane-harrison-morris-1818.html">Jane Harrison Morris</a>
-            <div class="child-dates">1818 – 1885 · not Richard Morris's wife — see note</div>
-          </div>
-          <div class="child-item">
-            <a class="child-name" href="benjamin-harrison.html">Benjamin Harrison</a>
-            <div class="child-dates">1822 – 1901</div>
-          </div>
-          <div class="child-item">
-            <a class="child-name" href="john-brown-harrison.html">John Brown Harrison</a>
-            <div class="child-dates">1824 – 1905</div>
-          </div>
-          <div class="child-item">
-            <a class="child-name" href="elizabeth-betsy-harrison-gilson.html">Elizabeth "Betsy" Harrison Gilson</a>
-            <div class="child-dates">1826 – 1904</div>
-          </div>
-          <div class="child-item">
-            <span class="child-name" style="color:var(--muted);">Thomas Harrison</span>
-            <div class="child-dates">1829 – 1906 · Not yet matched</div>
-          </div>
-          <div class="child-item">
-            <a class="child-name" href="sarah-harrison-harrison.html">Sarah Harrison Harrison</a>
-            <div class="child-dates">1830 – 1887</div>
-          </div>
-          <div class="child-item">
-            <span class="child-name" style="color:var(--muted);">Ellen Harrison Morris</span>
-            <div class="child-dates">1836 – 1906 · Not yet matched</div>
-          </div>
-          <div class="child-item">
-            <span class="child-name" style="color:var(--muted);">Richard Christopher Harrison</span>
-            <div class="child-dates">1838 – 1911 · Not yet matched</div>
-          </div>
-          <div class="child-item">
-            <span class="child-name" style="color:var(--muted);">Edward Inskip Harrison</span>
-            <div class="child-dates">1840 – 1914 · Not yet matched — see note</div>
-          </div>
+        <div class="fam-group-label">🧑‍🤝‍🧑 Siblings</div>
+        <div style="font-size:11px;line-height:1.9;">
+          <span class="fam-name ext">Mary Ann Harrison Hasson</span> <span style="color:var(--muted);font-size:9px;">1848 – 1936</span><br>
+          <span class="fam-name ext">Rosina Harrison Halfast</span> <span style="color:var(--muted);font-size:9px;">1853 – 1929</span>
         </div>
-      </div>
-    </div>
-    <div class="fam-key">
-      <span>Blue names link to a documented page here</span>
-      <span>Grey names are not yet linked or confirmed</span>
-    </div>
-  </div>
-
-  <!-- MONUMENT -->
-  <div class="bio-section">
-    <div class="section-label">Monument</div>
-    <div style="background:var(--white);border:1px solid var(--border);padding:12px;">
-      <div style="font-size:11px;color:var(--muted);font-style:italic;text-align:center;padding:10px;border:1px dashed var(--border);margin-bottom:10px;">Monument photograph pending field visit</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
-        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Type</span>Not yet recorded</div>
-        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Find A Grave</span><a href="https://www.findagrave.com/memorial/13911415" target="_blank" style="color:var(--link);font-size:10px;">View memorial</a></div>
       </div>
     </div>
   </div>
@@ -331,14 +201,12 @@
     <div class="section-label">Sources &amp; notes</div>
     <div class="sources-cols">
       <ul class="source-list">
-        <li class="source-item">Find A Grave memorial #13911415 — Nancy Brown Harrison</li>
-        <li class="source-item">English Settlement Cemetery master record (burial #001)</li>
-        <li class="source-item">Ancestry.com hint suggestion: William Brown &amp; Mary Rogerson Brown as potential parents (unconfirmed)</li>
-        <li class="source-item">"Inskip Morris Travel Diary" — cited on Ancestry as source for William Brown's death date/age</li>
-        <li class="source-item">Research by Scott Morris</li>
+        <li class="source-item">Find A Grave memorial #13911914 — Nancy Harrison</li>
+        <li class="source-item">English Settlement Cemetery master record</li>
+        <li class="source-item">Nancy Brown Harrison biography (great-grandmother), this site</li>
       </ul>
       <div>
-        <div class="research-note">Nancy's daughter Jane Harrison Morris (1818–1885) is a different person from Richard Morris's wife, also named Jane Harrison Morris (1806–1887) — this resolves a long-standing ambiguity between two similarly-named records in the cemetery data. Her son Edward Inskip Harrison (1840–1914) is currently described on Jane Inskip Harrison's page as the son of Inskip Harrison, but appears from this record to actually be Benjamin and Nancy's son — that page needs correcting. A working theory: with Nancy's death likely from childbirth complications just days after Edward's birth, his uncle Inskip Harrison's family — living nearby in a still-isolated settlement — may have raised the infant. If Edward appeared in Inskip's household in a later census, that household listing was likely misread as parentage by Ancestry trees, which would explain how the error spread. This is a theory, not yet confirmed. Nancy's parents are listed as William Brown and Mary Rogerson Brown of Lancashire, England, per Ancestry hint suggestions from two separate user-submitted family trees — not independently verified, and shown here so a visitor with better documentation can confirm or correct it. Several other children (Thomas, Ellen, Richard) have not yet been matched to cemetery records. Benjamin Inskip Harrison's second wife, Isabella Nesbitt Harrison (1809–1875), is confirmed via Find A Grave — she was previously married to Alexander Duff and John Edmund, both of whose families are already documented in the cemetery data (Elizabeth Duff Gregory, Samuel Mason Edmond, John Edmond). Her Find A Grave memorial also confirms the cemetery was originally called Maple Grove Cemetery, independently corroborating a name previously found only in a family memoir.</div>
+        <div class="research-note">Nancy is one of at least two Harrison children named Nancy in this cemetery's records — not to be confused with Nancy Brown Harrison (1794–1840), her great-grandmother. Cause of death has not been documented.</div>
         <div class="last-updated">Last updated: August 2026</div>
       </div>
     </div>
@@ -347,7 +215,7 @@
   <!-- CONTRIBUTE -->
   <div class="bio-section">
     <div class="section-label">Contribute information</div>
-    <div class="contrib-intro">Do you have photographs, documents, family memories, or corrections relating to Nancy Brown Harrison? Submissions are reviewed by the museum curator before publication and will be credited to you by name.</div>
+    <div class="contrib-intro">Do you have photographs, documents, family memories, or corrections relating to Nancy Harrison? Submissions are reviewed by the museum curator before publication and will be credited to you by name.</div>
     <div class="contrib-grid">
       <div class="contrib-field">
         <div class="contrib-lbl">Your name</div>
@@ -405,7 +273,7 @@ function submitContribution(){
   const connect=document.querySelector('input[placeholder="Descendant, historian, researcher…"]').value;
   const source=document.querySelector('input[placeholder="Census record, family Bible, photograph…"]').value;
   const info=document.querySelector('textarea').value;
-  const subject=encodeURIComponent('Contribution: Nancy Brown Harrison — English Settlement Cemetery');
+  const subject=encodeURIComponent('Contribution: Nancy Harrison — English Settlement Cemetery');
   const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nConnection: '+connect+'\nSource: '+source+'\n\nInformation:\n'+info);
   window.location.href='mailto:scotty8828@gmail.com?subject='+subject+'&body='+body;
 }
