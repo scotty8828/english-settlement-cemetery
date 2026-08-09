@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Benjamin J. Wheatall — English Settlement Cemetery</title>
-  <meta name="description" content="Benjamin J. Wheatall (1815 &ndash; 1845), English Settlement Cemetery, Rome Township, Crawford County, Pennsylvania. Biography research in progress.">
+  <meta name="description" content="Biography of Benjamin J. Wheatall (c. 1815–1845), sailor who missed his ship and settled in Rome Township, Crawford County, Pennsylvania.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;1,8..60,300&family=Inter:wght@300;400;500;600&display=swap">
   <style>
@@ -13,7 +13,9 @@
       --forest:#1B3028;--forest-light:#3D6B50;
       --cream:#F2EDE3;--parch:#E8E0D0;--white:#FDFAF4;
       --gold:#C8A84B;--text:#1C1408;--muted:#6B5A3E;
-      --border:#D0C4A8;--link:#1A3A6A;
+      --border:#D0C4A8;--border-dk:#B8A888;
+      --doc:#3B6D11;--prob:#854F0B;--unv:#A32D2D;
+      --link:#1A3A6A;
     }
     html,body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);font-size:14px;line-height:1.6;}
     #nav{background:#243D30;border-bottom:1px solid rgba(200,168,75,0.15);position:sticky;top:0;z-index:100;}
@@ -22,57 +24,355 @@
     .ni{font-size:9px;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.48);padding:11px 10px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.15s;font-weight:500;flex-shrink:0;text-decoration:none;display:block;}
     .ni:hover{color:#fff;border-bottom-color:var(--gold);}
     .ns{width:1px;height:14px;background:rgba(255,255,255,0.1);flex-shrink:0;margin:auto 0;}
-
-    .wrap{max-width:600px;margin:0 auto;padding:0 0 3rem;}
-    .back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;}
-    .back:hover{color:var(--forest);}
-
-    .pending-card{
-      margin:20px;background:var(--white);border:1px solid var(--border);
-      padding:40px 30px;text-align:center;
-    }
-    .pending-icon{font-size:32px;margin-bottom:16px;opacity:0.5;}
-    .pending-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-    .pending-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:var(--text);margin-bottom:6px;}
-    .pending-dates{font-size:14px;color:var(--muted);margin-bottom:20px;font-family:'Source Serif 4',serif;}
-    .pending-badge{
-      display:inline-block;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
-      padding:6px 16px;border:1px solid var(--gold);color:#7A5C00;
-      background:rgba(200,168,75,0.1);margin-bottom:20px;font-weight:500;
-    }
-    .pending-msg{font-size:12px;color:var(--muted);font-family:'Source Serif 4',serif;font-style:italic;line-height:1.7;max-width:420px;margin:0 auto 20px;}
-    .pending-fam{font-size:11px;color:var(--muted);margin-bottom:4px;}
-    .contrib-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:16px;border-top:1px solid var(--border);padding-top:16px;}
-    .contrib-note a{color:var(--link);}
-
+    .bio-wrap{max-width:900px;margin:0 auto;padding:0 0 3rem;}
+    .bio-back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+    .bio-back:hover{color:var(--forest);}
+    .bio-header{display:flex;gap:20px;align-items:flex-start;padding:0 20px 20px;border-bottom:2px solid var(--border);}
+    .bio-photo-col{flex-shrink:0;width:140px;text-align:center;}
+    .bio-photo{width:140px;height:180px;background:var(--parch);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--muted);text-align:center;padding:12px;overflow:hidden;position:relative;}
+    .bio-photo-credit{font-size:9px;color:var(--muted);margin-top:6px;line-height:1.4;}
+    .bio-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    .bio-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text);margin-bottom:4px;letter-spacing:0.02em;}
+    .bio-tagline{font-family:'Source Serif 4',serif;font-style:italic;font-size:13px;color:var(--muted);margin-bottom:8px;}
+    .bio-dates{font-size:15px;color:var(--muted);margin-bottom:4px;font-family:'Source Serif 4',serif;}
+    .bio-age{font-size:12px;color:var(--muted);margin-bottom:8px;}
+    .bio-fam-tag{display:inline-block;font-size:10px;padding:3px 10px;border:1px solid var(--border);color:var(--muted);background:var(--white);letter-spacing:0.06em;}
+    .vital-strip{display:flex;gap:20px;flex-wrap:wrap;margin-top:12px;}
+    .vital-block{display:flex;align-items:flex-start;gap:6px;}
+    .vital-ico{font-size:14px;color:var(--muted);margin-top:1px;}
+    .vital-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .vital-val{font-size:12px;color:var(--text);font-weight:500;}
+    .vital-sub{font-size:10px;color:var(--muted);}
+    .conf{display:inline-block;font-size:8px;padding:1px 5px;border-radius:1px;margin-left:4px;vertical-align:middle;letter-spacing:0.06em;text-transform:uppercase;}
+    .conf-doc{color:var(--doc);border:1px solid var(--doc);}
+    .conf-prob{color:var(--prob);border:1px solid var(--prob);}
+    .conf-unv{color:var(--unv);border:1px solid var(--unv);}
+    .bio-section{padding:16px 20px;border-bottom:1px solid var(--border);}
+    .section-label{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+    .section-label::after{content:'';flex:1;height:0.5px;background:var(--border);}
+    .bio-prose{font-size:13px;line-height:1.85;color:var(--text);}
+    .bio-prose p+p{margin-top:10px;}
+    .bio-prose .placeholder{color:var(--muted);font-style:italic;font-size:12px;}
+    .lt-wrap{background:var(--white);border:1px solid var(--border);padding:14px;overflow-x:auto;}
+    .lt-track{position:relative;padding-bottom:28px;min-width:600px;}
+    .lt-line{position:absolute;top:6px;left:0;right:0;height:1px;background:var(--border);}
+    .lt-dots{display:flex;justify-content:space-between;position:relative;}
+    .lt-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
+    .lt-dot{width:10px;height:10px;border-radius:50%;background:#2A5A3A;border:2px solid var(--white);position:relative;z-index:1;flex-shrink:0;}
+    .lt-dot.death{background:var(--unv);}
+    .lt-year{font-size:9px;font-weight:600;color:var(--text);}
+    .lt-event{font-size:9px;color:var(--muted);text-align:center;line-height:1.3;max-width:100px;}
+    .lt-event.death{color:var(--unv);}
+    .fam-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .fam-group-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
+    .fam-person{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+    .fam-avatar{width:30px;height:30px;border-radius:50%;background:var(--parch);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
+    .fam-name{font-size:11px;color:var(--link);font-weight:500;text-decoration:none;display:block;}
+    .fam-name:hover{text-decoration:underline;}
+    .fam-name.ext{color:var(--muted);font-weight:400;}
+    .fam-dates{font-size:9px;color:var(--muted);}
+    .fam-key{font-size:10px;color:var(--muted);margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;}
+    .sources-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .source-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+    .source-item{font-size:10px;color:var(--muted);padding-left:12px;position:relative;line-height:1.5;}
+    .source-item::before{content:'·';position:absolute;left:0;}
+    .research-note{font-size:10px;color:var(--muted);line-height:1.6;background:var(--white);border:1px solid var(--border);padding:10px;}
+    .last-updated{font-size:9px;color:var(--muted);text-align:right;margin-top:8px;}
+    .quote-block{font-style:italic;font-size:12px;color:var(--muted);padding-left:14px;border-left:2px solid var(--gold);line-height:1.7;}
+    .contrib-intro{font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.6;}
+    .contrib-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+    .contrib-field{display:flex;flex-direction:column;gap:3px;}
+    .contrib-field.full{grid-column:1/-1;}
+    .contrib-lbl{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .contrib-input{font-size:11px;padding:6px 8px;border:1px solid var(--border);background:var(--cream);color:var(--text);width:100%;font-family:'Inter',sans-serif;}
+    .contrib-input:focus{outline:none;border-color:var(--forest-light);}
+    textarea.contrib-input{resize:vertical;min-height:70px;}
+    .file-area{border:1.5px dashed var(--border);padding:14px;text-align:center;cursor:pointer;background:var(--cream);transition:border-color 0.15s;}
+    .file-area:hover{border-color:var(--forest-light);}
+    .file-area span{font-size:10px;color:var(--muted);line-height:1.5;display:block;}
+    .file-area input{display:none;}
+    .file-list{font-size:10px;color:var(--forest-light);margin-top:4px;min-height:14px;}
+    .contrib-footer{display:flex;align-items:center;gap:12px;margin-top:10px;}
+    .contrib-note{font-size:9px;color:var(--muted);flex:1;line-height:1.5;}
+    .contrib-btn{font-size:11px;padding:8px 20px;background:var(--forest);color:#fff;border:none;cursor:pointer;letter-spacing:0.06em;flex-shrink:0;font-family:'Inter',sans-serif;}
+    .contrib-btn:hover{background:var(--forest-light);}
     #footer{background:var(--forest);border-top:1px solid rgba(200,168,75,0.1);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
     #ft-l{font-size:10px;color:rgba(255,255,255,0.32);font-family:'Source Serif 4',serif;font-style:italic;max-width:380px;line-height:1.6;}
     #ft-r{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(200,168,75,0.45);}
+    @media(max-width:600px){
+      .bio-header{flex-direction:column;}
+      .fam-grid,.contrib-grid,.sources-cols{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
+
 <nav id="nav">
   <div id="nav-in">
-    <a class="ni" href="../index.html">People Timeline</a><div class="ns"></div>
-    <a class="ni" href="../about.html">About</a>
+    <a class="ni" href="../index.html">👥 People Timeline</a><div class="ns"></div>
+    <a class="ni" href="#">📷 The Cemetery</a><div class="ns"></div>
+    <a class="ni" href="#">👨‍👩‍👧 Families</a><div class="ns"></div>
+    <a class="ni" href="#">🗺 Historical Maps</a><div class="ns"></div>
+    <a class="ni" href="#">🖼 Photo Gallery</a><div class="ns"></div>
+    <a class="ni" href="#">📄 Documents</a><div class="ns"></div>
+    <a class="ni" href="../about.html">ℹ About</a>
   </div>
 </nav>
-<div class="wrap">
-  <a class="back" href="../index.html">&larr; Back to timeline</a>
-  <div class="pending-card">
-    <div class="pending-icon">📜</div>
-    <div class="pending-eyebrow">English Settlement Cemetery &middot; Rome Township, PA</div>
-    <div class="pending-name">Benjamin J. Wheatall</div>
-    <div class="pending-dates">1815 &ndash; 1845</div>
-    <div class="pending-fam">Wheatall family</div>
-    <div class="pending-badge">Research Pending</div>
-    <div class="pending-msg">This person's biography is currently being researched. Historical records are being reviewed and verified before publication to ensure accuracy. Check back soon, or contribute what you know below.</div>
-    <div class="contrib-note">Have information about Benjamin J. Wheatall? Contact Scott Morris at <a href="mailto:scotty8828@gmail.com">scotty8828@gmail.com</a> to contribute photographs, documents, or family history.</div>
+
+<div class="bio-wrap">
+
+  <a class="bio-back" href="../index.html">← Back to timeline</a>
+
+  <!-- HEADER -->
+  <div class="bio-header">
+    <div class="bio-photo-col">
+      <div class="bio-photo">
+        <span style="font-size:36px;">⚓</span>
+        <span style="font-size:10px;margin-top:6px;">No photograph<br>yet found</span>
+      </div>
+      <div class="bio-photo-credit">English Settlement Cemetery<br>Rome Township, PA</div>
+    </div>
+    <div>
+      <div class="bio-eyebrow">English Settlement Cemetery · Crawford County, PA</div>
+      <div class="bio-name">Benjamin J. Wheatall</div>
+      <div class="bio-tagline">He went back for his friends — and never left.</div>
+      <div class="bio-dates">c. 1815 – 15 September 1845</div>
+      <div class="bio-age">Died at approximately 30 years old</div>
+      <div class="bio-fam-tag">Wheatall family</div>
+      <div class="vital-strip">
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Born</div>
+            <div class="vital-val">c. 1815 <span class="conf conf-prob">Probable</span></div>
+            <div class="vital-sub">Likely London, England, of Portuguese descent</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">⚓</div>
+          <div>
+            <div class="vital-label">Sailor</div>
+            <div class="vital-val">British merchant ship <span class="conf conf-prob">Probable</span></div>
+            <div class="vital-sub">With his brother Henry, bound for New York</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">🥾</div>
+          <div>
+            <div class="vital-label">Arrived</div>
+            <div class="vital-val">Date unknown <span class="conf conf-prob">Probable</span></div>
+            <div class="vital-sub">Crawford County, PA, after missing his ship</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">📜</div>
+          <div>
+            <div class="vital-label">Purchased land</div>
+            <div class="vital-val">18 Jul 1845 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">158 acres, Oil Creek Township</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Died</div>
+            <div class="vital-val">15 Sep 1845 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Crawford County, PA — just 2 months after buying his land</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">🪦</div>
+          <div>
+            <div class="vital-label">Buried</div>
+            <div class="vital-val">English Settlement Cemetery</div>
+            <div class="vital-sub">Harrison Cemetery, Rome Township, Crawford County, PA</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- BIOGRAPHY -->
+  <div class="bio-section">
+    <div class="section-label">Biography</div>
+    <div class="bio-prose">
+      <p>Benjamin Wheatall and his brother Henry were sons of a Portuguese family that had settled in England, where they grew up alongside members of the Harrison family who would later emigrate to Rome Township. The brothers went to sea together as sailors on a British merchant ship bound for New York.</p>
+      <p>After a rough Atlantic crossing, their ship required extensive repairs at port. Rather than wait idle, the brothers decided to visit their old friends the Harrisons, who by then had settled in northern Pennsylvania. It was a journey of nearly five hundred miles on foot. They found their friends, had their visit, and turned back toward New York — only to discover their ship had already sailed without them. With no ship left to catch, the brothers turned around a second time, walked back to Crawford County, and stayed there for the rest of their lives.</p>
+      <p>Henry went on to marry a Harrison daughter and raise a family — his own daughter, Iphigenia "Effie" Wheatall, later married into the Morris family, carrying the Wheatall line into the next generation. Benjamin, by contrast, never married.</p>
+      <p>On 18 July 1845, Benjamin purchased 158 acres and 139 perches of land in Oil Creek Township, Crawford County, from Patrick Sloan for three hundred and sixty dollars, paid in gold and silver. He would not get long to enjoy it: he died just two months later, on 15 September 1845, without a will. His brother Henry was granted Letters of Administration over his estate that November — the same brother who had walked those five hundred miles at his side, and who alone among the two of them would go on to build a family in the settlement they'd stumbled into by accident.</p>
+      <p>Benjamin was buried at what is now English Settlement Cemetery, among the community he'd only meant to visit.</p>
+    </div>
+  </div>
+
+  <!-- LIFE TIMELINE -->
+  <div class="bio-section">
+    <div class="section-label">Life timeline</div>
+    <div class="lt-wrap">
+      <div class="lt-track">
+        <div class="lt-line"></div>
+        <div class="lt-dots">
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">c. 1815</div>
+            <div class="lt-event">Born<br>England</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">—</div>
+            <div class="lt-event">Sails for New York<br>ship damaged, walks to visit the Harrisons</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">—</div>
+            <div class="lt-event">Misses his ship<br>settles in Crawford County</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1845</div>
+            <div class="lt-event">Buys 158 acres<br>Oil Creek Township</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot death"></div>
+            <div class="lt-year" style="color:#A32D2D;">1845</div>
+            <div class="lt-event death">Dies<br>15 Sep 1845</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAMILY CONNECTIONS -->
+  <div class="bio-section">
+    <div class="section-label">Family connections</div>
+    <div class="fam-grid">
+      <div>
+        <div class="fam-group-label">👨‍👩‍👦 Parents (potential, unconfirmed)</div>
+        <div style="font-size:11px;line-height:1.9;margin-bottom:14px;">
+          <span class="fam-name ext">Benjamin Wheatall Sr.</span> <span style="color:var(--muted);font-size:9px;">bef. 16 May 1783 – 31 Dec 1858 · London, England</span><br>
+          <span class="fam-name ext">Iphigenia Dodd</span> <span style="color:var(--muted);font-size:9px;">bef. 11 Jun 1786 – 27 Dec 1851 · London, England</span>
+        </div>
+        <div class="fam-group-label">🧑‍🤝‍🧑 Brother</div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <span class="fam-name ext">Henry Wheatall</span>
+            <div class="fam-dates">1819 – 1891 · Union Cemetery, Titusville — not English Settlement · Administered Benjamin's estate</div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.6;margin-top:6px;">
+          Married Elizabeth Harrison Wheatall (1823–1883), 1845 — daughter of Richard Harrison and Mary Ann Malley Harrison, making her a granddaughter, not a direct daughter, of Jane Inskip Harrison. Henry and Elizabeth are buried at Union Cemetery in Titusville, outside this project's scope. Their daughter, Iphigenia "Effie" Wheatall (1848–1912), later married into the Morris family; a son, Henry Richard Wheatall (1850–1930), is also recorded.
+        </div>
+      </div>
+      <div>
+        <div class="fam-group-label">🔗 Connection</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.6;">
+          Never married. His and Henry's friendship with the Harrison family in England is what first drew them off their ship and, eventually, into the English Settlement's history.
+        </div>
+      </div>
+    </div>
+    <div class="fam-key">
+      <span>Blue names link to a documented page here</span>
+      <span>Grey names are not yet linked or confirmed</span>
+    </div>
+  </div>
+
+  <!-- MONUMENT -->
+  <div class="bio-section">
+    <div class="section-label">Monument</div>
+    <div style="background:var(--white);border:1px solid var(--border);padding:12px;">
+      <div style="font-size:11px;color:var(--muted);font-style:italic;text-align:center;padding:10px;border:1px dashed var(--border);margin-bottom:10px;">Monument photograph pending field visit</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Type</span>Not yet recorded</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Condition</span>Not yet recorded</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="bio-section">
+    <div class="section-label">Sources &amp; notes</div>
+    <div class="sources-cols">
+      <ul class="source-list">
+        <li class="source-item">Land deed: Patrick Sloan to Benjamin Wheatall, 158 acres, Oil Creek Township, Crawford County, PA · 18 Jul 1845</li>
+        <li class="source-item">Letters of Administration, Crawford County Register of Wills, granted to Henry Wheatall · 18 Nov 1845</li>
+        <li class="source-item">Family letter, Raymond Foley to his sister · 10 Mar 1989 · recounting the Wheatall brothers' story</li>
+        <li class="source-item">Oral history from Bob Wheatall, descendant, shared with Scott Morris at the cemetery</li>
+        <li class="source-item">English Settlement Cemetery master record</li>
+      </ul>
+      <div>
+        <div class="research-note">This is a rare case where oral family memory, a 1989 descendant's letter, and 1845 primary legal documents all independently confirm the same story — Bob Wheatall's account, passed down through the family, matches Raymond Foley's letter almost exactly, and both are corroborated by the land deed and estate papers naming Henry as Benjamin's brother and administrator. Bob's detail that the family was from London specifically — beyond what the Foley letter says — now has good circumstantial support: Ancestry hints (from an unverified user tree) suggest Henry and Benjamin's parents were Benjamin Wheatall Sr. and Iphigenia Dodd, both tied to London parishes (Marylebone, Bow, Holborn, Stepney). The name Iphigenia also reappears in the next generation as Henry's daughter's name, which is a nice piece of supporting detail even though the parent match itself is unconfirmed. An English christening doesn't conflict with Raymond's account that the family was originally Portuguese — his letter already anticipated this, noting the family "must have changed their name" on moving to England, since nothing sounds more English than Wheatall. Henry Wheatall's dates and marriage are now confirmed via Find A Grave — he married Elizabeth Harrison Wheatall (1823–1883) in 1845, the same year Benjamin bought his land and died. Henry and Elizabeth are buried at Union Cemetery in Titusville, not English Settlement, so no separate biography is needed for them on this site.</div>
+        <div class="quote-block" style="margin-top:8px;">"They turned around and walked to Crawford county and lived there the rest of their lives. Henry married a Harrison daughter, but I don't believe his brother ever married." — Raymond Foley, 1989</div>
+        <div class="last-updated">Last updated: August 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTRIBUTE -->
+  <div class="bio-section">
+    <div class="section-label">Contribute information</div>
+    <div class="contrib-intro">Do you have photographs, documents, family memories, or corrections relating to Benjamin J. Wheatall? Submissions are reviewed by the museum curator before publication and will be credited to you by name.</div>
+    <div class="contrib-grid">
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your name</div>
+        <input class="contrib-input" type="text" placeholder="Jane Smith">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Email address</div>
+        <input class="contrib-input" type="email" placeholder="jane@example.com">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your connection</div>
+        <input class="contrib-input" type="text" placeholder="Descendant, historian, researcher…">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Source or evidence</div>
+        <input class="contrib-input" type="text" placeholder="Census record, family Bible, photograph…">
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Information or correction</div>
+        <textarea class="contrib-input" placeholder="Describe what you know and where the information comes from…"></textarea>
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Attach photos or documents</div>
+        <div class="file-area" onclick="document.getElementById('file-in').click()">
+          <span style="font-size:20px;display:block;margin-bottom:4px;">📎</span>
+          <span>Click to attach photos, scanned documents, or other files</span>
+          <span style="font-size:9px;">JPG, PNG, PDF, TIFF · max 10MB per file</span>
+          <input id="file-in" type="file" multiple accept="image/*,.pdf,.tiff" onchange="showFiles(this)">
+        </div>
+        <div class="file-list" id="file-list"></div>
+      </div>
+    </div>
+    <div class="contrib-footer">
+      <div class="contrib-note">Submissions are reviewed before publication. You will be contacted at your email address if we have questions or wish to use your contribution.</div>
+      <button class="contrib-btn" onclick="submitContribution()">Submit for review →</button>
+    </div>
+  </div>
+
 </div>
+
 <footer id="footer">
-  <div id="ft-l">English Settlement Cemetery Digital Museum &middot; Rome Township, Crawford County, Pennsylvania</div>
-  <div id="ft-r">Research &nbsp;&middot;&nbsp; Preserve &nbsp;&middot;&nbsp; Remember</div>
+  <div id="ft-l">English Settlement Cemetery Digital Museum · Rome Township, Crawford County, Pennsylvania</div>
+  <div id="ft-r">Research &nbsp;·&nbsp; Preserve &nbsp;·&nbsp; Remember</div>
 </footer>
+
+<script>
+function showFiles(input){
+  const list=document.getElementById('file-list');
+  if(input.files.length===0){list.textContent='';return;}
+  list.textContent=input.files.length+' file(s) selected: '+[...input.files].map(f=>f.name).join(', ');
+}
+function submitContribution(){
+  const name=document.querySelector('input[placeholder="Jane Smith"]').value;
+  const email=document.querySelector('input[type="email"]').value;
+  const connect=document.querySelector('input[placeholder="Descendant, historian, researcher…"]').value;
+  const source=document.querySelector('input[placeholder="Census record, family Bible, photograph…"]').value;
+  const info=document.querySelector('textarea').value;
+  const subject=encodeURIComponent('Contribution: Benjamin J. Wheatall — English Settlement Cemetery');
+  const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nConnection: '+connect+'\nSource: '+source+'\n\nInformation:\n'+info);
+  window.location.href='mailto:scotty8828@gmail.com?subject='+subject+'&body='+body;
+}
+</script>
+
 </body>
 </html>
