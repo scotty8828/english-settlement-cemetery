@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>James Morris — English Settlement Cemetery</title>
-  <meta name="description" content="James Morris (1837 &ndash; 1863), English Settlement Cemetery, Rome Township, Crawford County, Pennsylvania. Biography research in progress.">
+  <title>Private James Morris — English Settlement Cemetery</title>
+  <meta name="description" content="Biography of Private James Morris (1837–1863), Company I, 150th Pennsylvania Volunteers, mortally wounded at the Battle of Gettysburg.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;1,8..60,300&family=Inter:wght@300;400;500;600&display=swap">
   <style>
@@ -13,9 +13,13 @@
       --forest:#1B3028;--forest-light:#3D6B50;
       --cream:#F2EDE3;--parch:#E8E0D0;--white:#FDFAF4;
       --gold:#C8A84B;--text:#1C1408;--muted:#6B5A3E;
-      --border:#D0C4A8;--link:#1A3A6A;
+      --border:#D0C4A8;--border-dk:#B8A888;
+      --doc:#3B6D11;--prob:#854F0B;--unv:#A32D2D;
+      --link:#1A3A6A;
     }
     html,body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);font-size:14px;line-height:1.6;}
+
+    /* NAV */
     #nav{background:#243D30;border-bottom:1px solid rgba(200,168,75,0.15);position:sticky;top:0;z-index:100;}
     #nav-in{display:flex;align-items:center;max-width:900px;margin:0 auto;padding:0 20px;overflow-x:auto;gap:0;}
     #nav-in::-webkit-scrollbar{display:none;}
@@ -23,56 +27,437 @@
     .ni:hover{color:#fff;border-bottom-color:var(--gold);}
     .ns{width:1px;height:14px;background:rgba(255,255,255,0.1);flex-shrink:0;margin:auto 0;}
 
-    .wrap{max-width:600px;margin:0 auto;padding:0 0 3rem;}
-    .back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;}
-    .back:hover{color:var(--forest);}
+    /* WRAP */
+    .bio-wrap{max-width:900px;margin:0 auto;padding:0 0 3rem;}
+    .bio-back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+    .bio-back:hover{color:var(--forest);}
 
-    .pending-card{
-      margin:20px;background:var(--white);border:1px solid var(--border);
-      padding:40px 30px;text-align:center;
-    }
-    .pending-icon{font-size:32px;margin-bottom:16px;opacity:0.5;}
-    .pending-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-    .pending-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:var(--text);margin-bottom:6px;}
-    .pending-dates{font-size:14px;color:var(--muted);margin-bottom:20px;font-family:'Source Serif 4',serif;}
-    .pending-badge{
-      display:inline-block;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
-      padding:6px 16px;border:1px solid var(--gold);color:#7A5C00;
-      background:rgba(200,168,75,0.1);margin-bottom:20px;font-weight:500;
-    }
-    .pending-msg{font-size:12px;color:var(--muted);font-family:'Source Serif 4',serif;font-style:italic;line-height:1.7;max-width:420px;margin:0 auto 20px;}
-    .pending-fam{font-size:11px;color:var(--muted);margin-bottom:4px;}
-    .contrib-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:16px;border-top:1px solid var(--border);padding-top:16px;}
-    .contrib-note a{color:var(--link);}
+    /* HEADER */
+    .bio-header{display:flex;gap:20px;align-items:flex-start;padding:0 20px 20px;border-bottom:2px solid var(--border);}
+    .bio-photo-col{flex-shrink:0;width:140px;text-align:center;}
+    .bio-photo{width:140px;height:180px;background:var(--parch);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--muted);text-align:center;padding:12px;overflow:hidden;position:relative;}
+    .bio-photo img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+    .bio-photo-credit{font-size:9px;color:var(--muted);margin-top:6px;line-height:1.4;}
+    .bio-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    .bio-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text);margin-bottom:4px;letter-spacing:0.02em;}
+    .bio-tagline{font-family:'Source Serif 4',serif;font-style:italic;font-size:13px;color:var(--muted);margin-bottom:8px;}
+    .bio-dates{font-size:15px;color:var(--muted);margin-bottom:4px;font-family:'Source Serif 4',serif;}
+    .bio-age{font-size:12px;color:var(--muted);margin-bottom:8px;}
+    .bio-fam-tag{display:inline-block;font-size:10px;padding:3px 10px;border:1px solid var(--border);color:var(--muted);background:var(--white);letter-spacing:0.06em;}
+    .vital-strip{display:flex;gap:20px;flex-wrap:wrap;margin-top:12px;}
+    .vital-block{display:flex;align-items:flex-start;gap:6px;}
+    .vital-ico{font-size:14px;color:var(--muted);margin-top:1px;}
+    .vital-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .vital-val{font-size:12px;color:var(--text);font-weight:500;}
+    .vital-sub{font-size:10px;color:var(--muted);}
+    .conf{display:inline-block;font-size:8px;padding:1px 5px;border-radius:1px;margin-left:4px;vertical-align:middle;letter-spacing:0.06em;text-transform:uppercase;}
+    .conf-doc{color:var(--doc);border:1px solid var(--doc);}
+    .conf-prob{color:var(--prob);border:1px solid var(--prob);}
+    .conf-unv{color:var(--unv);border:1px solid var(--unv);}
 
+    /* SECTIONS */
+    .bio-section{padding:16px 20px;border-bottom:1px solid var(--border);}
+    .section-label{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+    .section-label::after{content:'';flex:1;height:0.5px;background:var(--border);}
+
+    /* PROSE */
+    .bio-prose{font-size:13px;line-height:1.85;color:var(--text);}
+    .bio-prose p+p{margin-top:10px;}
+    .bio-prose .placeholder{color:var(--muted);font-style:italic;font-size:12px;}
+
+    /* LETTER */
+    .letter-box{background:var(--white);border:1px solid var(--border-dk);padding:18px 20px;font-family:'Source Serif 4',serif;font-size:13px;line-height:1.85;color:var(--text);position:relative;}
+    .letter-box::before{content:'✉';position:absolute;top:12px;right:16px;font-size:16px;color:var(--border-dk);}
+    .letter-head{font-style:italic;color:var(--muted);font-size:12px;margin-bottom:10px;}
+    .letter-box p+p{margin-top:10px;}
+    .letter-sig{margin-top:12px;font-style:italic;}
+    .letter-credit{font-size:10px;color:var(--muted);margin-top:12px;font-family:'Inter',sans-serif;font-style:normal;}
+
+    /* LIFE TIMELINE */
+    .lt-wrap{background:var(--white);border:1px solid var(--border);padding:14px;overflow-x:auto;}
+    .lt-track{position:relative;padding-bottom:28px;min-width:600px;}
+    .lt-line{position:absolute;top:6px;left:0;right:0;height:1px;background:var(--border);}
+    .lt-dots{display:flex;justify-content:space-between;position:relative;}
+    .lt-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
+    .lt-dot{width:10px;height:10px;border-radius:50%;background:#2A5A3A;border:2px solid var(--white);position:relative;z-index:1;flex-shrink:0;}
+    .lt-dot.death{background:var(--unv);}
+    .lt-dot.marriage{background:var(--gold);}
+    .lt-dot.wound{background:#A3522D;}
+    .lt-year{font-size:9px;font-weight:600;color:var(--text);}
+    .lt-event{font-size:9px;color:var(--muted);text-align:center;line-height:1.3;max-width:80px;}
+    .lt-event.death{color:var(--unv);}
+    .lt-event.marriage{color:#7A5C00;}
+    .lt-event.wound{color:#A3522D;}
+
+    /* FAMILY */
+    .fam-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .fam-group-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
+    .fam-person{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+    .fam-avatar{width:30px;height:30px;border-radius:50%;background:var(--parch);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
+    .fam-name{font-size:11px;color:var(--link);font-weight:500;text-decoration:none;display:block;}
+    .fam-name:hover{text-decoration:underline;}
+    .fam-name.ext{color:var(--muted);font-weight:400;}
+    .fam-dates{font-size:9px;color:var(--muted);}
+    .children-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+    .child-item{padding:3px 0;}
+    .child-name{font-size:10px;color:var(--link);text-decoration:none;display:block;}
+    .child-name:hover{text-decoration:underline;}
+    .child-name.ext{color:var(--muted);font-weight:400;}
+    .child-dates{font-size:9px;color:var(--muted);}
+    .fam-key{font-size:10px;color:var(--muted);margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;}
+
+    /* SOURCES */
+    .sources-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .source-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+    .source-item{font-size:10px;color:var(--muted);padding-left:12px;position:relative;line-height:1.5;}
+    .source-item::before{content:'·';position:absolute;left:0;}
+    .research-note{font-size:10px;color:var(--muted);line-height:1.6;background:var(--white);border:1px solid var(--border);padding:10px;}
+    .last-updated{font-size:9px;color:var(--muted);text-align:right;margin-top:8px;}
+
+    /* CONTRIBUTE */
+    .contrib-intro{font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.6;}
+    .contrib-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+    .contrib-field{display:flex;flex-direction:column;gap:3px;}
+    .contrib-field.full{grid-column:1/-1;}
+    .contrib-lbl{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .contrib-input{font-size:11px;padding:6px 8px;border:1px solid var(--border);background:var(--cream);color:var(--text);width:100%;font-family:'Inter',sans-serif;}
+    .contrib-input:focus{outline:none;border-color:var(--forest-light);}
+    textarea.contrib-input{resize:vertical;min-height:70px;}
+    .file-area{border:1.5px dashed var(--border);padding:14px;text-align:center;cursor:pointer;background:var(--cream);transition:border-color 0.15s;}
+    .file-area:hover{border-color:var(--forest-light);}
+    .file-area span{font-size:10px;color:var(--muted);line-height:1.5;display:block;}
+    .file-area input{display:none;}
+    .file-list{font-size:10px;color:var(--forest-light);margin-top:4px;min-height:14px;}
+    .contrib-footer{display:flex;align-items:center;gap:12px;margin-top:10px;}
+    .contrib-note{font-size:9px;color:var(--muted);flex:1;line-height:1.5;}
+    .contrib-btn{font-size:11px;padding:8px 20px;background:var(--forest);color:#fff;border:none;cursor:pointer;letter-spacing:0.06em;flex-shrink:0;font-family:'Inter',sans-serif;}
+    .contrib-btn:hover{background:var(--forest-light);}
+
+    /* FOOTER */
     #footer{background:var(--forest);border-top:1px solid rgba(200,168,75,0.1);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
     #ft-l{font-size:10px;color:rgba(255,255,255,0.32);font-family:'Source Serif 4',serif;font-style:italic;max-width:380px;line-height:1.6;}
     #ft-r{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(200,168,75,0.45);}
+
+    @media(max-width:600px){
+      .bio-header{flex-direction:column;}
+      .fam-grid,.contrib-grid,.sources-cols{grid-template-columns:1fr;}
+      .children-grid{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
+
 <nav id="nav">
   <div id="nav-in">
-    <a class="ni" href="../index.html">People Timeline</a><div class="ns"></div>
-    <a class="ni" href="../about.html">About</a>
+    <a class="ni" href="../index.html">👥 People Timeline</a><div class="ns"></div>
+    <a class="ni" href="#">📷 The Cemetery</a><div class="ns"></div>
+    <a class="ni" href="#">👨‍👩‍👧 Families</a><div class="ns"></div>
+    <a class="ni" href="#">🗺 Historical Maps</a><div class="ns"></div>
+    <a class="ni" href="#">🖼 Photo Gallery</a><div class="ns"></div>
+    <a class="ni" href="#">📄 Documents</a><div class="ns"></div>
+    <a class="ni" href="../about.html">ℹ About</a>
   </div>
 </nav>
-<div class="wrap">
-  <a class="back" href="../index.html">&larr; Back to timeline</a>
-  <div class="pending-card">
-    <div class="pending-icon">📜</div>
-    <div class="pending-eyebrow">English Settlement Cemetery &middot; Rome Township, PA</div>
-    <div class="pending-name">James Morris</div>
-    <div class="pending-dates">1837 &ndash; 1863</div>
-    <div class="pending-fam">Morris family</div>
-    <div class="pending-badge">Research Pending</div>
-    <div class="pending-msg">This person's biography is currently being researched. Historical records are being reviewed and verified before publication to ensure accuracy. Check back soon, or contribute what you know below.</div>
-    <div class="contrib-note">Have information about James Morris? Contact Scott Morris at <a href="mailto:scotty8828@gmail.com">scotty8828@gmail.com</a> to contribute photographs, documents, or family history.</div>
+
+<div class="bio-wrap">
+
+  <a class="bio-back" href="../index.html">← Back to timeline</a>
+
+  <!-- HEADER -->
+  <div class="bio-header">
+    <div class="bio-photo-col">
+      <div class="bio-photo">
+        <span style="font-size:36px;">👤</span>
+        <span style="font-size:10px;margin-top:6px;">No photograph<br>yet found</span>
+      </div>
+      <div class="bio-photo-credit">English Settlement Cemetery<br>Rome Township, PA</div>
+    </div>
+    <div>
+      <div class="bio-eyebrow">English Settlement Cemetery · Crawford County, PA</div>
+      <div class="bio-name">Private James Morris</div>
+      <div class="bio-tagline">Soldier. Company I, 150th Pennsylvania Volunteers. Fell at Gettysburg.</div>
+      <div class="bio-dates">10 October 1837 – 18 July 1863</div>
+      <div class="bio-age">Died aged 25 years, 9 months, 8 days</div>
+      <div class="bio-fam-tag">Morris family</div>
+      <div class="vital-strip">
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Born</div>
+            <div class="vital-val">10 Oct 1837 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Calculated from monument age at death · Rome Township, PA</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">⚔️</div>
+          <div>
+            <div class="vital-label">Served</div>
+            <div class="vital-val">Private, Co. I <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">150th Pennsylvania Volunteer Infantry</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">🩹</div>
+          <div>
+            <div class="vital-label">Wounded</div>
+            <div class="vital-val">1 Jul 1863 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Battle of Gettysburg, PA</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Died</div>
+            <div class="vital-val">18 Jul 1863 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Fort Schuyler Hospital, Bronx County, NY — of wounds</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">🪦</div>
+          <div>
+            <div class="vital-label">Buried</div>
+            <div class="vital-val">English Settlement Cemetery</div>
+            <div class="vital-sub">Rome Township, Crawford County, PA</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- BIOGRAPHY -->
+  <div class="bio-section">
+    <div class="section-label">Biography</div>
+    <div class="bio-prose">
+      <p>James was born 10 October 1837 in Rome Township, Crawford County, Pennsylvania, the third child of Richard Morris and Jane Harrison Morris — grandson of James and Ann Morris on his father's side, and of Benjamin and Jane Inskip Harrison on his mother's, tying together the two families who had founded the English Settlement a generation before. He grew up alongside at least five siblings: Edward, Benjamin, William, John, and Inskip Morris.</p>
+      <p>Family lore has it that James enlisted against his father's wishes. James enlisted as a private in Company I of the 150th Pennsylvania Volunteer Infantry, part of the First Corps of the Army of the Potomac — the regiment better known, alongside its sister units, as one of the "Bucktail" regiments of Pennsylvania. On 1 July 1863, the opening day of the Battle of Gettysburg, the 150th Pennsylvania was thrown into the fighting at the McPherson Barn, in some of the war's fiercest and most costly combat. James was struck by a bullet or buckshot across the top of his scalp. The regiment's own history records him as mortally wounded that day. The First Corps' commanding general, Major General John F. Reynolds, was killed in the same day's fighting nearby — almost certainly the "Corps General" James mentions in his letter home.</p>
+      <p>Three days later, on 4 July 1863, James wrote to his parents from an old barn where he and a companion named Robert — wounded in the foot by a shell fragment, and whose exact relation to James is not yet known — were sheltering with the wounded. Badly outnumbered for paper, he wrote his letter on a scrap he had found, the Confederates having taken his own stationery. His letter, transcribed in full below, describes a regiment gutted by the fighting: Company I reduced to nine men, and nearly every field officer above him killed or wounded.</p>
+      <p>James did not recover. He was moved north to the military hospital at Fort Schuyler, New York, where he died of his wounds on 18 July 1863 — seventeen days after he was shot, and just two weeks after writing home to tell his parents not to worry. He was 25 years, 9 months, and 8 days old. Family tradition also holds that his mother, Jane, arranged in secret to have his remains brought home, and had him buried in the cemetery at night. He rests at English Settlement Cemetery, among the family and community he had grown up in.</p>
+    </div>
+  </div>
+
+  <!-- LETTER -->
+  <div class="bio-section">
+    <div class="section-label">In his own words — letter home, 4 July 1863</div>
+    <div class="letter-box">
+      <div class="letter-head">Written three days after being wounded at Gettysburg, on a scrap of paper, from an old barn sheltering the wounded.</div>
+      <p>Dear Father and Mother, I thought I would put this little note in Robert's. Both of us have got slight wounds at present. We lay in an old barn. I got a small bullet or buck shot through the top of my scalp. Robert got a piece of shell in the side of his foot. We was both wounded in the first day's fight. We had a very hot time amongst the shot and shell and minies. Some like being amongst a swarm of bees. I will send you an account of what I saw of the battle next time I write.</p>
+      <p>Our regiment suffered heavily. Our Co. had nine men left. Our Corps General was killed, our Brigadier was wounded, one Col. shot in the mouth. Lieut. Col. shot through the right arm, our Major through the body, our Adjutant through the right shoulder. The other shoulder-straps suffered as much as the field officers.</p>
+      <p>I must conclude for this time. You need not feel anxious about me. I am all right. I have no paper, stamps, or anything else. The rebels got them, so I had to take this piece of old paper that I found.</p>
+      <div class="letter-sig">This from<br>Jas. Morris</div>
+      <div class="letter-credit">Original letter photographed and transcribed courtesy of descendant Robert Wheatall, via Find A Grave memorial #47673451. Spelling lightly regularized for readability; the letter itself is preserved as a family document.</div>
+    </div>
+  </div>
+
+  <!-- LIFE TIMELINE -->
+  <div class="bio-section">
+    <div class="section-label">Life timeline</div>
+    <div class="lt-wrap">
+      <div class="lt-track">
+        <div class="lt-line"></div>
+        <div class="lt-dots">
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1837</div>
+            <div class="lt-event">Born<br>Rome Township, PA</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">—</div>
+            <div class="lt-event">Enlisted<br>Co. I, 150th PA Vols.</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot wound"></div>
+            <div class="lt-year" style="color:#A3522D;">1 Jul 1863</div>
+            <div class="lt-event wound">Wounded<br>Battle of Gettysburg</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">4 Jul 1863</div>
+            <div class="lt-event">Wrote home<br>from an old barn</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot death"></div>
+            <div class="lt-year" style="color:#A32D2D;">18 Jul 1863</div>
+            <div class="lt-event death">Died of wounds<br>Fort Schuyler, NY</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAMILY CONNECTIONS -->
+  <div class="bio-section">
+    <div class="section-label">Family connections</div>
+    <div class="fam-grid">
+      <div>
+        <div class="fam-group-label">👪 Parents</div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <a class="fam-name" href="richard-morris.html">Richard Morris</a>
+            <div class="fam-dates">1810 – 1871</div>
+          </div>
+        </div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <a class="fam-name" href="jane-harrison-morris-1806.html">Jane Harrison Morris</a>
+            <div class="fam-dates">1806 – 1887</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="fam-group-label">📍 Origin</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6;">
+            Born in Rome Township, Crawford County, PA<br>
+            Grandson of James &amp; Ann Morris and of Benjamin &amp; Jane Inskip Harrison
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="fam-group-label">👶 Siblings — 5 known</div>
+        <div class="children-grid">
+          <div class="child-item">
+            <span class="child-name ext">Edward Morris</span>
+            <div class="child-dates">1831 – 1912</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name ext">Benjamin Morris</span>
+            <div class="child-dates">1840 – 1915</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name ext">William S. Morris</span>
+            <div class="child-dates">1842 – 1891</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name ext">John Morris</span>
+            <div class="child-dates">1845 – 1928</div>
+          </div>
+          <div class="child-item">
+            <a class="child-name" href="inskip-morris.html">Inskip Morris</a>
+            <div class="child-dates">1849 – 1930</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="fam-group-label">🎖️ Wounded alongside</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6;">
+            "Robert" — mentioned in James's letter as wounded in the same fight. Relationship to James, if any, not yet confirmed.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fam-key">
+      <span>Names in blue = page available on this site</span>
+      <span>Grey names = not yet built or not buried here</span>
+    </div>
+  </div>
+
+  <!-- MONUMENT -->
+  <div class="bio-section">
+    <div class="section-label">Monument</div>
+    <div style="background:var(--white);border:1px solid var(--border);padding:12px;">
+      <div style="font-size:11px;color:var(--muted);line-height:1.7;padding:10px;border:1px solid var(--border);margin-bottom:10px;background:var(--cream);">
+        <strong>Inscription:</strong><br>
+        Died at Fort Schuyler<br>
+        July 18, 1863<br>
+        Of wounds received at the Battle of Gettysburg, PA<br>
+        Aged 25 years, 9 months, 8 days
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Type</span>Not yet field-documented</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Condition</span>Not yet field-documented</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Epitaph</span>Confirmed via photograph, above</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Find A Grave</span><span style="color:var(--muted);font-size:10px;">Memorial #47673451</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="bio-section">
+    <div class="section-label">Sources &amp; notes</div>
+    <div class="sources-cols">
+      <ul class="source-list">
+        <li class="source-item">Find A Grave memorial #47673451, James Morris — headstone photographs by Robert Wheatall and J. Nicholson</li>
+        <li class="source-item">Headstone inscription: death date, place of death, and cause, and exact age at death</li>
+        <li class="source-item"><em>History of the One Hundred and Fiftieth Regiment, Pennsylvania Volunteers</em> — regimental history, cited on Find A Grave as the source for "mortally wounded on July 1st at Gettysburg"</li>
+        <li class="source-item">Letter from James Morris to his parents, 4 July 1863 — original in family hands, photographed and shared by Robert Wheatall</li>
+        <li class="source-item">Parent/sibling links per Find A Grave, contributed by Debra Orris</li>
+        <li class="source-item">English Settlement Cemetery master record</li>
+        <li class="source-item">Ancestry.com family tree — confirms parents Richard Morris &amp; Jane Harrison, siblings and their birth dates, and death in Bronx County, New York (site of Fort Schuyler)</li>
+        <li class="source-item" style="color:var(--unv);">Family tradition, recalled in several family memoirs (not currently in hand) — enlistment against his father's wishes, and a secret nighttime burial arranged by his mother</li>
+      </ul>
+      <div>
+        <div class="research-note">Birth date (10 October 1837) is calculated backward from the monument's recorded age at death (25 years, 9 months, 8 days as of 18 July 1863) rather than from a birth record — marked Documented because it derives directly from the carved inscription, but a baptismal or census record would be worth finding to confirm it independently. Sibling William S. Morris's dates (1842–1891) are independently confirmed by both Find A Grave and Ancestry.com, which means the separate "William S. Morris Jr." entry (1837–1915) currently in this project's own master record is very likely a mismatched or different-person entry — worth Scott's review on its own, outside this page. James's brother is John Morris (1845–1928) — not "John Brown Morris," a different person (a cousin) who Ancestry.com conflates with him. This is a known, ongoing tangle in the public record that this project is working through case by case; James's page has been corrected accordingly, but the underlying confusion is not yet fixed sitewide. "Robert," James's wounded companion named in the letter, has not been identified — he may or may not be a relative. The story that James enlisted against his father's wishes, and that his mother Jane secretly arranged his nighttime burial at English Settlement, comes from family tradition recalled across several family memoirs — marked Unverified pending a documentary source, but preserved here as part of the family's own memory of him.</div>
+        <div class="last-updated">Last updated: August 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTRIBUTE -->
+  <div class="bio-section">
+    <div class="section-label">Contribute information</div>
+    <div class="contrib-intro">Do you have photographs, documents, family memories, or corrections relating to Private James Morris? Submissions are reviewed by the museum curator before publication and will be credited to you by name.</div>
+    <div class="contrib-grid">
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your name</div>
+        <input class="contrib-input" type="text" placeholder="Jane Smith">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Email address</div>
+        <input class="contrib-input" type="email" placeholder="jane@example.com">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your connection</div>
+        <input class="contrib-input" type="text" placeholder="Descendant, historian, researcher…">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Source or evidence</div>
+        <input class="contrib-input" type="text" placeholder="Census record, family Bible, photograph…">
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Information or correction</div>
+        <textarea class="contrib-input" placeholder="Describe what you know and where the information comes from…"></textarea>
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Attach photos or documents</div>
+        <div class="file-area" onclick="document.getElementById('file-in').click()">
+          <span style="font-size:20px;display:block;margin-bottom:4px;">📎</span>
+          <span>Click to attach photos, scanned documents, or other files</span>
+          <span style="font-size:9px;">JPG, PNG, PDF, TIFF · max 10MB per file</span>
+          <input id="file-in" type="file" multiple accept="image/*,.pdf,.tiff" onchange="showFiles(this)">
+        </div>
+        <div class="file-list" id="file-list"></div>
+      </div>
+    </div>
+    <div class="contrib-footer">
+      <div class="contrib-note">Submissions are reviewed before publication. You will be contacted at your email address if we have questions or wish to use your contribution.</div>
+      <button class="contrib-btn" onclick="submitContribution()">Submit for review →</button>
+    </div>
+  </div>
+
 </div>
+
 <footer id="footer">
-  <div id="ft-l">English Settlement Cemetery Digital Museum &middot; Rome Township, Crawford County, Pennsylvania</div>
-  <div id="ft-r">Research &nbsp;&middot;&nbsp; Preserve &nbsp;&middot;&nbsp; Remember</div>
+  <div id="ft-l">English Settlement Cemetery Digital Museum · Rome Township, Crawford County, Pennsylvania</div>
+  <div id="ft-r">Research &nbsp;·&nbsp; Preserve &nbsp;·&nbsp; Remember</div>
 </footer>
+
+<script>
+function showFiles(input){
+  const list=document.getElementById('file-list');
+  if(input.files.length===0){list.textContent='';return;}
+  list.textContent=input.files.length+' file(s) selected: '+[...input.files].map(f=>f.name).join(', ');
+}
+function submitContribution(){
+  const name=document.querySelector('input[placeholder="Jane Smith"]').value;
+  const email=document.querySelector('input[type="email"]').value;
+  const connect=document.querySelector('input[placeholder="Descendant, historian, researcher…"]').value;
+  const source=document.querySelector('input[placeholder="Census record, family Bible, photograph…"]').value;
+  const info=document.querySelector('textarea').value;
+  const subject=encodeURIComponent('Contribution: Private James Morris (1837-1863) — English Settlement Cemetery');
+  const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nConnection: '+connect+'\nSource: '+source+'\n\nInformation:\n'+info);
+  window.location.href='mailto:scotty8828@gmail.com?subject='+subject+'&body='+body;
+}
+</script>
+
 </body>
 </html>
