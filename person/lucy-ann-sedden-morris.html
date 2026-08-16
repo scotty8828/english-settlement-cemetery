@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lucy Ann Sedden Morris — English Settlement Cemetery</title>
-  <meta name="description" content="Lucy Ann Sedden Morris (1847 &ndash; 1869), English Settlement Cemetery, Rome Township, Crawford County, Pennsylvania. Biography research in progress.">
+  <meta name="description" content="Biography of Lucy Ann Sedden Morris (1847–1869), daughter of Eliab and Jane Harrison Sedden, wife of Benjamin Morris.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;1,8..60,300&family=Inter:wght@300;400;500;600&display=swap">
   <style>
@@ -13,9 +13,13 @@
       --forest:#1B3028;--forest-light:#3D6B50;
       --cream:#F2EDE3;--parch:#E8E0D0;--white:#FDFAF4;
       --gold:#C8A84B;--text:#1C1408;--muted:#6B5A3E;
-      --border:#D0C4A8;--link:#1A3A6A;
+      --border:#D0C4A8;--border-dk:#B8A888;
+      --doc:#3B6D11;--prob:#854F0B;--unv:#A32D2D;
+      --link:#1A3A6A;
     }
     html,body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);font-size:14px;line-height:1.6;}
+
+    /* NAV */
     #nav{background:#243D30;border-bottom:1px solid rgba(200,168,75,0.15);position:sticky;top:0;z-index:100;}
     #nav-in{display:flex;align-items:center;max-width:900px;margin:0 auto;padding:0 20px;overflow-x:auto;gap:0;}
     #nav-in::-webkit-scrollbar{display:none;}
@@ -23,56 +27,394 @@
     .ni:hover{color:#fff;border-bottom-color:var(--gold);}
     .ns{width:1px;height:14px;background:rgba(255,255,255,0.1);flex-shrink:0;margin:auto 0;}
 
-    .wrap{max-width:600px;margin:0 auto;padding:0 0 3rem;}
-    .back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;}
-    .back:hover{color:var(--forest);}
+    /* WRAP */
+    .bio-wrap{max-width:900px;margin:0 auto;padding:0 0 3rem;}
+    .bio-back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+    .bio-back:hover{color:var(--forest);}
 
-    .pending-card{
-      margin:20px;background:var(--white);border:1px solid var(--border);
-      padding:40px 30px;text-align:center;
-    }
-    .pending-icon{font-size:32px;margin-bottom:16px;opacity:0.5;}
-    .pending-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-    .pending-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:var(--text);margin-bottom:6px;}
-    .pending-dates{font-size:14px;color:var(--muted);margin-bottom:20px;font-family:'Source Serif 4',serif;}
-    .pending-badge{
-      display:inline-block;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
-      padding:6px 16px;border:1px solid var(--gold);color:#7A5C00;
-      background:rgba(200,168,75,0.1);margin-bottom:20px;font-weight:500;
-    }
-    .pending-msg{font-size:12px;color:var(--muted);font-family:'Source Serif 4',serif;font-style:italic;line-height:1.7;max-width:420px;margin:0 auto 20px;}
-    .pending-fam{font-size:11px;color:var(--muted);margin-bottom:4px;}
-    .contrib-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:16px;border-top:1px solid var(--border);padding-top:16px;}
-    .contrib-note a{color:var(--link);}
+    /* HEADER */
+    .bio-header{display:flex;gap:20px;align-items:flex-start;padding:0 20px 20px;border-bottom:2px solid var(--border);}
+    .bio-photo-col{flex-shrink:0;width:140px;text-align:center;}
+    .bio-photo{width:140px;height:180px;background:var(--parch);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--muted);text-align:center;padding:12px;overflow:hidden;position:relative;}
+    .bio-photo img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+    .bio-photo-credit{font-size:9px;color:var(--muted);margin-top:6px;line-height:1.4;}
+    .bio-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    .bio-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text);margin-bottom:4px;letter-spacing:0.02em;}
+    .bio-tagline{font-family:'Source Serif 4',serif;font-style:italic;font-size:13px;color:var(--muted);margin-bottom:8px;}
+    .bio-dates{font-size:15px;color:var(--muted);margin-bottom:4px;font-family:'Source Serif 4',serif;}
+    .bio-age{font-size:12px;color:var(--muted);margin-bottom:8px;}
+    .bio-fam-tag{display:inline-block;font-size:10px;padding:3px 10px;border:1px solid var(--border);color:var(--muted);background:var(--white);letter-spacing:0.06em;}
+    .vital-strip{display:flex;gap:20px;flex-wrap:wrap;margin-top:12px;}
+    .vital-block{display:flex;align-items:flex-start;gap:6px;}
+    .vital-ico{font-size:14px;color:var(--muted);margin-top:1px;}
+    .vital-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .vital-val{font-size:12px;color:var(--text);font-weight:500;}
+    .vital-sub{font-size:10px;color:var(--muted);}
+    .conf{display:inline-block;font-size:8px;padding:1px 5px;border-radius:1px;margin-left:4px;vertical-align:middle;letter-spacing:0.06em;text-transform:uppercase;}
+    .conf-doc{color:var(--doc);border:1px solid var(--doc);}
+    .conf-prob{color:var(--prob);border:1px solid var(--prob);}
+    .conf-unv{color:var(--unv);border:1px solid var(--unv);}
 
+    /* SECTIONS */
+    .bio-section{padding:16px 20px;border-bottom:1px solid var(--border);}
+    .section-label{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+    .section-label::after{content:'';flex:1;height:0.5px;background:var(--border);}
+
+    /* PROSE */
+    .bio-prose{font-size:13px;line-height:1.85;color:var(--text);}
+    .bio-prose p+p{margin-top:10px;}
+    .bio-prose .placeholder{color:var(--muted);font-style:italic;font-size:12px;}
+
+    /* LIFE TIMELINE */
+    .lt-wrap{background:var(--white);border:1px solid var(--border);padding:14px;overflow-x:auto;}
+    .lt-track{position:relative;padding-bottom:28px;min-width:600px;}
+    .lt-line{position:absolute;top:6px;left:0;right:0;height:1px;background:var(--border);}
+    .lt-dots{display:flex;justify-content:space-between;position:relative;}
+    .lt-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
+    .lt-dot{width:10px;height:10px;border-radius:50%;background:#2A5A3A;border:2px solid var(--white);position:relative;z-index:1;flex-shrink:0;}
+    .lt-dot.death{background:var(--unv);}
+    .lt-dot.marriage{background:var(--gold);}
+    .lt-year{font-size:9px;font-weight:600;color:var(--text);}
+    .lt-event{font-size:9px;color:var(--muted);text-align:center;line-height:1.3;max-width:80px;}
+    .lt-event.death{color:var(--unv);}
+    .lt-event.marriage{color:#7A5C00;}
+
+    /* FAMILY */
+    .fam-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .fam-group-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
+    .fam-person{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+    .fam-avatar{width:30px;height:30px;border-radius:50%;background:var(--parch);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
+    .fam-name{font-size:11px;color:var(--link);font-weight:500;text-decoration:none;display:block;}
+    .fam-name:hover{text-decoration:underline;}
+    .fam-name.ext{color:var(--muted);font-weight:400;}
+    .fam-dates{font-size:9px;color:var(--muted);}
+    .children-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+    .child-item{padding:3px 0;}
+    .child-name{font-size:10px;color:var(--link);text-decoration:none;display:block;}
+    .child-name:hover{text-decoration:underline;}
+    .child-name.ext{color:var(--muted);font-weight:400;}
+    .child-dates{font-size:9px;color:var(--muted);}
+    .fam-key{font-size:10px;color:var(--muted);margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;}
+
+    /* SOURCES */
+    .sources-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .source-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+    .source-item{font-size:10px;color:var(--muted);padding-left:12px;position:relative;line-height:1.5;}
+    .source-item::before{content:'·';position:absolute;left:0;}
+    .research-note{font-size:10px;color:var(--muted);line-height:1.6;background:var(--white);border:1px solid var(--border);padding:10px;}
+    .last-updated{font-size:9px;color:var(--muted);text-align:right;margin-top:8px;}
+
+    /* CONTRIBUTE */
+    .contrib-intro{font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.6;}
+    .contrib-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+    .contrib-field{display:flex;flex-direction:column;gap:3px;}
+    .contrib-field.full{grid-column:1/-1;}
+    .contrib-lbl{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .contrib-input{font-size:11px;padding:6px 8px;border:1px solid var(--border);background:var(--cream);color:var(--text);width:100%;font-family:'Inter',sans-serif;}
+    .contrib-input:focus{outline:none;border-color:var(--forest-light);}
+    textarea.contrib-input{resize:vertical;min-height:70px;}
+    .file-area{border:1.5px dashed var(--border);padding:14px;text-align:center;cursor:pointer;background:var(--cream);transition:border-color 0.15s;}
+    .file-area:hover{border-color:var(--forest-light);}
+    .file-area span{font-size:10px;color:var(--muted);line-height:1.5;display:block;}
+    .file-area input{display:none;}
+    .file-list{font-size:10px;color:var(--forest-light);margin-top:4px;min-height:14px;}
+    .contrib-footer{display:flex;align-items:center;gap:12px;margin-top:10px;}
+    .contrib-note{font-size:9px;color:var(--muted);flex:1;line-height:1.5;}
+    .contrib-btn{font-size:11px;padding:8px 20px;background:var(--forest);color:#fff;border:none;cursor:pointer;letter-spacing:0.06em;flex-shrink:0;font-family:'Inter',sans-serif;}
+    .contrib-btn:hover{background:var(--forest-light);}
+
+    /* FOOTER */
     #footer{background:var(--forest);border-top:1px solid rgba(200,168,75,0.1);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
     #ft-l{font-size:10px;color:rgba(255,255,255,0.32);font-family:'Source Serif 4',serif;font-style:italic;max-width:380px;line-height:1.6;}
     #ft-r{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(200,168,75,0.45);}
+
+    @media(max-width:600px){
+      .bio-header{flex-direction:column;}
+      .fam-grid,.contrib-grid,.sources-cols{grid-template-columns:1fr;}
+      .children-grid{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
+
 <nav id="nav">
   <div id="nav-in">
-    <a class="ni" href="../index.html">People Timeline</a><div class="ns"></div>
-    <a class="ni" href="../about.html">About</a>
+    <a class="ni" href="../index.html">👥 People Timeline</a><div class="ns"></div>
+    <a class="ni" href="#">📷 The Cemetery</a><div class="ns"></div>
+    <a class="ni" href="#">👨‍👩‍👧 Families</a><div class="ns"></div>
+    <a class="ni" href="#">🗺 Historical Maps</a><div class="ns"></div>
+    <a class="ni" href="#">🖼 Photo Gallery</a><div class="ns"></div>
+    <a class="ni" href="#">📄 Documents</a><div class="ns"></div>
+    <a class="ni" href="../about.html">ℹ About</a>
   </div>
 </nav>
-<div class="wrap">
-  <a class="back" href="../index.html">&larr; Back to timeline</a>
-  <div class="pending-card">
-    <div class="pending-icon">📜</div>
-    <div class="pending-eyebrow">English Settlement Cemetery &middot; Rome Township, PA</div>
-    <div class="pending-name">Lucy Ann Sedden Morris</div>
-    <div class="pending-dates">1847 &ndash; 1869</div>
-    <div class="pending-fam">Morris family</div>
-    <div class="pending-badge">Research Pending</div>
-    <div class="pending-msg">This person's biography is currently being researched. Historical records are being reviewed and verified before publication to ensure accuracy. Check back soon, or contribute what you know below.</div>
-    <div class="contrib-note">Have information about Lucy Ann Sedden Morris? Contact Scott Morris at <a href="mailto:scotty8828@gmail.com">scotty8828@gmail.com</a> to contribute photographs, documents, or family history.</div>
+
+<div class="bio-wrap">
+
+  <a class="bio-back" href="../index.html">← Back to timeline</a>
+
+  <!-- HEADER -->
+  <div class="bio-header">
+    <div class="bio-photo-col">
+      <div class="bio-photo">
+        <span style="font-size:36px;">👤</span>
+        <span style="font-size:10px;margin-top:6px;">No photograph<br>yet found</span>
+      </div>
+      <div class="bio-photo-credit">English Settlement Cemetery<br>Rome Township, PA</div>
+    </div>
+    <div>
+      <div class="bio-eyebrow">English Settlement Cemetery · Crawford County, PA</div>
+      <div class="bio-name">Lucy Ann Sedden Morris</div>
+      <div class="bio-tagline">Daughter of the Sedden family. Wife and mother. Died at 21.</div>
+      <div class="bio-dates">7 November 1847 – 3 May 1869</div>
+      <div class="bio-age">Died aged 21 years, 5 months, 26 days</div>
+      <div class="bio-fam-tag">Sedden family</div>
+      <div class="vital-strip">
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Born</div>
+            <div class="vital-val">7 Nov 1847 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Calculated from monument age at death; matches Find A Grave birth date</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">💍</div>
+          <div>
+            <div class="vital-label">Married</div>
+            <div class="vital-val">1866 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Benjamin Morris</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Died</div>
+            <div class="vital-val">3 May 1869 <span class="conf conf-prob">See note</span></div>
+            <div class="vital-sub">Crawford County, PA — possibly 1870, see sources</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">🩺</div>
+          <div>
+            <div class="vital-label">Cause of death</div>
+            <div class="vital-val">Consumption <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Per 1870 Federal Mortality Schedule</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">🪦</div>
+          <div>
+            <div class="vital-label">Buried</div>
+            <div class="vital-val">English Settlement Cemetery</div>
+            <div class="vital-sub">Rome Township, Crawford County, PA</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- BIOGRAPHY -->
+  <div class="bio-section">
+    <div class="section-label">Biography</div>
+    <div class="bio-prose">
+      <p>Lucy Ann Sedden was born 7 November 1847, the daughter of Eliab "Eli" Sedden and Jane Harrison Sedden. She grew up alongside at least five siblings, including William Sedden, who would die in the Civil War in 1864, five years before Lucy Ann herself.</p>
+      <p>In 1866, Lucy Ann married Benjamin Morris — a son of Richard Morris and Jane Harrison Morris, and a brother of Private James Morris, who had died three years earlier of wounds received at Gettysburg. The marriage connected the Sedden family to the Morris family for a second time in a generation: Lucy Ann's own aunt, Sarah Ann Morris, had married Lucy Ann's uncle William Sedden a decade earlier. Lucy Ann and Benjamin had one son together, Frederick Wilson Morris, born in 1867.</p>
+      <p>Lucy Ann died on her monument's recorded date of 3 May 1869, at 21 years, 5 months, and 26 days old — though a Federal Mortality Schedule entry for Rome Township, found under "Morris, Lucy A.," raises a real possibility that her death actually occurred a year later, in May 1870: the schedule only covers deaths between June 1869 and May 1870, and its listed age of 22 lines up exactly with her monument's precise age if the death year is shifted forward by one. That same record gives her cause of death as consumption — tuberculosis — and her occupation as keeping house. Her death came in a year (whichever it precisely was) that claimed several other young people from the English Settlement, including four-year-old Abraham Lincoln Gregory and infant twins Albert and Alphord Harrison, all recorded as dying in 1869. No record here identifies a cause behind those other deaths, and if Lucy Ann's own death shifts to 1870, that particular coincidence may not hold — but the mortality schedule is worth pursuing further, as neighboring pages may hold more answers about the settlement in these years.</p>
+      <p>After Lucy Ann's death, her infant son Fred was raised by his grandmother, Jane Harrison Morris — a detail recorded in a family letter already documented elsewhere on this site, on Jane Harrison Sedden's biography page. Fred lived to 1938, a long life that began in grief.</p>
+      <p class="placeholder">Additional biography will be added as research deepens. If you have information about Lucy Ann Sedden Morris, please use the contribution form below.</p>
+    </div>
+  </div>
+
+  <!-- LIFE TIMELINE -->
+  <div class="bio-section">
+    <div class="section-label">Life timeline</div>
+    <div class="lt-wrap">
+      <div class="lt-track">
+        <div class="lt-line"></div>
+        <div class="lt-dots">
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1847</div>
+            <div class="lt-event">Born<br>Sedden family</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot marriage"></div>
+            <div class="lt-year">1866</div>
+            <div class="lt-event marriage">Married<br>Benjamin Morris</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1867</div>
+            <div class="lt-event">Son Frederick<br>born</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot death"></div>
+            <div class="lt-year" style="color:#A32D2D;">1869</div>
+            <div class="lt-event death">Died<br>3 May 1869, age 21</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAMILY CONNECTIONS -->
+  <div class="bio-section">
+    <div class="section-label">Family connections</div>
+    <div class="fam-grid">
+      <div>
+        <div class="fam-group-label">👪 Parents</div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <a class="fam-name" href="jane-harrison-sedden.html">Jane Harrison Sedden</a>
+            <div class="fam-dates">1810 – 1855 · Buried here</div>
+          </div>
+        </div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <span class="fam-name ext">Eliab "Eli" Sedden</span>
+            <div class="fam-dates">b. 1810 — death not yet documented</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="fam-group-label">❤️ Spouse</div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <span class="fam-name ext">Benjamin Morris</span>
+              <div class="fam-dates">1840 – 1915 · m. 1866</div>
+              <div class="fam-dates">Son of Richard Morris &amp; Jane Harrison Morris</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="fam-group-label">👶 Child</div>
+        <div class="children-grid">
+          <div class="child-item">
+            <span class="child-name ext">Frederick Wilson Morris</span>
+            <div class="child-dates">1867 – 1938</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="fam-group-label">👫 Siblings</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6;">
+            <a href="william-sedden.html" style="color:var(--link);">William Sedden</a>, Margaret Ellen Sedden Farrington, Thomas Sedden, Jane E. "Jennie" Sedden Kerr, Esther Sedden Ridgway — see mother <a href="jane-harrison-sedden.html" style="color:var(--link);">Jane Harrison Sedden's page</a> for the full family.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fam-key">
+      <span>Names in blue = page available on this site</span>
+      <span>Grey names = not yet built or not buried here</span>
+    </div>
+  </div>
+
+  <!-- MONUMENT -->
+  <div class="bio-section">
+    <div class="section-label">Monument</div>
+    <div style="background:var(--white);border:1px solid var(--border);padding:12px;">
+      <div style="font-size:11px;color:var(--muted);line-height:1.7;padding:10px;border:1px solid var(--border);margin-bottom:10px;background:var(--cream);">
+        <strong>Inscription:</strong><br>
+        Lucy A. Wife of Benjamin Morris<br>
+        Died May 3, 1869<br>
+        Aged 21 Yrs. 5 M. 26 D.
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Type</span>Not yet field-documented</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Condition</span>Not yet field-documented</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Epitaph</span>Confirmed via photograph, above</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Find A Grave</span><span style="color:var(--muted);font-size:10px;">Memorial #51923509</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="bio-section">
+    <div class="section-label">Sources &amp; notes</div>
+    <div class="sources-cols">
+      <ul class="source-list">
+        <li class="source-item">Find A Grave memorial #51923509 — birth, death, marriage, parents, siblings, and son; headstone photos by Rusty Davis and Virginia Bates-Hulings</li>
+        <li class="source-item">Headstone inscription — exact age at death (21 years, 5 months, 26 days), confirming birth date</li>
+        <li class="source-item">English Settlement Cemetery master record</li>
+        <li class="source-item">U.S. Federal Census Mortality Schedule, 1850–1885 — Rome Township, Crawford County, PA, year ending 1 June 1870, line 6: "Morris, Lucy A.," age 22, cause of death consumption</li>
+      </ul>
+      <div>
+        <div class="research-note">This record resolves an open question from Jane Harrison Sedden's own page, which noted Lucy Ann "married one of Richard and Jane Harrison Morris's sons" without confirming which one — she married Benjamin Morris specifically, a brother of Private James Morris.</div>
+        <div class="research-note" style="margin-top:8px;"><strong>Possible one-year death date discrepancy:</strong> The 1870 Federal Mortality Schedule only records deaths occurring between June 1869 and May 1870. Lucy Ann's monument gives her death date as 3 May 1869 — a date that falls just before this schedule's window and would normally exclude her from it entirely. Yet a "Morris, Lucy A." appears on the schedule at age 22, died in May, of consumption. Her monument's very precise age at death (21 years, 5 months, 26 days from a birth date of 7 Nov 1847) matches exactly if her actual death date were 3 May 1870 rather than 1869 — same day and month, age advanced by exactly one year. This is a real possibility, not a confirmed correction: the death year shown here (1869) is Find A Grave's and the monument's, and has not been changed pending further evidence. Neighboring pages of this same mortality schedule may hold further information relevant to other English Settlement families and are worth reviewing.</div>
+        <div class="last-updated">Last updated: August 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTRIBUTE -->
+  <div class="bio-section">
+    <div class="section-label">Contribute information</div>
+    <div class="contrib-intro">Do you have photographs, documents, family memories, or corrections relating to Lucy Ann Sedden Morris? Submissions are reviewed by the museum curator before publication and will be credited to you by name.</div>
+    <div class="contrib-grid">
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your name</div>
+        <input class="contrib-input" type="text" placeholder="Jane Smith">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Email address</div>
+        <input class="contrib-input" type="email" placeholder="jane@example.com">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your connection</div>
+        <input class="contrib-input" type="text" placeholder="Descendant, historian, researcher…">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Source or evidence</div>
+        <input class="contrib-input" type="text" placeholder="Census record, family Bible, photograph…">
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Information or correction</div>
+        <textarea class="contrib-input" placeholder="Describe what you know and where the information comes from…"></textarea>
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Attach photos or documents</div>
+        <div class="file-area" onclick="document.getElementById('file-in').click()">
+          <span style="font-size:20px;display:block;margin-bottom:4px;">📎</span>
+          <span>Click to attach photos, scanned documents, or other files</span>
+          <span style="font-size:9px;">JPG, PNG, PDF, TIFF · max 10MB per file</span>
+          <input id="file-in" type="file" multiple accept="image/*,.pdf,.tiff" onchange="showFiles(this)">
+        </div>
+        <div class="file-list" id="file-list"></div>
+      </div>
+    </div>
+    <div class="contrib-footer">
+      <div class="contrib-note">Submissions are reviewed before publication. You will be contacted at your email address if we have questions or wish to use your contribution.</div>
+      <button class="contrib-btn" onclick="submitContribution()">Submit for review →</button>
+    </div>
+  </div>
+
 </div>
+
 <footer id="footer">
-  <div id="ft-l">English Settlement Cemetery Digital Museum &middot; Rome Township, Crawford County, Pennsylvania</div>
-  <div id="ft-r">Research &nbsp;&middot;&nbsp; Preserve &nbsp;&middot;&nbsp; Remember</div>
+  <div id="ft-l">English Settlement Cemetery Digital Museum · Rome Township, Crawford County, Pennsylvania</div>
+  <div id="ft-r">Research &nbsp;·&nbsp; Preserve &nbsp;·&nbsp; Remember</div>
 </footer>
+
+<script>
+function showFiles(input){
+  const list=document.getElementById('file-list');
+  if(input.files.length===0){list.textContent='';return;}
+  list.textContent=input.files.length+' file(s) selected: '+[...input.files].map(f=>f.name).join(', ');
+}
+function submitContribution(){
+  const name=document.querySelector('input[placeholder="Jane Smith"]').value;
+  const email=document.querySelector('input[type="email"]').value;
+  const connect=document.querySelector('input[placeholder="Descendant, historian, researcher…"]').value;
+  const source=document.querySelector('input[placeholder="Census record, family Bible, photograph…"]').value;
+  const info=document.querySelector('textarea').value;
+  const subject=encodeURIComponent('Contribution: Lucy Ann Sedden Morris (1847-1869) — English Settlement Cemetery');
+  const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nConnection: '+connect+'\nSource: '+source+'\n\nInformation:\n'+info);
+  window.location.href='mailto:scotty8828@gmail.com?subject='+subject+'&body='+body;
+}
+</script>
+
 </body>
 </html>
