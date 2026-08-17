@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Isabella Nesbitt Harrison — English Settlement Cemetery</title>
-  <meta name="description" content="Isabella Nesbitt Harrison (1809 &ndash; 1875), English Settlement Cemetery, Rome Township, Crawford County, Pennsylvania. Biography research in progress.">
+  <meta name="description" content="Biography of Isabella Nesbitt Harrison (1809–1875), second wife of Benjamin Inskip Harrison.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;1,8..60,300&family=Inter:wght@300;400;500;600&display=swap">
   <style>
@@ -13,7 +13,9 @@
       --forest:#1B3028;--forest-light:#3D6B50;
       --cream:#F2EDE3;--parch:#E8E0D0;--white:#FDFAF4;
       --gold:#C8A84B;--text:#1C1408;--muted:#6B5A3E;
-      --border:#D0C4A8;--link:#1A3A6A;
+      --border:#D0C4A8;--border-dk:#B8A888;
+      --doc:#3B6D11;--prob:#854F0B;--unv:#A32D2D;
+      --link:#1A3A6A;
     }
     html,body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);font-size:14px;line-height:1.6;}
     #nav{background:#243D30;border-bottom:1px solid rgba(200,168,75,0.15);position:sticky;top:0;z-index:100;}
@@ -22,57 +24,367 @@
     .ni{font-size:9px;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.48);padding:11px 10px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.15s;font-weight:500;flex-shrink:0;text-decoration:none;display:block;}
     .ni:hover{color:#fff;border-bottom-color:var(--gold);}
     .ns{width:1px;height:14px;background:rgba(255,255,255,0.1);flex-shrink:0;margin:auto 0;}
-
-    .wrap{max-width:600px;margin:0 auto;padding:0 0 3rem;}
-    .back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;}
-    .back:hover{color:var(--forest);}
-
-    .pending-card{
-      margin:20px;background:var(--white);border:1px solid var(--border);
-      padding:40px 30px;text-align:center;
-    }
-    .pending-icon{font-size:32px;margin-bottom:16px;opacity:0.5;}
-    .pending-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-    .pending-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:var(--text);margin-bottom:6px;}
-    .pending-dates{font-size:14px;color:var(--muted);margin-bottom:20px;font-family:'Source Serif 4',serif;}
-    .pending-badge{
-      display:inline-block;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
-      padding:6px 16px;border:1px solid var(--gold);color:#7A5C00;
-      background:rgba(200,168,75,0.1);margin-bottom:20px;font-weight:500;
-    }
-    .pending-msg{font-size:12px;color:var(--muted);font-family:'Source Serif 4',serif;font-style:italic;line-height:1.7;max-width:420px;margin:0 auto 20px;}
-    .pending-fam{font-size:11px;color:var(--muted);margin-bottom:4px;}
-    .contrib-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:16px;border-top:1px solid var(--border);padding-top:16px;}
-    .contrib-note a{color:var(--link);}
-
+    .bio-wrap{max-width:900px;margin:0 auto;padding:0 0 3rem;}
+    .bio-back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+    .bio-back:hover{color:var(--forest);}
+    .bio-header{display:flex;gap:20px;align-items:flex-start;padding:0 20px 20px;border-bottom:2px solid var(--border);}
+    .bio-photo-col{flex-shrink:0;width:140px;text-align:center;}
+    .bio-photo{width:140px;height:180px;background:var(--parch);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--muted);text-align:center;padding:12px;overflow:hidden;position:relative;}
+    .bio-photo img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+    .bio-photo-credit{font-size:9px;color:var(--muted);margin-top:6px;line-height:1.4;}
+    .bio-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    .bio-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text);margin-bottom:4px;letter-spacing:0.02em;}
+    .bio-tagline{font-family:'Source Serif 4',serif;font-style:italic;font-size:13px;color:var(--muted);margin-bottom:8px;}
+    .bio-dates{font-size:15px;color:var(--muted);margin-bottom:4px;font-family:'Source Serif 4',serif;}
+    .bio-age{font-size:12px;color:var(--muted);margin-bottom:8px;}
+    .bio-fam-tag{display:inline-block;font-size:10px;padding:3px 10px;border:1px solid var(--border);color:var(--muted);background:var(--white);letter-spacing:0.06em;}
+    .vital-strip{display:flex;gap:20px;flex-wrap:wrap;margin-top:12px;}
+    .vital-block{display:flex;align-items:flex-start;gap:6px;}
+    .vital-ico{font-size:14px;color:var(--muted);margin-top:1px;}
+    .vital-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .vital-val{font-size:12px;color:var(--text);font-weight:500;}
+    .vital-sub{font-size:10px;color:var(--muted);}
+    .conf{display:inline-block;font-size:8px;padding:1px 5px;border-radius:1px;margin-left:4px;vertical-align:middle;letter-spacing:0.06em;text-transform:uppercase;}
+    .conf-doc{color:var(--doc);border:1px solid var(--doc);}
+    .conf-prob{color:var(--prob);border:1px solid var(--prob);}
+    .conf-unv{color:var(--unv);border:1px solid var(--unv);}
+    .bio-section{padding:16px 20px;border-bottom:1px solid var(--border);}
+    .section-label{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+    .section-label::after{content:'';flex:1;height:0.5px;background:var(--border);}
+    .bio-prose{font-size:13px;line-height:1.85;color:var(--text);}
+    .bio-prose p+p{margin-top:10px;}
+    .bio-prose .placeholder{color:var(--muted);font-style:italic;font-size:12px;}
+    .fam-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .fam-group-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
+    .fam-person{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+    .fam-avatar{width:30px;height:30px;border-radius:50%;background:var(--parch);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
+    .fam-name{font-size:11px;color:var(--link);font-weight:500;text-decoration:none;display:block;}
+    .fam-name:hover{text-decoration:underline;}
+    .fam-name.ext{color:var(--muted);font-weight:400;}
+    .fam-dates{font-size:9px;color:var(--muted);}
+    .children-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+    .child-item{padding:3px 0;}
+    .child-name{font-size:10px;color:var(--link);text-decoration:none;display:block;}
+    .child-name:hover{text-decoration:underline;}
+    .child-name.ext{color:var(--muted);font-weight:400;}
+    .child-dates{font-size:9px;color:var(--muted);}
+    .fam-key{font-size:10px;color:var(--muted);margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;}
+    .sources-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .source-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+    .source-item{font-size:10px;color:var(--muted);padding-left:12px;position:relative;line-height:1.5;}
+    .source-item::before{content:'·';position:absolute;left:0;}
+    .research-note{font-size:10px;color:var(--muted);line-height:1.6;background:var(--white);border:1px solid var(--border);padding:10px;}
+    .last-updated{font-size:9px;color:var(--muted);text-align:right;margin-top:8px;}
+    .contrib-intro{font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.6;}
+    .contrib-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+    .contrib-field{display:flex;flex-direction:column;gap:3px;}
+    .contrib-field.full{grid-column:1/-1;}
+    .contrib-lbl{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .contrib-input{font-size:11px;padding:6px 8px;border:1px solid var(--border);background:var(--cream);color:var(--text);width:100%;font-family:'Inter',sans-serif;}
+    .contrib-input:focus{outline:none;border-color:var(--forest-light);}
+    textarea.contrib-input{resize:vertical;min-height:70px;}
+    .file-area{border:1.5px dashed var(--border);padding:14px;text-align:center;cursor:pointer;background:var(--cream);transition:border-color 0.15s;}
+    .file-area:hover{border-color:var(--forest-light);}
+    .file-area span{font-size:10px;color:var(--muted);line-height:1.5;display:block;}
+    .file-area input{display:none;}
+    .file-list{font-size:10px;color:var(--forest-light);margin-top:4px;min-height:14px;}
+    .contrib-footer{display:flex;align-items:center;gap:12px;margin-top:10px;}
+    .contrib-note{font-size:9px;color:var(--muted);flex:1;line-height:1.5;}
+    .contrib-btn{font-size:11px;padding:8px 20px;background:var(--forest);color:#fff;border:none;cursor:pointer;letter-spacing:0.06em;flex-shrink:0;font-family:'Inter',sans-serif;}
+    .contrib-btn:hover{background:var(--forest-light);}
     #footer{background:var(--forest);border-top:1px solid rgba(200,168,75,0.1);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
     #ft-l{font-size:10px;color:rgba(255,255,255,0.32);font-family:'Source Serif 4',serif;font-style:italic;max-width:380px;line-height:1.6;}
     #ft-r{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(200,168,75,0.45);}
+    @media(max-width:600px){
+      .bio-header{flex-direction:column;}
+      .fam-grid,.contrib-grid,.sources-cols{grid-template-columns:1fr;}
+      .children-grid{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
+
 <nav id="nav">
   <div id="nav-in">
-    <a class="ni" href="../index.html">People Timeline</a><div class="ns"></div>
-    <a class="ni" href="../about.html">About</a>
+    <a class="ni" href="../index.html">👥 People Timeline</a><div class="ns"></div>
+    <a class="ni" href="#">📷 The Cemetery</a><div class="ns"></div>
+    <a class="ni" href="#">👨‍👩‍👧 Families</a><div class="ns"></div>
+    <a class="ni" href="#">🗺 Historical Maps</a><div class="ns"></div>
+    <a class="ni" href="#">🖼 Photo Gallery</a><div class="ns"></div>
+    <a class="ni" href="#">📄 Documents</a><div class="ns"></div>
+    <a class="ni" href="../about.html">ℹ About</a>
   </div>
 </nav>
-<div class="wrap">
-  <a class="back" href="../index.html">&larr; Back to timeline</a>
-  <div class="pending-card">
-    <div class="pending-icon">📜</div>
-    <div class="pending-eyebrow">English Settlement Cemetery &middot; Rome Township, PA</div>
-    <div class="pending-name">Isabella Nesbitt Harrison</div>
-    <div class="pending-dates">1809 &ndash; 1875</div>
-    <div class="pending-fam">Harrison family</div>
-    <div class="pending-badge">Research Pending</div>
-    <div class="pending-msg">This person's biography is currently being researched. Historical records are being reviewed and verified before publication to ensure accuracy. Check back soon, or contribute what you know below.</div>
-    <div class="contrib-note">Have information about Isabella Nesbitt Harrison? Contact Scott Morris at <a href="mailto:scotty8828@gmail.com">scotty8828@gmail.com</a> to contribute photographs, documents, or family history.</div>
+
+<div class="bio-wrap">
+
+  <a class="bio-back" href="../index.html">← Back to timeline</a>
+
+  <div class="bio-header">
+    <div class="bio-photo-col">
+      <div class="bio-photo">
+        <span style="font-size:36px;">👤</span>
+        <span style="font-size:10px;margin-top:6px;">No photograph<br>yet found</span>
+      </div>
+      <div class="bio-photo-credit">English Settlement Cemetery<br>Rome Township, PA</div>
+    </div>
+    <div>
+      <div class="bio-eyebrow">English Settlement Cemetery · Crawford County, PA</div>
+      <div class="bio-name">Isabella Nesbitt Harrison</div>
+      <div class="bio-tagline">Three times widowed. Neighborhood physician and nurse.</div>
+      <div class="bio-dates">8 September 1809 – 1 March 1875</div>
+      <div class="bio-age">Died aged 65 years</div>
+      <div class="bio-fam-tag">Harrison family</div>
+      <div class="vital-strip">
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Born</div>
+            <div class="vital-val">8 Sep 1809 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Ireland <span class="conf conf-prob">Probable</span></div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">💍</div>
+          <div>
+            <div class="vital-label">Married (3rd)</div>
+            <div class="vital-val">c. 1854 <span class="conf conf-prob">Probable</span></div>
+            <div class="vital-sub">Benjamin Inskip Harrison, her nearest neighbor</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">🩺</div>
+          <div>
+            <div class="vital-label">Cause of death</div>
+            <div class="vital-val">Erysipelas <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Sudden illness, one week</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Died</div>
+            <div class="vital-val">1 Mar 1875 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Rome Township, Crawford County, PA</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">🪦</div>
+          <div>
+            <div class="vital-label">Buried</div>
+            <div class="vital-val">English Settlement Cemetery</div>
+            <div class="vital-sub">Rome Township, Crawford County, PA</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- BIOGRAPHY -->
+  <div class="bio-section">
+    <div class="section-label">Biography</div>
+    <div class="bio-prose">
+      <p>Isabella Nesbitt was born 8 September 1809, likely in Ireland. She was married three times. Her first husband, Alexander Duff, she married 27 March 1828 in New York City; they had one daughter, Elizabeth, born in 1830. Four years into the marriage, Duff died in Elizabeth, New Jersey, leaving Isabella a young widow with a small child.</p>
+      <p>She remarried in 1834, to John Edmond of New York City, a merchant. The couple lived in New York for about three years, then moved to Pittsburgh for three more, all the while owning 200 acres of land John had purchased in Rome Township. They finally moved to that land themselves, where John began clearing a farm — but on 22 December 1847, he died in a building accident, raising a beam. He and Isabella had six children together: Samuel Mason, John, Mary Jane, Anna, Robert James, and Nancy. Isabella was left a widow a second time, with seven children in all — her oldest son not yet twelve years old — and no relative closer than New York.</p>
+      <p>She raised her family alone for seven years, working her own new farm in a new country. She married a third time around 1854, to Benjamin Inskip Harrison — her nearest neighbor, and by then also twice-widowed himself. They had one son together, George Matthew Harrison, born in 1855. By the time of Isabella's death, all of her older children from her first two marriages were married and grown; only George, then twenty, remained at home with his aging father.</p>
+      <p>Isabella was a member of the United Presbyterian Church, having made a public profession of faith at eighteen. In the earliest years of the settlement, she served informally as the neighborhood's physician and nurse — a role remembered specifically in her obituary, written by a neighbor and friend. She died 1 March 1875 of erysipelas, a severe bacterial infection; her illness lasted only a week. She was buried during one of the stormiest days of that winter, and yet, her obituary records, the funeral was the largest ever seen at what the community then called Maple Grove — the cemetery's original name, sited on Benjamin's own farm, and now known as English Settlement Cemetery.</p>
+      <p>Her monument was carved in the same design as that of Nancy Brown Harrison, Benjamin's first wife, who had died thirty-five years earlier — a quiet way of placing both wives on equal footing in the family's memory.</p>
+    </div>
+  </div>
+
+  <!-- OBITUARY -->
+  <div class="bio-section">
+    <div class="section-label">Obituary — 1875</div>
+    <div class="letter-box">
+      <div class="letter-head">Published shortly after her death, signed "A Neighbor and Friend."</div>
+      <p>Died, Monday, March 1st, 1875, Mrs. Isabella Harrison, wife of Benjamin Harrison Sr., of Rome township, aged sixty-five years. Her remains were conveyed to the tomb in the Maple Grove Cemetery, which is on the farm of her husband, and, although the day she was buried was one of the stormiest of this winter, yet there was the largest funeral ever seen in Maple Grove.</p>
+      <p>Mrs. Harrison came to Rome township thirty-three years ago, from Pittsburgh, Penn'a. She was three times married. Her first husband was Alexander Duff, by whom she had one child. Four years after their marriage, Mr. Duff died in Elizabethtown, New Jersey, leaving her a young widow with one young child. She was next married to Mr. John Edmond of New York City, who was in the mercantile business. They lived some years in New York, then moved to Pittsburgh, and finally to their own land in Rome township, where Mr. Edmond had purchased 200 acres while still living in New York. He met his death by an accident while raising a beam, leaving Isabella a widow with seven children, her oldest son not yet twelve years of age, and no relative nearer than New York.</p>
+      <p>But being a woman of energy and perseverance, she worked her way along with her family of small children, having the double parental care of them; and their labors were blessed. She kept her children together for seven years, and was again married, to Mr. Benjamin Harrison Sr., her nearest neighbor, by whom she had one son, George M., now twenty years of age, and left alone with his aged father.</p>
+      <p>Mrs. Harrison was a member of the United Presbyterian Church, having made a public profession of religion at eighteen years of age. She was a pious Christian, charitable and benevolent, kind and affectionate; the beggar was never turned empty away from her door. In the early settlement of Maple Grove, she was physician and nurse for the neighborhood around her, and has left many friends to mourn her loss. Her disease was erysipelas, which baffled all means of relief; her illness was sudden and severe, lasting but one week. She bore her suffering with patience and faith and hope of glorious immortality beyond the grave.</p>
+      <div class="letter-credit">Transcribed and shared on Find A Grave by contributor Robert Stevenson-Wedding. Lightly reformatted for readability; wording preserved as closely as possible to the original.</div>
+    </div>
+  </div>
+
+  <!-- FAMILY CONNECTIONS -->
+  <div class="bio-section">
+    <div class="section-label">Family connections</div>
+    <div class="fam-grid">
+      <div>
+        <div class="fam-group-label">💍 Three marriages</div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <span class="fam-name ext">Alexander Duff</span>
+            <div class="fam-dates">m. 27 Mar 1828, New York City · d. c.1832, Elizabeth, NJ</div>
+          </div>
+        </div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <span class="fam-name ext">John Edmond</span>
+            <div class="fam-dates">1801 – 1847 · m. 1834 · died in a building accident</div>
+          </div>
+        </div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <a class="fam-name" href="benjamin-inskip-harrison.html">Benjamin Inskip Harrison</a>
+            <div class="fam-dates">1797 – 1875 · m. c.1854 · Buried here</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="fam-group-label">👶 Children — 7 known</div>
+        <div class="children-grid">
+          <div class="child-item">
+            <span class="child-name ext">Elizabeth Duff Gregory</span>
+            <div class="child-dates">1830 – 1899</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name ext">Samuel Mason Edmond</span>
+            <div class="child-dates">1836 – 1915</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name ext">John Edmond</span>
+            <div class="child-dates">1838 – 1909</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name ext">Mary Jane Edmond Bittles</span>
+            <div class="child-dates">1839 – 1919</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name ext">Anna Edmond Simmons</span>
+            <div class="child-dates">1842 – 1918</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name ext">Robert James Edmonds</span>
+            <div class="child-dates">1844 – 1925</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name ext">Nancy E. Edmond Reynolds</span>
+            <div class="child-dates">1846 – 1922</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name ext">George Matthew Harrison</span>
+            <div class="child-dates">1855 – 1926</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="fam-group-label">👪 Stepchildren via Benjamin</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6;">
+            Nine children from Benjamin's first marriage to Nancy Brown — see <a href="benjamin-inskip-harrison.html" style="color:var(--link);">Benjamin's page</a> for the full family.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fam-key">
+      <span>Names in blue = page available on this site</span>
+      <span>Grey names = not yet built or not buried here</span>
+    </div>
+  </div>
+
+  <!-- MONUMENT -->
+  <div class="bio-section">
+    <div class="section-label">Monument</div>
+    <div style="background:var(--white);border:1px solid var(--border);padding:12px;">
+      <div style="font-size:11px;color:var(--muted);line-height:1.7;padding:10px;border:1px solid var(--border);margin-bottom:10px;background:var(--cream);">
+        Field-photographed by Scott Morris. The stone is heavily weathered; "Isabella," "Wife of," and enough of the surrounding shape to confirm the design match with Nancy Brown Harrison's monument are legible, but the remaining text — including the exact death date and age as carved — could not be confidently transcribed from the photograph. A closer field examination or rubbing may recover more.
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Type</span>Shield-shaped stone, matching Nancy Brown Harrison's monument design</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Condition</span>Heavily weathered; most text illegible</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Epitaph</span>Present below main inscription; not legible</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Find A Grave</span>Not yet linked</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="bio-section">
+    <div class="section-label">Sources &amp; notes</div>
+    <div class="sources-cols">
+      <ul class="source-list">
+        <li class="source-item">Obituary, 1875, "A Neighbor and Friend" — transcribed and shared on Find A Grave by contributor Robert Stevenson-Wedding; the primary source for nearly all biographical detail on this page</li>
+        <li class="source-item">Find A Grave memorial #13911430 — dates, family members, headstone photo by Rusty Davis</li>
+        <li class="source-item">Ancestry.com family tree — marriage dates (Duff, 1828; Edmond, 1834; Harrison, c.1853), Edmond children's names and dates, birthplace (Ireland, or possibly United States — uncertain per Ancestry)</li>
+        <li class="source-item">U.S. Federal Census — Isabella heading the "Edmond" household as a widow, on the farm neighboring Benjamin Inskip Harrison's, prior to their marriage</li>
+        <li class="source-item">Field photographs of Isabella's and Nancy Brown Harrison's monuments, taken by Scott Morris — confirms matching stone design</li>
+        <li class="source-item">English Settlement Cemetery master record</li>
+        <li class="source-item">Cross-referenced with Benjamin Inskip Harrison's biography page</li>
+      </ul>
+      <div>
+        <div class="research-note">Isabella's full name on Find A Grave is recorded as "Isabella Nesbitt Duff Edmund," reflecting her maiden name followed by the surnames of her first two husbands. Ancestry spells her maiden name "Nesbit," one T. Her exact birthplace is uncertain — Find A Grave states Ireland plainly, Ancestry hedges "Ireland or possibly United States" — shown here as Probable. Her daughter Elizabeth Duff married a Gregory; whether this connects to the Gregory family already documented elsewhere on this site (through Elizabeth Harrison Gregory and her descendants) has not been confirmed. This obituary is also the source for this project's discovery that the cemetery's original name was Maple Grove — worth noting on the site more broadly, beyond this page alone.</div>
+        <div class="last-updated">Last updated: August 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTRIBUTE -->
+  <div class="bio-section">
+    <div class="section-label">Contribute information</div>
+    <div class="contrib-intro">Do you have photographs, documents, family memories, or corrections relating to Isabella Nesbitt Harrison? Submissions are reviewed by the museum curator before publication and will be credited to you by name.</div>
+    <div class="contrib-grid">
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your name</div>
+        <input class="contrib-input" type="text" placeholder="Jane Smith">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Email address</div>
+        <input class="contrib-input" type="email" placeholder="jane@example.com">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your connection</div>
+        <input class="contrib-input" type="text" placeholder="Descendant, historian, researcher…">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Source or evidence</div>
+        <input class="contrib-input" type="text" placeholder="Census record, family Bible, photograph…">
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Information or correction</div>
+        <textarea class="contrib-input" placeholder="Describe what you know and where the information comes from…"></textarea>
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Attach photos or documents</div>
+        <div class="file-area" onclick="document.getElementById('file-in').click()">
+          <span style="font-size:20px;display:block;margin-bottom:4px;">📎</span>
+          <span>Click to attach photos, scanned documents, or other files</span>
+          <span style="font-size:9px;">JPG, PNG, PDF, TIFF · max 10MB per file</span>
+          <input id="file-in" type="file" multiple accept="image/*,.pdf,.tiff" onchange="showFiles(this)">
+        </div>
+        <div class="file-list" id="file-list"></div>
+      </div>
+    </div>
+    <div class="contrib-footer">
+      <div class="contrib-note">Submissions are reviewed before publication. You will be contacted at your email address if we have questions or wish to use your contribution.</div>
+      <button class="contrib-btn" onclick="submitContribution()">Submit for review →</button>
+    </div>
+  </div>
+
 </div>
+
 <footer id="footer">
-  <div id="ft-l">English Settlement Cemetery Digital Museum &middot; Rome Township, Crawford County, Pennsylvania</div>
-  <div id="ft-r">Research &nbsp;&middot;&nbsp; Preserve &nbsp;&middot;&nbsp; Remember</div>
+  <div id="ft-l">English Settlement Cemetery Digital Museum · Rome Township, Crawford County, Pennsylvania</div>
+  <div id="ft-r">Research &nbsp;·&nbsp; Preserve &nbsp;·&nbsp; Remember</div>
 </footer>
+
+<script>
+function showFiles(input){
+  const list=document.getElementById('file-list');
+  if(input.files.length===0){list.textContent='';return;}
+  list.textContent=input.files.length+' file(s) selected: '+[...input.files].map(f=>f.name).join(', ');
+}
+function submitContribution(){
+  const name=document.querySelector('input[placeholder="Jane Smith"]').value;
+  const email=document.querySelector('input[type="email"]').value;
+  const connect=document.querySelector('input[placeholder="Descendant, historian, researcher…"]').value;
+  const source=document.querySelector('input[placeholder="Census record, family Bible, photograph…"]').value;
+  const info=document.querySelector('textarea').value;
+  const subject=encodeURIComponent('Contribution: Isabella Nesbitt Harrison (1809-1875) — English Settlement Cemetery');
+  const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nConnection: '+connect+'\nSource: '+source+'\n\nInformation:\n'+info);
+  window.location.href='mailto:scotty8828@gmail.com?subject='+subject+'&body='+body;
+}
+</script>
+
 </body>
 </html>
