@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Richard Morris — English Settlement Cemetery</title>
-  <meta name="description" content="Biography of Richard Morris (1810–1871), Lancashire emigrant and pioneer of the English Settlement, Rome Township, Crawford County, Pennsylvania.">
+  <meta name="description" content="Biography of Richard Morris (1810–1871), one of the three founding heads of the English Settlement, Lancashire, England to Rome Township, Crawford County, Pennsylvania.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;1,8..60,300&family=Inter:wght@300;400;500;600&display=swap">
   <style>
@@ -30,6 +30,7 @@
     .bio-header{display:flex;gap:20px;align-items:flex-start;padding:0 20px 20px;border-bottom:2px solid var(--border);}
     .bio-photo-col{flex-shrink:0;width:140px;text-align:center;}
     .bio-photo{width:140px;height:180px;background:var(--parch);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--muted);text-align:center;padding:12px;overflow:hidden;position:relative;}
+    .bio-photo img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
     .bio-photo-credit{font-size:9px;color:var(--muted);margin-top:6px;line-height:1.4;}
     .bio-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
     .bio-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text);margin-bottom:4px;letter-spacing:0.02em;}
@@ -53,18 +54,26 @@
     .bio-prose{font-size:13px;line-height:1.85;color:var(--text);}
     .bio-prose p+p{margin-top:10px;}
     .bio-prose .placeholder{color:var(--muted);font-style:italic;font-size:12px;}
+    .letter-box{background:var(--white);border:1px solid var(--border-dk);padding:18px 20px;font-family:'Source Serif 4',serif;font-size:13px;line-height:1.85;color:var(--text);position:relative;}
+    .letter-box::before{content:'✉';position:absolute;top:12px;right:16px;font-size:16px;color:var(--border-dk);}
+    .letter-head{font-style:italic;color:var(--muted);font-size:12px;margin-bottom:10px;}
+    .letter-box p+p{margin-top:10px;}
+    .letter-sig{margin-top:12px;font-style:italic;}
+    .letter-credit{font-size:10px;color:var(--muted);margin-top:12px;font-family:'Inter',sans-serif;font-style:normal;}
     .lt-wrap{background:var(--white);border:1px solid var(--border);padding:14px;overflow-x:auto;}
-    .lt-track{position:relative;padding-bottom:28px;min-width:600px;}
+    .lt-track{position:relative;padding-bottom:28px;min-width:700px;}
     .lt-line{position:absolute;top:6px;left:0;right:0;height:1px;background:var(--border);}
     .lt-dots{display:flex;justify-content:space-between;position:relative;}
     .lt-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
     .lt-dot{width:10px;height:10px;border-radius:50%;background:#2A5A3A;border:2px solid var(--white);position:relative;z-index:1;flex-shrink:0;}
     .lt-dot.death{background:var(--unv);}
     .lt-dot.marriage{background:var(--gold);}
+    .lt-dot.founding{background:#3D5A80;}
     .lt-year{font-size:9px;font-weight:600;color:var(--text);}
     .lt-event{font-size:9px;color:var(--muted);text-align:center;line-height:1.3;max-width:90px;}
     .lt-event.death{color:var(--unv);}
     .lt-event.marriage{color:#7A5C00;}
+    .lt-event.founding{color:#3D5A80;}
     .fam-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
     .fam-group-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
     .fam-person{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
@@ -77,6 +86,7 @@
     .child-item{padding:3px 0;}
     .child-name{font-size:10px;color:var(--link);text-decoration:none;display:block;}
     .child-name:hover{text-decoration:underline;}
+    .child-name.ext{color:var(--muted);font-weight:400;}
     .child-dates{font-size:9px;color:var(--muted);}
     .fam-key{font-size:10px;color:var(--muted);margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;}
     .sources-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
@@ -142,9 +152,9 @@
     <div>
       <div class="bio-eyebrow">English Settlement Cemetery · Crawford County, PA</div>
       <div class="bio-name">Richard Morris</div>
-      <div class="bio-tagline">Lancashire emigrant. Pioneer of the English Settlement.</div>
+      <div class="bio-tagline">One of the three founding heads of the English Settlement.</div>
       <div class="bio-dates">16 July 1810 – 19 May 1871</div>
-      <div class="bio-age">Aged 60 years at death</div>
+      <div class="bio-age">Aged 60 years</div>
       <div class="bio-fam-tag">Morris family</div>
       <div class="vital-strip">
         <div class="vital-block">
@@ -152,23 +162,23 @@
           <div>
             <div class="vital-label">Born</div>
             <div class="vital-val">16 Jul 1810 <span class="conf conf-doc">Documented</span></div>
-            <div class="vital-sub">Lancashire, England</div>
+            <div class="vital-sub">Haslingden, Lancashire, England</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">⛵</div>
+          <div>
+            <div class="vital-label">Emigrated</div>
+            <div class="vital-val">c. 1826 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Landed New York City, with parents James &amp; Ann Morris</div>
           </div>
         </div>
         <div class="vital-block">
           <div class="vital-ico">💍</div>
           <div>
             <div class="vital-label">Married</div>
-            <div class="vital-val">23 Apr 1830 <span class="conf conf-doc">Documented</span></div>
-            <div class="vital-sub">Wyckoff, New Jersey (Second Reformed Church)</div>
-          </div>
-        </div>
-        <div class="vital-block">
-          <div class="vital-ico">🌾</div>
-          <div>
-            <div class="vital-label">Settled</div>
-            <div class="vital-val">1833 <span class="conf conf-prob">Probable</span></div>
-            <div class="vital-sub">Rome Township, with brothers-in-law Benjamin &amp; Inskip Harrison</div>
+            <div class="vital-val">28 Apr 1830 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Second Reformed Church, Wyckoff, New Jersey</div>
           </div>
         </div>
         <div class="vital-block">
@@ -176,7 +186,7 @@
           <div>
             <div class="vital-label">Died</div>
             <div class="vital-val">19 May 1871 <span class="conf conf-doc">Documented</span></div>
-            <div class="vital-sub">Crawford County, PA</div>
+            <div class="vital-sub">Rome Township, Crawford County, PA</div>
           </div>
         </div>
         <div class="vital-block">
@@ -184,7 +194,7 @@
           <div>
             <div class="vital-label">Buried</div>
             <div class="vital-val">English Settlement Cemetery</div>
-            <div class="vital-sub">Shares a memorial with Jane Harrison Morris</div>
+            <div class="vital-sub">Rome Township, Crawford County, PA</div>
           </div>
         </div>
       </div>
@@ -195,14 +205,25 @@
   <div class="bio-section">
     <div class="section-label">Biography</div>
     <div class="bio-prose">
-      <p style="font-weight:600;color:var(--forest);margin-bottom:2px;">Early Life &amp; Emigration</p>
-      <p>Richard Morris was born in Lancashire, England, in July 1810, son of James Morris (1782–1858) and Ann Morris (1790–1863) — a Morris family that would itself emigrate and settle at Rome Township, where his parents and a brother, James, are buried alongside him at English Settlement Cemetery. Amid the economic shifts of the Industrial Revolution, the wider family joined the wave of English emigrants who left for America in the 1830s. On 23 April 1830, at the Second Reformed Church in Wyckoff, New Jersey, he married Jane Harrison — a fellow Lancashire native and skilled power-loom operator. Together, they began building their family in the Northeast.</p>
-      <p style="font-weight:600;color:var(--forest);margin-top:14px;margin-bottom:2px;">Settling in Crawford County</p>
-      <p>Looking to move beyond the industrial mill centers, Richard and Jane, along with her brothers Benjamin and Inskip Harrison, purchased 400 acres of land in Crawford County, Pennsylvania — wilderness land of virgin pine forest. Over the coming decades, Richard worked to clear the dense timberland and establish a prosperous family farm. In this close-knit frontier community, he and Jane raised six sons to adulthood: Edward, James, William, Benjamin, John, and Inskip.</p>
-      <p style="font-weight:600;color:var(--forest);margin-top:14px;margin-bottom:2px;">Civil War &amp; Family Tragedy</p>
-      <p>The Civil War brought profound personal heartache to the Morris household. In 1862, against Richard's wishes, their second son, James, enlisted in a Pennsylvania volunteer regiment. He was mortally wounded during the Battle of Gettysburg in July 1863 and died of his wounds weeks later in New York. Driven by a deep reverence for her son, Jane — without her husband's knowledge — made secret arrangements to have James's body brought home. He was laid to rest with the rest of the family at English Settlement Cemetery. His full story is told in a dedicated biography.</p>
-      <p style="font-weight:600;color:var(--forest);margin-top:14px;margin-bottom:2px;">Legacy</p>
-      <p>Richard Morris died on 19 May 1871, at the age of 60. He was buried at English Settlement Cemetery, sharing a memorial with his wife Jane, where his headstone stands as an enduring monument to the mid-19th-century British immigrants who helped found the local community.</p>
+      <p>Richard Morris was born 16 July 1810 in Haslingden, Lancashire, England — the same corner of Lancashire, near Accrington, where his father James Morris's own story unfolded — and was baptized at Bury St Mary Parish Church on 16 September 1810. He was the eldest known son of James Morris and Ann (Aglen) Morris. He grew up alongside at least three younger brothers — William, James, and Robert — in the years before the family made the decision to leave England for America.</p>
+      <p>Around 1826, Richard crossed the Atlantic with his parents, landing in New York City. The family is believed to have settled for a time across the river in Paterson, New Jersey, before eventually continuing on toward northwestern Pennsylvania. On 28 April 1830, Richard married Jane Harrison — daughter of Benjamin Harrison and Jane Inskip Harrison, the matriarch whose own family would give the settlement much of its shape — at the Second Reformed Church in Wyckoff, New Jersey. A separate account, published on the Civil War letters archive sparedshared23.com, describes Jane as having emigrated separately from Richard and already having spent four years in the United States working as a weaver in the textile mills by the time they married in Paterson, New Jersey — differing in detail from the Wyckoff church record but not necessarily contradicting it. Through this marriage, Richard became connected by blood and by partnership to two of his brothers-in-law, Inskip Harrison and Benjamin Inskip Harrison. Their eldest son, Edward, was born the following January in New York City itself — evidence that the young family was still moving between New York and New Jersey as late as 1831, several years after Richard's parents first landed. Edward would go on to marry Ellen Harrison, daughter of Richard's own brother-in-law Benjamin Inskip Harrison, in 1854.</p>
+      <p>In 1834, Richard and Jane came to Rome Township, Crawford County, and settled on a piece of wild land, building a log house and making a home. A family memoir records what happened next in plain terms: Richard was one of three English families who settled what became known as the English Settlement. The three heads of these families were named directly — Richard Morris, Inskip Harrison, and Benjamin Harrison. In other words, the settlement's founding wasn't three unrelated households arriving separately; it was Richard, having married into the Harrison family, standing alongside his own wife's two brothers to break the ground together. The full memoir passage is quoted below.</p>
+      <p>Richard and Jane raised at least six children together: Edward, James, Benjamin, William, John, and Inskip Morris — the youngest carrying forward the Harrison family's own name, a naming pattern already well established across this project. Their son James died in 1863 of wounds received at Gettysburg; his own biography, including a letter home written days after he was wounded, is documented elsewhere on this site.</p>
+      <p>Richard died 19 May 1871 in Rome Township, at 60 years old, and was buried at English Settlement Cemetery — the ground he himself had helped clear and settle nearly four decades earlier.</p>
+      <p>A 1946 article in the Titusville Herald preserves one more story about Richard, passed down through only one generation before it was recorded in print. Richard's grandson, David R. Morris, told the paper that his father — Richard's son, Inskip Morris — had told him that Richard helped at the Drake Well while it was being drilled, on the strength of his familiarity with steam engine operation. If accurate, this places Richard Morris at the site of the first commercial oil well in the United States, drilled by Edwin Drake near Titusville in 1859 — a discovery that launched the American oil industry, a few miles from the farm Richard had built with his own hands.</p>
+      <p class="placeholder">Additional biography will be added as research deepens. If you have information about Richard Morris, please use the contribution form below.</p>
+    </div>
+  </div>
+
+  <!-- LETTER / MEMOIR -->
+  <div class="bio-section">
+    <div class="section-label">A family memoir — naming the founders of the English Settlement</div>
+    <div class="letter-box">
+      <div class="letter-head">A handwritten family memoir, shared with the museum by researcher Bob Wheatall, records Richard's story and the founding of the settlement directly.</div>
+      <p>Richard Morris of Rome Township is a son of James and Anna (Aglen) Morris, and was born in Lancashire, England. He came to America in 1826, landing in New York City. He married Jane Harrison, daughter of Benjamin and Jane (Inskip) Harrison, of New Jersey. They came to Rome Township in 1834, where they settled on a piece of wild land, built a log house, and made a home.</p>
+      <p>He is one of the three English families that settled what is called the English Settlement. The three heads of these families: Richard Morris, Inskip Harrison, and Benjamin Harrison.</p>
+      <div class="letter-sig">— from a Morris family memoir</div>
+      <div class="letter-credit">Shared with the museum courtesy of Bob Wheatall. This same memoir also names Richard's father, James Morris, and provides the earliest confirmed date for the family's emigration.</div>
     </div>
   </div>
 
@@ -219,19 +240,29 @@
             <div class="lt-event">Born<br>Lancashire, England</div>
           </div>
           <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">c.1826</div>
+            <div class="lt-event">Emigrated<br>Landed New York City</div>
+          </div>
+          <div class="lt-dot-wrap">
             <div class="lt-dot marriage"></div>
-            <div class="lt-year">1830</div>
-            <div class="lt-event marriage">Married<br>Jane Harrison<br>New York area</div>
+            <div class="lt-year">28 Apr 1830</div>
+            <div class="lt-event marriage">Married<br>Jane Harrison, Wyckoff, NJ</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot founding"></div>
+            <div class="lt-year" style="color:#3D5A80;">1834</div>
+            <div class="lt-event founding">Founded<br>English Settlement</div>
           </div>
           <div class="lt-dot-wrap">
             <div class="lt-dot"></div>
-            <div class="lt-year">1833</div>
-            <div class="lt-event">Settled<br>Rome Township, PA</div>
+            <div class="lt-year">1831–49</div>
+            <div class="lt-event">Six children<br>born</div>
           </div>
           <div class="lt-dot-wrap">
-            <div class="lt-dot death"></div>
-            <div class="lt-year" style="color:#A32D2D;">1863</div>
-            <div class="lt-event death">Son James dies<br>Civil War</div>
+            <div class="lt-dot founding"></div>
+            <div class="lt-year" style="color:#3D5A80;">1859</div>
+            <div class="lt-event founding">Drake Well<br>per family account</div>
           </div>
           <div class="lt-dot-wrap">
             <div class="lt-dot death"></div>
@@ -248,7 +279,7 @@
     <div class="section-label">Family connections</div>
     <div class="fam-grid">
       <div>
-        <div class="fam-group-label">👨‍👩‍👦 Parents</div>
+        <div class="fam-group-label">👪 Parents</div>
         <div class="fam-person">
           <div class="fam-avatar">👤</div>
           <div>
@@ -259,16 +290,8 @@
         <div class="fam-person">
           <div class="fam-avatar">👤</div>
           <div>
-            <a class="fam-name" href="ann-azlean-morris.html">Ann Morris</a>
+            <a class="fam-name" href="ann-azlean-morris.html">Ann Azlean Morris</a>
             <div class="fam-dates">1790 – 1863 · Buried here</div>
-          </div>
-        </div>
-        <div style="margin-top:14px;">
-          <div class="fam-group-label">🧑‍🤝‍🧑 Siblings</div>
-          <div style="font-size:11px;line-height:1.9;">
-            <a class="fam-name" href="james-morris-1813.html">James Morris</a> <span style="color:var(--muted);font-size:9px;">1813 – 1846 · Buried here</span><br>
-            <span class="fam-name ext">William Morris</span> <span style="color:var(--muted);font-size:9px;">1811 – 1890 · Not yet matched</span><br>
-            <span class="fam-name ext">Robert Morris</span> <span style="color:var(--muted);font-size:9px;">1814 – 1891 · Not yet matched</span>
           </div>
         </div>
         <div style="margin-top:14px;">
@@ -276,45 +299,51 @@
           <div class="fam-person">
             <div class="fam-avatar">👤</div>
             <div>
-              <a class="fam-name" href="jane-harrison-morris-1806.html">Jane Harrison Morris</a>
-              <div class="fam-dates">27 Jan 1806 – 2 Jan 1887 · Shares this memorial</div>
+              <span class="fam-name ext">Jane Harrison Morris</span>
+              <div class="fam-dates">1806 – 1887 · Daughter of Benjamin &amp; Jane Inskip Harrison</div>
             </div>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="fam-group-label">👫 Siblings</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6;">
+            William Morris Sr. (1811–1890), James Morris (1813–1846), Robert Morris (1814–1891) — see father <a href="james-morris-1782.html" style="color:var(--link);">James Morris's page</a> for the full family.
           </div>
         </div>
       </div>
       <div>
-        <div class="fam-group-label">👶 Children — 6 named</div>
+        <div class="fam-group-label">👶 Children — 6 known</div>
         <div class="children-grid">
           <div class="child-item">
-            <span class="child-name" style="color:var(--muted);">Edward Morris</span>
-            <div class="child-dates">1831 – 1912 · Not yet confirmed buried here</div>
+            <span class="child-name ext">Edward Morris</span>
+            <div class="child-dates">1831 – 1912 · m. Ellen Harrison, 1854</div>
           </div>
           <div class="child-item">
-            <a class="child-name" href="pvt-james-morris-1837.html">James Morris</a>
-            <div class="child-dates">1837 – 1863 · Pvt., buried here</div>
+            <a class="child-name" href="pvt-james-morris-1837.html">Private James Morris</a>
+            <div class="child-dates">1837 – 1863 · Buried here</div>
           </div>
           <div class="child-item">
-            <span class="child-name" style="color:var(--muted);">Benjamin Morris</span>
-            <div class="child-dates">1840 – 1915 · Not yet confirmed buried here</div>
+            <span class="child-name ext">Benjamin Morris</span>
+            <div class="child-dates">1840 – 1915</div>
           </div>
           <div class="child-item">
-            <span class="child-name" style="color:var(--muted);">William S. Morris</span>
-            <div class="child-dates">1842 – 1891 · Not yet matched — see note</div>
+            <span class="child-name ext">William S. Morris</span>
+            <div class="child-dates">1842 – 1891</div>
           </div>
           <div class="child-item">
-            <span class="child-name" style="color:var(--muted);">John Morris</span>
-            <div class="child-dates">1845 – 1928 · Not yet confirmed buried here</div>
+            <span class="child-name ext">John Morris</span>
+            <div class="child-dates">1845 – 1928</div>
           </div>
           <div class="child-item">
-            <span class="child-name" style="color:var(--muted);">Inskip Morris</span>
-            <div class="child-dates">1849 – 1930 · Not yet confirmed buried here</div>
+            <span class="child-name ext">Inskip Morris</span>
+            <div class="child-dates">1849 – 1930</div>
           </div>
         </div>
       </div>
     </div>
     <div class="fam-key">
-      <span>Blue names link to a documented page here</span>
-      <span>Grey names are not yet linked or confirmed</span>
+      <span>Names in blue = page available on this site</span>
+      <span>Grey names = not yet built or not buried here</span>
     </div>
   </div>
 
@@ -322,10 +351,18 @@
   <div class="bio-section">
     <div class="section-label">Monument</div>
     <div style="background:var(--white);border:1px solid var(--border);padding:12px;">
-      <div style="font-size:11px;color:var(--muted);font-style:italic;text-align:center;padding:10px;border:1px dashed var(--border);margin-bottom:10px;">Monument photograph pending field visit</div>
+      <div style="font-size:11px;color:var(--muted);line-height:1.7;padding:10px;border:1px solid var(--border);margin-bottom:10px;background:var(--cream);">
+        <strong>Inscription:</strong><br>
+        Richard Morris — A Native of England<br>
+        Died May 19, 1871<br>
+        Aged 60 Yrs. 10 Ms. 3 Ds.
+      </div>
+      <div style="font-size:11px;color:var(--muted);font-style:italic;text-align:center;padding:10px;border:1px dashed var(--border);margin-bottom:10px;">A photographic portrait of Richard Morris exists on Find A Grave (shared by contributor mike ford) and should be obtained in full resolution for use on this page — not yet added here.</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
-        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Shared memorial</span>Jane Harrison Morris</div>
-        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Condition</span>Not yet recorded</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Type</span>Not yet field-documented</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Condition</span>Not yet field-documented</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Epitaph</span>Confirmed via photograph, above</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Find A Grave</span><span style="color:var(--muted);font-size:10px;">Memorial #51909683</span></div>
       </div>
     </div>
   </div>
@@ -335,16 +372,22 @@
     <div class="section-label">Sources &amp; notes</div>
     <div class="sources-cols">
       <ul class="source-list">
-        <li class="source-item">Ancestry.com family tree record: Richard Morris (b. 16 Jul 1810 Lancashire, d. 19 May 1871 Crawford County, PA)</li>
-        <li class="source-item">Marriage record: Second Reformed Church, Wyckoff, NJ — Richard Morris &amp; Jane Harrison, 23 Apr 1830</li>
-        <li class="source-item">Ancestry.com: Pennsylvania, U.S., Death Certificates, 1906–1972</li>
-        <li class="source-item">Ancestry.com: U.S., Find a Grave Index, 1600s–Current</li>
+        <li class="source-item">Handwritten family memoir, shared by researcher Bob Wheatall — birth, emigration, marriage, founding of the settlement</li>
+        <li class="source-item">sparedshared23.com ("Spared & Shared 23"), a Civil War letters archive — fourteen letters written by Richard's son James during his 1861 military service, with an introductory account of the family's emigration and settlement</li>
+        <li class="source-item">The Titusville Herald, 17 August 1946 — "David R. Morris... told The Herald yesterday that his grandfather, Richard Morris, helped at the Drake Well while it was being drilled," sourced to Richard's son Inskip Morris via grandson David R. Morris</li>
+        <li class="source-item">Bury St Mary Parish Church baptismal register, Lancashire — "Richard, Son of James & Ann Morris, Haslingden," baptized 16 September 1810, via Manchester, England, Church of England Baptisms, Marriages and Burials, 1541–1812</li>
+        <li class="source-item">Second Reformed Church, Wyckoff, NJ, marriage register — "Mr. Richd Morris & Miss Jane Harrison," 28 April 1830, via U.S. Dutch Reformed Church Records in Selected States, 1639–1989</li>
+        <li class="source-item">Find A Grave memorial #51909683 — headstone inscription and photograph, parents, siblings, children; photos by Robert Wheatall, Laura Priester, and a portrait photograph by mike ford</li>
+        <li class="source-item">Ancestry.com family tree — confirms marriage year and gives Edward's birthplace (New York City, Jan 1831) and John's birthplace (Vrooman, Crawford County, PA, Jun 1845)</li>
         <li class="source-item">English Settlement Cemetery master record</li>
-        <li class="source-item">Descendant family memoir (later source — narrative context only, dates not independently verified)</li>
-        <li class="source-item">Research by Scott Morris</li>
+        <li class="source-item">Cross-referenced with James Morris (1782–1858) and Ann Azlean Morris (1790–1863) biography pages</li>
+        <li class="source-item">Cross-referenced with Private James Morris (1837–1863) biography page for children and family details</li>
       </ul>
       <div>
-        <div class="research-note">Richard Morris's parents and a brother are already documented burials at English Settlement Cemetery, meaning the Morris family emigrated from Lancashire in their own right, not solely through marriage into the Harrisons — directly relevant to the project's question of whether these families knew one another before crossing the Atlantic. Several open items: the 1833 land purchase is not yet backed by a deed (a later family memoir cites 1845, but this conflicts with documented family movements and is not used here); son William S. Morris has not been matched with confidence — the master cemetery record shows a "William S. Morris Jr." with different birth/death dates (1837–1915) than Ancestry's William S. Morris (1842–1891), and these may not be the same person; and an alternate cemetery name from the memoir ("Old English Settlement Cemetery / Maple Grove Cemetery") has not been confirmed and is not used on this site. Son James's own biography, covering Gettysburg and his return home, is planned separately.</div>
+        <div class="research-note">Ancestry's indexed baptismal record shows a derived "Birth Date" of 16 July 1809 — one year earlier than the 1810 used consistently elsewhere (Find A Grave, the headstone, and this project's own master record). This is very likely a computed estimate rather than a date actually written in the parish register: the register records Richard's baptism on 16 September 1810 at "age 1," and indexing systems commonly back-calculate an estimated birth year from a stated age at baptism, which can introduce a year of error either direction. The headstone's precise age at death — 60 years, 10 months, 3 days as of 19 May 1871 — only works out correctly for a birth date of 16 July 1810, which is treated as the more reliable figure here. Both the day and month (16 July) agree across every source; only the year is in question.</div>
+        <div class="research-note" style="margin-top:8px;"><strong>Conflict to resolve:</strong> The family memoir gives 1834 as the year Richard and Jane came to Rome Township. A separate account, published on the Civil War letters archive sparedshared23.com — which also transcribes a substantial set of letters written by their son James during his Civil War service — states the family moved to Rome Township in 1837, with James born there that October rather than earlier. Neither date has been changed to match the other; both are preserved here pending further research. The same source is the origin for the detail that Jane emigrated separately from Richard and had already worked four years as a weaver in American textile mills before their 1830 marriage.</div>
+        <div class="research-note" style="margin-top:8px;">The Drake Well story comes from a 1946 newspaper account, itself reporting oral family history passed from Richard's son Inskip Morris to his own son, David R. Morris, and then to the Titusville Herald — a single generation of transmission before it reached print, which lends it real weight, though it remains family testimony rather than a contemporary 1859 record naming Richard directly. Marked here as a documented family account rather than independently verified fact.</div>
+        <div class="research-note" style="margin-top:8px;">This project's own master record currently lists one of Richard's sons as "John Brown Morris" (1845–1928). The error traces back to Find A Grave itself, which lists him under that name on Richard's own memorial — and since this project's master list was built from Find A Grave records, the mistake carried over directly. Ancestry.com's independent record gives his name simply as John Morris, with no "Brown." Census research already applied elsewhere on this site (see Private James Morris's page) confirms John Morris and John Brown Morris are two different people — cousins, both of whom happened to marry women named Seraph, which is very likely how the two men were conflated on Find A Grave in the first place. The master record entry has not yet been corrected but is flagged here. Jane Harrison Morris (1806–1887), Richard's wife, does not yet have her own biography page on this site.</div>
         <div class="last-updated">Last updated: August 2026</div>
       </div>
     </div>
@@ -411,7 +454,7 @@ function submitContribution(){
   const connect=document.querySelector('input[placeholder="Descendant, historian, researcher…"]').value;
   const source=document.querySelector('input[placeholder="Census record, family Bible, photograph…"]').value;
   const info=document.querySelector('textarea').value;
-  const subject=encodeURIComponent('Contribution: Richard Morris — English Settlement Cemetery');
+  const subject=encodeURIComponent('Contribution: Richard Morris (1810-1871) — English Settlement Cemetery');
   const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nConnection: '+connect+'\nSource: '+source+'\n\nInformation:\n'+info);
   window.location.href='mailto:scotty8828@gmail.com?subject='+subject+'&body='+body;
 }
