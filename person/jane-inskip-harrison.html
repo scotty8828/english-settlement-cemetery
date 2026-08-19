@@ -18,21 +18,15 @@
       --link:#1A3A6A;
     }
     html,body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);font-size:14px;line-height:1.6;}
-
-    /* NAV */
     #nav{background:#243D30;border-bottom:1px solid rgba(200,168,75,0.15);position:sticky;top:0;z-index:100;}
     #nav-in{display:flex;align-items:center;max-width:900px;margin:0 auto;padding:0 20px;overflow-x:auto;gap:0;}
     #nav-in::-webkit-scrollbar{display:none;}
     .ni{font-size:9px;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.48);padding:11px 10px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.15s;font-weight:500;flex-shrink:0;text-decoration:none;display:block;}
     .ni:hover{color:#fff;border-bottom-color:var(--gold);}
     .ns{width:1px;height:14px;background:rgba(255,255,255,0.1);flex-shrink:0;margin:auto 0;}
-
-    /* WRAP */
     .bio-wrap{max-width:900px;margin:0 auto;padding:0 0 3rem;}
     .bio-back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;transition:color 0.15s;}
     .bio-back:hover{color:var(--forest);}
-
-    /* HEADER */
     .bio-header{display:flex;gap:20px;align-items:flex-start;padding:0 20px 20px;border-bottom:2px solid var(--border);}
     .bio-photo-col{flex-shrink:0;width:140px;text-align:center;}
     .bio-photo{width:140px;height:180px;background:var(--parch);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--muted);text-align:center;padding:12px;overflow:hidden;position:relative;}
@@ -54,32 +48,26 @@
     .conf-doc{color:var(--doc);border:1px solid var(--doc);}
     .conf-prob{color:var(--prob);border:1px solid var(--prob);}
     .conf-unv{color:var(--unv);border:1px solid var(--unv);}
-
-    /* SECTIONS */
     .bio-section{padding:16px 20px;border-bottom:1px solid var(--border);}
     .section-label{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
     .section-label::after{content:'';flex:1;height:0.5px;background:var(--border);}
-
-    /* PROSE */
     .bio-prose{font-size:13px;line-height:1.85;color:var(--text);}
     .bio-prose p+p{margin-top:10px;}
     .bio-prose .placeholder{color:var(--muted);font-style:italic;font-size:12px;}
-
-    /* LIFE TIMELINE */
     .lt-wrap{background:var(--white);border:1px solid var(--border);padding:14px;overflow-x:auto;}
-    .lt-track{position:relative;padding-bottom:28px;min-width:600px;}
+    .lt-track{position:relative;padding-bottom:28px;min-width:700px;}
     .lt-line{position:absolute;top:6px;left:0;right:0;height:1px;background:var(--border);}
     .lt-dots{display:flex;justify-content:space-between;position:relative;}
     .lt-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
     .lt-dot{width:10px;height:10px;border-radius:50%;background:#2A5A3A;border:2px solid var(--white);position:relative;z-index:1;flex-shrink:0;}
     .lt-dot.death{background:var(--unv);}
     .lt-dot.marriage{background:var(--gold);}
+    .lt-dot.founding{background:#3D5A80;}
     .lt-year{font-size:9px;font-weight:600;color:var(--text);}
-    .lt-event{font-size:9px;color:var(--muted);text-align:center;line-height:1.3;max-width:80px;}
+    .lt-event{font-size:9px;color:var(--muted);text-align:center;line-height:1.3;max-width:90px;}
     .lt-event.death{color:var(--unv);}
     .lt-event.marriage{color:#7A5C00;}
-
-    /* FAMILY */
+    .lt-event.founding{color:#3D5A80;}
     .fam-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
     .fam-group-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
     .fam-person{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
@@ -92,18 +80,15 @@
     .child-item{padding:3px 0;}
     .child-name{font-size:10px;color:var(--link);text-decoration:none;display:block;}
     .child-name:hover{text-decoration:underline;}
+    .child-name.ext{color:var(--muted);font-weight:400;}
     .child-dates{font-size:9px;color:var(--muted);}
     .fam-key{font-size:10px;color:var(--muted);margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;}
-
-    /* SOURCES */
     .sources-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
     .source-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
     .source-item{font-size:10px;color:var(--muted);padding-left:12px;position:relative;line-height:1.5;}
     .source-item::before{content:'·';position:absolute;left:0;}
     .research-note{font-size:10px;color:var(--muted);line-height:1.6;background:var(--white);border:1px solid var(--border);padding:10px;}
     .last-updated{font-size:9px;color:var(--muted);text-align:right;margin-top:8px;}
-
-    /* CONTRIBUTE */
     .contrib-intro{font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.6;}
     .contrib-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
     .contrib-field{display:flex;flex-direction:column;gap:3px;}
@@ -121,12 +106,9 @@
     .contrib-note{font-size:9px;color:var(--muted);flex:1;line-height:1.5;}
     .contrib-btn{font-size:11px;padding:8px 20px;background:var(--forest);color:#fff;border:none;cursor:pointer;letter-spacing:0.06em;flex-shrink:0;font-family:'Inter',sans-serif;}
     .contrib-btn:hover{background:var(--forest-light);}
-
-    /* FOOTER */
     #footer{background:var(--forest);border-top:1px solid rgba(200,168,75,0.1);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
     #ft-l{font-size:10px;color:rgba(255,255,255,0.32);font-family:'Source Serif 4',serif;font-style:italic;max-width:380px;line-height:1.6;}
     #ft-r{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(200,168,75,0.45);}
-
     @media(max-width:600px){
       .bio-header{flex-direction:column;}
       .fam-grid,.contrib-grid,.sources-cols{grid-template-columns:1fr;}
@@ -235,9 +217,9 @@
     <div class="bio-prose">
       <p>Jane Inskip was born in late 1766 in Yorkshire, England, and baptized on Christmas Day, 25 December 1766, at the Salterforth Inghamite Chapel near Bolton-by-Bowland. She was the daughter of Richard Inskip (1724–1807), a yeoman farmer and trustee of the Independent Chapel at Holden, and Elizabeth Frankland. The Inskip family's roots ran deep into the Yorkshire soil — land records in the Slaidburn Court Rolls trace the family back to the mid-1600s at Smalden. Jane grew up in a household shaped by faith, farming, and the self-reliance of the English dales.</p>
       <p>On 27 July 1784, at eighteen years old, Jane married Benjamin Harrison at Bolton-by-Bowland. Benjamin worked initially as a butcher, but as their family grew the Harrisons settled into Lancashire, a region fast becoming the heart of England's textile industry. Over the next twenty-seven years Jane and Benjamin raised a large family there — Richard, Anne, Eleanor, Matthew, Elizabeth, Benjamin Inskip, Jane, Edward, and Inskip. Jane herself became a skilled handloom weaver, a trade she passed down to her daughters. When her father died in 1807, his will named her directly, leaving a bequest to "Jane the wife of Benjamin Harrison."</p>
-      <p>By the 1820s, the rise of mechanized looms was putting immense pressure on Lancashire's handloom-weaving families. Benjamin Harrison died in May 1824, and Jane — now widowed — faced a life-altering decision. In 1827, at approximately sixty years of age, she gathered seven of her children and made the transatlantic crossing to the United States, leaving behind the only world she had known. The family settled first in Paterson, New Jersey, remaining there for several years. In 1833, Jane — together with her sons Benjamin Inskip Harrison and Inskip Harrison, and her son-in-law Richard Morris, husband of her daughter Jane — purchased 400 acres in Rome Township, Crawford County, and moved into the Pennsylvania wilderness, where they helped establish what became known as the English Settlement.</p>
+      <p>By the 1820s, the rise of mechanized looms was putting immense pressure on Lancashire's handloom-weaving families. Benjamin Harrison died in May 1824, and Jane — now widowed — faced a life-altering decision. In 1827, at approximately sixty years of age, she gathered seven of her children and made the transatlantic crossing to the United States, leaving behind the only world she had known. Among those she brought with her was a small grandson, David Crossley, son of her daughter Anne and Anne's husband Robert Crossley — carried across the ocean by his grandmother, according to his own obituary decades later, rather than by his own parents. The family settled first in Paterson, New Jersey, remaining there for several years. In 1833, Jane — together with her sons Benjamin Inskip Harrison and Inskip Harrison, and her son-in-law Richard Morris, husband of her daughter Jane — purchased 400 acres in Rome Township, Crawford County, and moved into the Pennsylvania wilderness, where they helped establish what became known as the English Settlement.</p>
       <p>Jane spent her final years surrounded by her children, grandchildren, and fellow English pioneers. The 1840 census shows her living in the household of her son Benjamin Harrison, with the homesteads of her other children close by. She died on 13 October 1845, aged 78 (her headstone traditionally records "Aged 84 Years"), and was among the earliest burials at what would become English Settlement Cemetery. Her stone, topped with a square marble crown, bears an epitaph that speaks to a woman who led her family across an ocean to build a new home:</p>
-      <p style="font-style:italic;padding-left:14px;border-left:2px solid var(--border);">"Farewell my children one and all / I bid adieu to young and old / I have long lived with you on earth / And now return back to dust."</p>
+      <p>"Farewell my children one and all / I bid adieu to young and old / I have long lived with you on earth / And now return back to dust."</p>
       <p>The name she carried into marriage — Inskip — was not forgotten. It passed to her son Inskip Harrison, one of the foundational figures of the Rome Township community, then to his son Edward Inskip Harrison, and eventually into the Morris family through marriage, appearing as late as Harold Inskip Morris in the twentieth century. Jane Inskip Harrison may never have known how far her name would travel.</p>
       <p class="placeholder">Monument examination and further Lancashire parish research will continue to refine this biography. If you have information about Jane Inskip Harrison, please use the contribution form below.</p>
     </div>
@@ -266,19 +248,19 @@
             <div class="lt-event">Raised nine children<br>Lancashire, handloom weaving</div>
           </div>
           <div class="lt-dot-wrap">
-            <div class="lt-dot"></div>
-            <div class="lt-year">1824</div>
-            <div class="lt-event">Widowed<br>Lancashire, England</div>
+            <div class="lt-dot death"></div>
+            <div class="lt-year" style="color:#A32D2D;">1824</div>
+            <div class="lt-event death">Widowed<br>Lancashire, England</div>
           </div>
           <div class="lt-dot-wrap">
-            <div class="lt-dot"></div>
-            <div class="lt-year">1827</div>
-            <div class="lt-event">Immigrated<br>with 7 children<br>to Paterson, NJ</div>
+            <div class="lt-dot founding"></div>
+            <div class="lt-year" style="color:#3D5A80;">1827</div>
+            <div class="lt-event founding">Immigrated<br>with 7 children<br>to Paterson, NJ</div>
           </div>
           <div class="lt-dot-wrap">
-            <div class="lt-dot"></div>
-            <div class="lt-year">1833</div>
-            <div class="lt-event">Bought 400 acres<br>Rome Township, PA<br>with sons &amp; Richard Morris</div>
+            <div class="lt-dot founding"></div>
+            <div class="lt-year" style="color:#3D5A80;">1833</div>
+            <div class="lt-event founding">Bought 400 acres<br>Rome Township, PA<br>with sons &amp; Richard Morris</div>
           </div>
           <div class="lt-dot-wrap">
             <div class="lt-dot death"></div>
@@ -323,16 +305,16 @@
             <div class="child-dates">1785 – 1867 · Buried here</div>
           </div>
           <div class="child-item">
-            <span class="child-name" style="color:var(--muted);">Anne Harrison</span>
-            <div class="child-dates">Dates unknown · Not yet matched</div>
+            <span class="child-name ext">Anne Harrison Crossley</span>
+            <div class="child-dates">b. c.1786 · m. Robert Crossley, 1815, Leyland · Not buried here</div>
           </div>
           <div class="child-item">
-            <span class="child-name" style="color:var(--muted);">Eleanor Harrison</span>
-            <div class="child-dates">Dates unknown · Not yet matched</div>
+            <span class="child-name ext">Eleanor Harrison Walsh</span>
+            <div class="child-dates">b. c.1788 · m. Thomas Walsh · Not buried here</div>
           </div>
           <div class="child-item">
-            <span class="child-name" style="color:var(--muted);">Matthew Harrison</span>
-            <div class="child-dates">Dates unknown · Not yet matched</div>
+            <span class="child-name ext">Matthew Harrison</span>
+            <div class="child-dates">b. c.1790 · had three sons · Not buried here</div>
           </div>
           <div class="child-item">
             <a class="child-name" href="elizabeth-harrison-gregory.html">Elizabeth Harrison Gregory</a>
@@ -347,8 +329,8 @@
             <div class="child-dates">27 Jan 1806 – 2 Jan 1887 · Buried here</div>
           </div>
           <div class="child-item">
-            <span class="child-name" style="color:var(--muted);">Edward Harrison</span>
-            <div class="child-dates">Dates unknown · Not yet matched</div>
+            <span class="child-name ext">Edward Harrison</span>
+            <div class="child-dates">1808 – 1880 · m. Betty, 8 children · Not yet matched</div>
           </div>
           <div class="child-item">
             <a class="child-name" href="inskip-harrison.html">Inskip Harrison</a>
@@ -359,7 +341,7 @@
     </div>
     <div class="fam-key">
       <span>Blue names link to a documented page here</span>
-      <span>Grey names are not yet linked or confirmed</span>
+      <span>Grey names are not yet linked or confirmed buried here</span>
     </div>
   </div>
 
@@ -372,7 +354,7 @@
         <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Type</span>Square marble top</div>
         <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Condition</span>Not yet recorded</div>
         <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Epitaph</span>"Farewell my children one and all…"</div>
-        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Find A Grave</span><a href="https://www.findagrave.com/cemetery/45042/memorial-search?firstname=Jane&lastname=Harrison" target="_blank" style="color:var(--link);font-size:10px;">View memorial</a></div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Find A Grave</span><a href="https://www.findagrave.com/cemetery/45042/memorial-search?firstname=Jane&amp;lastname=Harrison" target="_blank" style="color:var(--link);font-size:10px;">View memorial</a></div>
       </div>
     </div>
   </div>
@@ -389,12 +371,15 @@
         <li class="source-item">Slaidburn Court Rolls · Inskip family land records, Smalden</li>
         <li class="source-item">1840 U.S. Census · Rome Township, Crawford County, PA</li>
         <li class="source-item">Land record: 400-acre purchase, Rome Township, Crawford County, PA · 1833</li>
+        <li class="source-item">Craig Thornber, "The Inskip Family of Bolton by Bowland" (thornber.net) — full sibling list with dates and marriages for Anne, Eleanor, Matthew, and Edward, and confirmation of the 1827 emigration date from Jane's own monument inscription; compiled from research by Bob Wheatall, Reg Postlethwaite, and Virginia Bates, among others</li>
+        <li class="source-item">David Crossley's 1880 obituary (Titusville Morning Herald, via Find A Grave) — confirms Jane personally brought grandson David to America</li>
         <li class="source-item">Find A Grave · English Settlement Cemetery memorial listing</li>
         <li class="source-item">English Settlement Cemetery master record</li>
         <li class="source-item">Research by Scott Morris</li>
       </ul>
       <div>
-        <div class="research-note">Jane Inskip Harrison is the earliest documented birth in English Settlement Cemetery (1766) and is almost certainly the origin of the Inskip name carried across four generations of the Harrison and Morris families. Her years in Lancashire's handloom-weaving trade place her family within the same textile-district migration wave as several other Lancashire-origin families in this cemetery, supporting the project's broader question of whether these families knew one another before crossing the Atlantic. The family's path to Rome Township ran through Paterson, New Jersey (1827–1833) before the 1833 land purchase, made alongside her sons Benjamin Inskip Harrison and Inskip Harrison and her son-in-law Richard Morris. Her daughters Elizabeth (Harrison Gregory, 1794–1881) and Jane (Harrison Morris, 27 Jan 1806 – 2 Jan 1887) are now confirmed — Jane shares a memorial with Richard Morris. Anne, Eleanor, Matthew, and Edward have not yet been matched to a cemetery record.</div>
+        <div class="research-note">Jane Inskip Harrison is the earliest documented birth in English Settlement Cemetery (1766) and is almost certainly the origin of the Inskip name carried across four generations of the Harrison and Morris families. Her years in Lancashire's handloom-weaving trade place her family within the same textile-district migration wave as several other Lancashire-origin families in this cemetery, supporting the project's broader question of whether these families knew one another before crossing the Atlantic. The family's path to Rome Township ran through Paterson, New Jersey (1827–1833) before the 1833 land purchase, made alongside her sons Benjamin Inskip Harrison and Inskip Harrison and her son-in-law Richard Morris.</div>
+        <div class="research-note" style="margin-top:8px;">Anne, Eleanor, and Matthew are now identified by name, approximate birth year, and marriage, thanks to Thornber's compiled research — but none has yet been matched to a burial record, and all three are believed to have remained in England or settled elsewhere rather than coming to Rome Township. Anne's son, David Crossley, did emigrate — brought by Jane herself — and is buried at English Settlement Cemetery; his own page, and his son Thomas J. Crossley's, are documented elsewhere on this site. Edward Harrison's exact dates (1808–1880) are now known, along with his wife Betty and eight children, but he too remains unmatched to a burial record here. Elizabeth Harrison Gregory's birth year is given as 1794 on this project's own record, but as "about 1797" in Thornber's account — a minor discrepancy, not yet resolved.</div>
         <div class="last-updated">Last updated: August 2026</div>
       </div>
     </div>
@@ -461,7 +446,7 @@ function submitContribution(){
   const connect=document.querySelector('input[placeholder="Descendant, historian, researcher…"]').value;
   const source=document.querySelector('input[placeholder="Census record, family Bible, photograph…"]').value;
   const info=document.querySelector('textarea').value;
-  const subject=encodeURIComponent('Contribution: Jane Inskip Harrison — English Settlement Cemetery');
+  const subject=encodeURIComponent('Contribution: Jane Inskip Harrison (1766-1845) — English Settlement Cemetery');
   const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nConnection: '+connect+'\nSource: '+source+'\n\nInformation:\n'+info);
   window.location.href='mailto:scotty8828@gmail.com?subject='+subject+'&body='+body;
 }
