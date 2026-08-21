@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thomas Alston — English Settlement Cemetery</title>
-  <meta name="description" content="Thomas Alston (1796 &ndash; 1878), English Settlement Cemetery, Rome Township, Crawford County, Pennsylvania. Biography research in progress.">
+  <meta name="description" content="Biography of Thomas Alston (1796–1878), cabinet maker and property owner, father of Jane Alston Crossley.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;1,8..60,300&family=Inter:wght@300;400;500;600&display=swap">
   <style>
@@ -13,7 +13,9 @@
       --forest:#1B3028;--forest-light:#3D6B50;
       --cream:#F2EDE3;--parch:#E8E0D0;--white:#FDFAF4;
       --gold:#C8A84B;--text:#1C1408;--muted:#6B5A3E;
-      --border:#D0C4A8;--link:#1A3A6A;
+      --border:#D0C4A8;--border-dk:#B8A888;
+      --doc:#3B6D11;--prob:#854F0B;--unv:#A32D2D;
+      --link:#1A3A6A;
     }
     html,body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);font-size:14px;line-height:1.6;}
     #nav{background:#243D30;border-bottom:1px solid rgba(200,168,75,0.15);position:sticky;top:0;z-index:100;}
@@ -22,57 +24,344 @@
     .ni{font-size:9px;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.48);padding:11px 10px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.15s;font-weight:500;flex-shrink:0;text-decoration:none;display:block;}
     .ni:hover{color:#fff;border-bottom-color:var(--gold);}
     .ns{width:1px;height:14px;background:rgba(255,255,255,0.1);flex-shrink:0;margin:auto 0;}
-
-    .wrap{max-width:600px;margin:0 auto;padding:0 0 3rem;}
-    .back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;}
-    .back:hover{color:var(--forest);}
-
-    .pending-card{
-      margin:20px;background:var(--white);border:1px solid var(--border);
-      padding:40px 30px;text-align:center;
-    }
-    .pending-icon{font-size:32px;margin-bottom:16px;opacity:0.5;}
-    .pending-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-    .pending-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:var(--text);margin-bottom:6px;}
-    .pending-dates{font-size:14px;color:var(--muted);margin-bottom:20px;font-family:'Source Serif 4',serif;}
-    .pending-badge{
-      display:inline-block;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
-      padding:6px 16px;border:1px solid var(--gold);color:#7A5C00;
-      background:rgba(200,168,75,0.1);margin-bottom:20px;font-weight:500;
-    }
-    .pending-msg{font-size:12px;color:var(--muted);font-family:'Source Serif 4',serif;font-style:italic;line-height:1.7;max-width:420px;margin:0 auto 20px;}
-    .pending-fam{font-size:11px;color:var(--muted);margin-bottom:4px;}
-    .contrib-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:16px;border-top:1px solid var(--border);padding-top:16px;}
-    .contrib-note a{color:var(--link);}
-
+    .bio-wrap{max-width:900px;margin:0 auto;padding:0 0 3rem;}
+    .bio-back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+    .bio-back:hover{color:var(--forest);}
+    .bio-header{display:flex;gap:20px;align-items:flex-start;padding:0 20px 20px;border-bottom:2px solid var(--border);}
+    .bio-photo-col{flex-shrink:0;width:140px;text-align:center;}
+    .bio-photo{width:140px;height:180px;background:var(--parch);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--muted);text-align:center;padding:12px;overflow:hidden;position:relative;}
+    .bio-photo img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+    .bio-photo-credit{font-size:9px;color:var(--muted);margin-top:6px;line-height:1.4;}
+    .bio-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    .bio-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text);margin-bottom:4px;letter-spacing:0.02em;}
+    .bio-tagline{font-family:'Source Serif 4',serif;font-style:italic;font-size:13px;color:var(--muted);margin-bottom:8px;}
+    .bio-dates{font-size:15px;color:var(--muted);margin-bottom:4px;font-family:'Source Serif 4',serif;}
+    .bio-age{font-size:12px;color:var(--muted);margin-bottom:8px;}
+    .bio-fam-tag{display:inline-block;font-size:10px;padding:3px 10px;border:1px solid var(--border);color:var(--muted);background:var(--white);letter-spacing:0.06em;}
+    .vital-strip{display:flex;gap:20px;flex-wrap:wrap;margin-top:12px;}
+    .vital-block{display:flex;align-items:flex-start;gap:6px;}
+    .vital-ico{font-size:14px;color:var(--muted);margin-top:1px;}
+    .vital-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .vital-val{font-size:12px;color:var(--text);font-weight:500;}
+    .vital-sub{font-size:10px;color:var(--muted);}
+    .conf{display:inline-block;font-size:8px;padding:1px 5px;border-radius:1px;margin-left:4px;vertical-align:middle;letter-spacing:0.06em;text-transform:uppercase;}
+    .conf-doc{color:var(--doc);border:1px solid var(--doc);}
+    .conf-prob{color:var(--prob);border:1px solid var(--prob);}
+    .conf-unv{color:var(--unv);border:1px solid var(--unv);}
+    .bio-section{padding:16px 20px;border-bottom:1px solid var(--border);}
+    .section-label{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+    .section-label::after{content:'';flex:1;height:0.5px;background:var(--border);}
+    .bio-prose{font-size:13px;line-height:1.85;color:var(--text);}
+    .bio-prose p+p{margin-top:10px;}
+    .bio-prose .placeholder{color:var(--muted);font-style:italic;font-size:12px;}
+    .letter-box{background:var(--white);border:1px solid var(--border-dk);padding:18px 20px;font-family:'Source Serif 4',serif;font-size:13px;line-height:1.85;color:var(--text);position:relative;}
+    .letter-box::before{content:'📰';position:absolute;top:12px;right:16px;font-size:16px;}
+    .letter-head{font-style:italic;color:var(--muted);font-size:12px;margin-bottom:10px;}
+    .letter-box p+p{margin-top:10px;}
+    .letter-sig{margin-top:12px;font-style:italic;}
+    .letter-credit{font-size:10px;color:var(--muted);margin-top:12px;font-family:'Inter',sans-serif;font-style:normal;}
+    .fam-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .fam-group-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
+    .fam-person{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+    .fam-avatar{width:30px;height:30px;border-radius:50%;background:var(--parch);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
+    .fam-name{font-size:11px;color:var(--link);font-weight:500;text-decoration:none;display:block;}
+    .fam-name:hover{text-decoration:underline;}
+    .fam-name.ext{color:var(--muted);font-weight:400;}
+    .fam-dates{font-size:9px;color:var(--muted);}
+    .children-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+    .child-item{padding:3px 0;}
+    .child-name{font-size:10px;color:var(--link);text-decoration:none;display:block;}
+    .child-name:hover{text-decoration:underline;}
+    .child-name.ext{color:var(--muted);font-weight:400;}
+    .child-dates{font-size:9px;color:var(--muted);}
+    .fam-key{font-size:10px;color:var(--muted);margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;}
+    .sources-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .source-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+    .source-item{font-size:10px;color:var(--muted);padding-left:12px;position:relative;line-height:1.5;}
+    .source-item::before{content:'·';position:absolute;left:0;}
+    .research-note{font-size:10px;color:var(--muted);line-height:1.6;background:var(--white);border:1px solid var(--border);padding:10px;}
+    .last-updated{font-size:9px;color:var(--muted);text-align:right;margin-top:8px;}
+    .contrib-intro{font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.6;}
+    .contrib-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+    .contrib-field{display:flex;flex-direction:column;gap:3px;}
+    .contrib-field.full{grid-column:1/-1;}
+    .contrib-lbl{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .contrib-input{font-size:11px;padding:6px 8px;border:1px solid var(--border);background:var(--cream);color:var(--text);width:100%;font-family:'Inter',sans-serif;}
+    .contrib-input:focus{outline:none;border-color:var(--forest-light);}
+    textarea.contrib-input{resize:vertical;min-height:70px;}
+    .file-area{border:1.5px dashed var(--border);padding:14px;text-align:center;cursor:pointer;background:var(--cream);transition:border-color 0.15s;}
+    .file-area:hover{border-color:var(--forest-light);}
+    .file-area span{font-size:10px;color:var(--muted);line-height:1.5;display:block;}
+    .file-area input{display:none;}
+    .file-list{font-size:10px;color:var(--forest-light);margin-top:4px;min-height:14px;}
+    .contrib-footer{display:flex;align-items:center;gap:12px;margin-top:10px;}
+    .contrib-note{font-size:9px;color:var(--muted);flex:1;line-height:1.5;}
+    .contrib-btn{font-size:11px;padding:8px 20px;background:var(--forest);color:#fff;border:none;cursor:pointer;letter-spacing:0.06em;flex-shrink:0;font-family:'Inter',sans-serif;}
+    .contrib-btn:hover{background:var(--forest-light);}
     #footer{background:var(--forest);border-top:1px solid rgba(200,168,75,0.1);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
     #ft-l{font-size:10px;color:rgba(255,255,255,0.32);font-family:'Source Serif 4',serif;font-style:italic;max-width:380px;line-height:1.6;}
     #ft-r{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(200,168,75,0.45);}
+    @media(max-width:600px){
+      .bio-header{flex-direction:column;}
+      .fam-grid,.contrib-grid,.sources-cols{grid-template-columns:1fr;}
+      .children-grid{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
+
 <nav id="nav">
   <div id="nav-in">
-    <a class="ni" href="../index.html">People Timeline</a><div class="ns"></div>
-    <a class="ni" href="../about.html">About</a>
+    <a class="ni" href="../index.html">👥 People Timeline</a><div class="ns"></div>
+    <a class="ni" href="#">📷 The Cemetery</a><div class="ns"></div>
+    <a class="ni" href="#">👨‍👩‍👧 Families</a><div class="ns"></div>
+    <a class="ni" href="#">🗺 Historical Maps</a><div class="ns"></div>
+    <a class="ni" href="#">🖼 Photo Gallery</a><div class="ns"></div>
+    <a class="ni" href="#">📄 Documents</a><div class="ns"></div>
+    <a class="ni" href="../about.html">ℹ About</a>
   </div>
 </nav>
-<div class="wrap">
-  <a class="back" href="../index.html">&larr; Back to timeline</a>
-  <div class="pending-card">
-    <div class="pending-icon">📜</div>
-    <div class="pending-eyebrow">English Settlement Cemetery &middot; Rome Township, PA</div>
-    <div class="pending-name">Thomas Alston</div>
-    <div class="pending-dates">1796 &ndash; 1878</div>
-    <div class="pending-fam">Alston family</div>
-    <div class="pending-badge">Research Pending</div>
-    <div class="pending-msg">This person's biography is currently being researched. Historical records are being reviewed and verified before publication to ensure accuracy. Check back soon, or contribute what you know below.</div>
-    <div class="contrib-note">Have information about Thomas Alston? Contact Scott Morris at <a href="mailto:scotty8828@gmail.com">scotty8828@gmail.com</a> to contribute photographs, documents, or family history.</div>
+
+<div class="bio-wrap">
+
+  <a class="bio-back" href="../index.html">← Back to timeline</a>
+
+  <!-- HEADER -->
+  <div class="bio-header">
+    <div class="bio-photo-col">
+      <div class="bio-photo">
+        <span style="font-size:36px;">👤</span>
+        <span style="font-size:10px;margin-top:6px;">No photograph<br>yet found</span>
+      </div>
+      <div class="bio-photo-credit">English Settlement Cemetery<br>Rome Township, PA</div>
+    </div>
+    <div>
+      <div class="bio-eyebrow">English Settlement Cemetery · Crawford County, PA</div>
+      <div class="bio-name">Thomas Alston</div>
+      <div class="bio-tagline">Cabinet maker. Property owner. "A singular old gentleman."</div>
+      <div class="bio-dates">12 May 1796 – 25 September 1878</div>
+      <div class="bio-age">Died aged 82 years, 4 months, 13 days</div>
+      <div class="bio-fam-tag">Alston family</div>
+      <div class="vital-strip">
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Born</div>
+            <div class="vital-val">12 May 1796 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">England</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">🔨</div>
+          <div>
+            <div class="vital-label">Trade</div>
+            <div class="vital-val">Cabinet maker <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Later a property owner, North Franklin St., Titusville</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">⛵</div>
+          <div>
+            <div class="vital-label">Settled</div>
+            <div class="vital-val">1841 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Titusville / English Settlement, Rome Twp.</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Died</div>
+            <div class="vital-val">25 Sep 1878 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">"Pure exhaustion of nature," declined medical care</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">🪦</div>
+          <div>
+            <div class="vital-label">Buried</div>
+            <div class="vital-val">English Settlement Cemetery</div>
+            <div class="vital-sub">Rome Township, Crawford County, PA</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- BIOGRAPHY -->
+  <div class="bio-section">
+    <div class="section-label">Biography</div>
+    <div class="bio-prose">
+      <p>Thomas Alston was born 12 May 1796 in England — a date confirmed by both an independent Ancestry.com record and the precise age carved on his own headstone. His parents were Thomas Alston Sr. (1748–1822) and Ann Inskip (1753–1830). Ann was the sister of Jane Inskip Harrison, matriarch of the family that founded the English Settlement — making Thomas her nephew, and tying the Alston family to the Harrisons by blood a full generation before Thomas's own daughter would marry into the Crossley line, another branch of that same extended family. He arrived in the Titusville area in 1841, an Englishman who settled first in the English Settlement, Rome Township, before eventually establishing himself in Titusville proper. By trade he was a cabinet maker, but in later life he lived comfortably, owning several business properties and lots on North Franklin Street in Titusville.</p>
+      <p>Thomas married Elizabeth Warrick. His obituary states plainly that she died "last year" — meaning 1877, the year before his own death — which is treated here as the most reliable figure, since it comes from a contemporary account by people who knew him. Other sources give different years: Find A Grave records 1878, and a separate Ancestry hint suggests 1893; both are treated as less reliable than the obituary's firsthand account. Thomas and Elizabeth had at least two children: Jane, who married David Crossley, and Ambrose Alston.</p>
+      <p>After his wife's death, Thomas lived alone in his small home with no companion but a rat-and-tan dog, to which he was affectionately attached. Neighbors and the staff of the local newspaper described him as a familiar, solitary fixture — smoking his clay pipe at his front gate most fair days, seen on the street corner by print-shop workers heading home at four in the morning. He ate almost nothing but bread, avoided meat entirely, and was never known to wear an overcoat even in the hardest winters — except once, briefly, after buying a second-hand one he wore only a single time. Despite this austerity, he wasn't a miser: he was known to indulge in Little Neck clams at a dollar a dozen when they first appeared each season, and prided himself on paying his taxes promptly and settling every purchase in cash, "hating debt and credit."</p>
+      <p>Thomas died 25 September 1878, at over 80 years old, from what his obituary called "pure exhaustion of nature" — he had declined medical attention, nursing, or companionship through his final illness. One person stayed close to him through it: his son-in-law David Crossley, husband of his late daughter Jane, who had died nine years earlier in 1869. The obituary records that Crossley "was a daily visitor during the lonely old man's last sickness, and being an old friend, has attended to his affairs since that event" — a quiet, lasting loyalty that outlasted the marriage that first connected the two families.</p>
+      <p class="placeholder">Additional biography will be added as research deepens. If you have information about Thomas Alston, please use the contribution form below.</p>
+    </div>
+  </div>
+
+  <!-- OBITUARY -->
+  <div class="bio-section">
+    <div class="section-label">Obituary — "Death of a Singular Old Gentleman," 1878</div>
+    <div class="letter-box">
+      <div class="letter-head">Titusville Herald, 28 September 1878, page 3.</div>
+      <p>The late Thomas Alston, whose funeral will take place to-day, was one of our oldest citizens and had lived here since 1841. He was an Englishman and used to live in the English Settlement, Rome township. He was a cabinet maker by trade, but for many years had lived at ease, enjoying an income sufficient for his moderate wants, being the owner of several good paying business houses and lots on North Franklin Street. Since the death of his wife, last year, he had lived alone in his little home, with no companion but his rat-and-tan dog, to whom he was affectionately attached.</p>
+      <p>The old man might be seen almost any fair day, at his front gate, in his shirt sleeves, bare headed, smoking his clay pipe, and looking meditatively out in the street. The compositors of the Herald office, in going home summer mornings at about 4 o'clock, almost invariably saw the old man on the street corner. "Solitary and alone." His table was as simple as a hermit's; he eschewed animal food and lived almost literally on bread alone; yet he was never sick and died from pure exhaustion of nature at over 80, declining medical attention, or nursing, or any companionship.</p>
+      <p>He was not known ever to indulge in the luxury of an overcoat, even in the hardest winter, except when he lately bought a second-hand one, and that he never was known to wear but once. Yet he did not seem to be parsimonious. He would have Little Neck clams on their first appearance in the market, though they cost a dollar a dozen, and seemed to enjoy this species of extravagance. He was the first man in the city to pay his taxes and assessments every year and liked to pay in cash for all he bought, hating debt and credit.</p>
+      <p>Crossley was a daily visitor during the lonely old man's last sickness, and being an old friend, has attended to his affairs since that event.</p>
+      <div class="letter-credit">Transcribed and shared on Find A Grave by contributor Virginia Bates-Hulings. Spelling and punctuation lightly regularized for readability.</div>
+    </div>
+  </div>
+
+  <!-- FAMILY CONNECTIONS -->
+  <div class="bio-section">
+    <div class="section-label">Family connections</div>
+    <div class="fam-grid">
+      <div>
+        <div class="fam-group-label">❤️ Spouse</div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <span class="fam-name ext">Elizabeth Warrick Alston</span>
+            <div class="fam-dates">1796/97 – 1877 <span class="conf conf-prob">Probable, per obituary</span></div>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="fam-group-label">👪 Parents</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6;">
+            <strong>Thomas Alston Sr.</strong> (1748, Lancashire — 30 Apr 1822, Lancashire) and <strong>Ann Inskip</strong> (1753 — 1830), confirmed via matching wife, children, and dates across independent records. Ann was a sister of <a href="jane-inskip-harrison.html" style="color:var(--link);">Jane Inskip Harrison</a>, making Thomas her nephew — see research note below.
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="fam-group-label">👶 Children — 2 known</div>
+        <div class="children-grid">
+          <div class="child-item">
+            <a class="child-name" href="jane-alston-crossley.html">Jane Alston Crossley</a>
+            <div class="child-dates">1821 – 1869 · Buried here</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name ext">Ambrose Alston</span>
+            <div class="child-dates">1824 – 1898</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="fam-group-label">👨‍👦 Devoted son-in-law</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6;">
+            <a href="#" style="color:var(--muted);">David Crossley</a> — Jane's husband, cared for Thomas through his final illness and administered his affairs afterward, nine years after Jane's own death.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fam-key">
+      <span>Names in blue = page available on this site</span>
+      <span>Grey names = not yet built or unconfirmed</span>
+    </div>
+  </div>
+
+  <!-- MONUMENT -->
+  <div class="bio-section">
+    <div class="section-label">Monument</div>
+    <div style="background:var(--white);border:1px solid var(--border);padding:12px;">
+      <div style="font-size:11px;color:var(--muted);line-height:1.7;padding:10px;border:1px solid var(--border);margin-bottom:10px;background:var(--cream);">
+        <strong>Inscription:</strong><br>
+        Thomas Alston<br>
+        Died Sept. 25, 1878<br>
+        Aged 82 Yrs. 4 Ms. 13 Ds.
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Type</span>Not yet field-documented</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Condition</span>Not yet field-documented</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Epitaph</span>Confirmed via photograph, above</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Find A Grave</span><span style="color:var(--muted);font-size:10px;">Memorial #51911632</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="bio-section">
+    <div class="section-label">Sources &amp; notes</div>
+    <div class="sources-cols">
+      <ul class="source-list">
+        <li class="source-item">Find A Grave memorial #51911632 — birth, death, burial, spouse, children, headstone inscription, and full obituary; photos by Rusty Davis and Virginia Bates-Hulings</li>
+        <li class="source-item">Titusville Herald, 28 September 1878, "Death of a Singular Old Gentleman" — the primary source for nearly all biographical detail on this page</li>
+        <li class="source-item">Ancestry.com — precise birth date (12 May 1796); parents Thomas Alston Sr. and Ann Inskip, confirmed via matching wife, children, and dates; Ancestry's own relationship tool identifies Thomas as a blood relative of the site's own researcher, Scott Morris</li>
+        <li class="source-item">English Settlement Cemetery master record</li>
+        <li class="source-item">Cross-referenced with Jane Alston Crossley biography page</li>
+      </ul>
+      <div>
+        <div class="research-note"><strong>Confirmed connection to the Harrison family:</strong> Thomas Alston's parents are Thomas Alston Sr. and Ann Inskip, confirmed through matching wife, children, and dates verified across independent records. Ann Inskip was the sister of Jane Inskip Harrison — making Thomas Alston her nephew, and connecting the Alston family to the Harrisons by blood, independent of Jane Alston's later marriage into the Crossley family. David Crossley, Jane Alston's husband, was Jane Inskip Harrison's own grandson through her daughter Anne — meaning David and Jane Alston Crossley were second cousins to each other, both descended from the two Inskip sisters, Jane and Ann. This resolves what had been a promising but unconfirmed lead, independently suggested by both an Ancestry hint and Craig Thornber's separate genealogical research.</div>
+        <div class="research-note" style="margin-top:8px;">Elizabeth Warrick Alston's death year is given as 1877 here, based on Thomas's obituary ("since the death of his wife, last year") — a contemporary account from people who knew him, treated as more reliable than the alternatives. Find A Grave records 1878, and a separate Ancestry hint gives 1893; both are noted but not treated as authoritative.</div>
+        <div class="last-updated">Last updated: August 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTRIBUTE -->
+  <div class="bio-section">
+    <div class="section-label">Contribute information</div>
+    <div class="contrib-intro">Do you have photographs, documents, family memories, or corrections relating to Thomas Alston? Submissions are reviewed by the museum curator before publication and will be credited to you by name.</div>
+    <div class="contrib-grid">
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your name</div>
+        <input class="contrib-input" type="text" placeholder="Jane Smith">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Email address</div>
+        <input class="contrib-input" type="email" placeholder="jane@example.com">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your connection</div>
+        <input class="contrib-input" type="text" placeholder="Descendant, historian, researcher…">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Source or evidence</div>
+        <input class="contrib-input" type="text" placeholder="Census record, family Bible, photograph…">
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Information or correction</div>
+        <textarea class="contrib-input" placeholder="Describe what you know and where the information comes from…"></textarea>
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Attach photos or documents</div>
+        <div class="file-area" onclick="document.getElementById('file-in').click()">
+          <span style="font-size:20px;display:block;margin-bottom:4px;">📎</span>
+          <span>Click to attach photos, scanned documents, or other files</span>
+          <span style="font-size:9px;">JPG, PNG, PDF, TIFF · max 10MB per file</span>
+          <input id="file-in" type="file" multiple accept="image/*,.pdf,.tiff" onchange="showFiles(this)">
+        </div>
+        <div class="file-list" id="file-list"></div>
+      </div>
+    </div>
+    <div class="contrib-footer">
+      <div class="contrib-note">Submissions are reviewed before publication. You will be contacted at your email address if we have questions or wish to use your contribution.</div>
+      <button class="contrib-btn" onclick="submitContribution()">Submit for review →</button>
+    </div>
+  </div>
+
 </div>
+
 <footer id="footer">
-  <div id="ft-l">English Settlement Cemetery Digital Museum &middot; Rome Township, Crawford County, Pennsylvania</div>
-  <div id="ft-r">Research &nbsp;&middot;&nbsp; Preserve &nbsp;&middot;&nbsp; Remember</div>
+  <div id="ft-l">English Settlement Cemetery Digital Museum · Rome Township, Crawford County, Pennsylvania</div>
+  <div id="ft-r">Research &nbsp;·&nbsp; Preserve &nbsp;·&nbsp; Remember</div>
 </footer>
+
+<script>
+function showFiles(input){
+  const list=document.getElementById('file-list');
+  if(input.files.length===0){list.textContent='';return;}
+  list.textContent=input.files.length+' file(s) selected: '+[...input.files].map(f=>f.name).join(', ');
+}
+function submitContribution(){
+  const name=document.querySelector('input[placeholder="Jane Smith"]').value;
+  const email=document.querySelector('input[type="email"]').value;
+  const connect=document.querySelector('input[placeholder="Descendant, historian, researcher…"]').value;
+  const source=document.querySelector('input[placeholder="Census record, family Bible, photograph…"]').value;
+  const info=document.querySelector('textarea').value;
+  const subject=encodeURIComponent('Contribution: Thomas Alston (1796-1878) — English Settlement Cemetery');
+  const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nConnection: '+connect+'\nSource: '+source+'\n\nInformation:\n'+info);
+  window.location.href='mailto:scotty8828@gmail.com?subject='+subject+'&body='+body;
+}
+</script>
+
 </body>
 </html>
