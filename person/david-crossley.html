@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>David Crossley — English Settlement Cemetery</title>
-  <meta name="description" content="David Crossley (1817 &ndash; 1880), English Settlement Cemetery, Rome Township, Crawford County, Pennsylvania. Biography research in progress.">
+  <meta name="description" content="Biography of David Crossley (1817–1880), grandson of Jane Inskip Harrison, pioneer oil producer near the Drake Well, husband of Jane Alston Crossley.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;1,8..60,300&family=Inter:wght@300;400;500;600&display=swap">
   <style>
@@ -13,7 +13,9 @@
       --forest:#1B3028;--forest-light:#3D6B50;
       --cream:#F2EDE3;--parch:#E8E0D0;--white:#FDFAF4;
       --gold:#C8A84B;--text:#1C1408;--muted:#6B5A3E;
-      --border:#D0C4A8;--link:#1A3A6A;
+      --border:#D0C4A8;--border-dk:#B8A888;
+      --doc:#3B6D11;--prob:#854F0B;--unv:#A32D2D;
+      --link:#1A3A6A;
     }
     html,body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);font-size:14px;line-height:1.6;}
     #nav{background:#243D30;border-bottom:1px solid rgba(200,168,75,0.15);position:sticky;top:0;z-index:100;}
@@ -22,57 +24,473 @@
     .ni{font-size:9px;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.48);padding:11px 10px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.15s;font-weight:500;flex-shrink:0;text-decoration:none;display:block;}
     .ni:hover{color:#fff;border-bottom-color:var(--gold);}
     .ns{width:1px;height:14px;background:rgba(255,255,255,0.1);flex-shrink:0;margin:auto 0;}
-
-    .wrap{max-width:600px;margin:0 auto;padding:0 0 3rem;}
-    .back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;}
-    .back:hover{color:var(--forest);}
-
-    .pending-card{
-      margin:20px;background:var(--white);border:1px solid var(--border);
-      padding:40px 30px;text-align:center;
-    }
-    .pending-icon{font-size:32px;margin-bottom:16px;opacity:0.5;}
-    .pending-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-    .pending-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:var(--text);margin-bottom:6px;}
-    .pending-dates{font-size:14px;color:var(--muted);margin-bottom:20px;font-family:'Source Serif 4',serif;}
-    .pending-badge{
-      display:inline-block;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
-      padding:6px 16px;border:1px solid var(--gold);color:#7A5C00;
-      background:rgba(200,168,75,0.1);margin-bottom:20px;font-weight:500;
-    }
-    .pending-msg{font-size:12px;color:var(--muted);font-family:'Source Serif 4',serif;font-style:italic;line-height:1.7;max-width:420px;margin:0 auto 20px;}
-    .pending-fam{font-size:11px;color:var(--muted);margin-bottom:4px;}
-    .contrib-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:16px;border-top:1px solid var(--border);padding-top:16px;}
-    .contrib-note a{color:var(--link);}
-
+    .bio-wrap{max-width:900px;margin:0 auto;padding:0 0 3rem;}
+    .bio-back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+    .bio-back:hover{color:var(--forest);}
+    .bio-header{display:flex;gap:20px;align-items:flex-start;padding:0 20px 20px;border-bottom:2px solid var(--border);}
+    .bio-photo-col{flex-shrink:0;width:140px;text-align:center;}
+    .bio-photo{width:140px;height:180px;background:var(--parch);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--muted);text-align:center;padding:12px;overflow:hidden;position:relative;}
+    .bio-photo img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+    .bio-photo-credit{font-size:9px;color:var(--muted);margin-top:6px;line-height:1.4;}
+    .bio-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    .bio-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text);margin-bottom:4px;letter-spacing:0.02em;}
+    .bio-tagline{font-family:'Source Serif 4',serif;font-style:italic;font-size:13px;color:var(--muted);margin-bottom:8px;}
+    .bio-dates{font-size:15px;color:var(--muted);margin-bottom:4px;font-family:'Source Serif 4',serif;}
+    .bio-age{font-size:12px;color:var(--muted);margin-bottom:8px;}
+    .bio-fam-tag{display:inline-block;font-size:10px;padding:3px 10px;border:1px solid var(--border);color:var(--muted);background:var(--white);letter-spacing:0.06em;}
+    .vital-strip{display:flex;gap:20px;flex-wrap:wrap;margin-top:12px;}
+    .vital-block{display:flex;align-items:flex-start;gap:6px;}
+    .vital-ico{font-size:14px;color:var(--muted);margin-top:1px;}
+    .vital-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .vital-val{font-size:12px;color:var(--text);font-weight:500;}
+    .vital-sub{font-size:10px;color:var(--muted);}
+    .conf{display:inline-block;font-size:8px;padding:1px 5px;border-radius:1px;margin-left:4px;vertical-align:middle;letter-spacing:0.06em;text-transform:uppercase;}
+    .conf-doc{color:var(--doc);border:1px solid var(--doc);}
+    .conf-prob{color:var(--prob);border:1px solid var(--prob);}
+    .conf-unv{color:var(--unv);border:1px solid var(--unv);}
+    .bio-section{padding:16px 20px;border-bottom:1px solid var(--border);}
+    .section-label{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+    .section-label::after{content:'';flex:1;height:0.5px;background:var(--border);}
+    .bio-prose{font-size:13px;line-height:1.85;color:var(--text);}
+    .bio-prose p+p{margin-top:10px;}
+    .bio-prose .placeholder{color:var(--muted);font-style:italic;font-size:12px;}
+    .letter-box{background:var(--white);border:1px solid var(--border-dk);padding:18px 20px;font-family:'Source Serif 4',serif;font-size:13px;line-height:1.85;color:var(--text);position:relative;}
+    .letter-box::before{content:'📰';position:absolute;top:12px;right:16px;font-size:16px;}
+    .letter-head{font-style:italic;color:var(--muted);font-size:12px;margin-bottom:10px;}
+    .letter-box p+p{margin-top:10px;}
+    .letter-sig{margin-top:12px;font-style:italic;}
+    .letter-credit{font-size:10px;color:var(--muted);margin-top:12px;font-family:'Inter',sans-serif;font-style:normal;}
+    .lt-wrap{background:var(--white);border:1px solid var(--border);padding:14px;overflow-x:auto;}
+    .lt-track{position:relative;padding-bottom:28px;min-width:750px;}
+    .lt-line{position:absolute;top:6px;left:0;right:0;height:1px;background:var(--border);}
+    .lt-dots{display:flex;justify-content:space-between;position:relative;}
+    .lt-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
+    .lt-dot{width:10px;height:10px;border-radius:50%;background:#2A5A3A;border:2px solid var(--white);position:relative;z-index:1;flex-shrink:0;}
+    .lt-dot.death{background:var(--unv);}
+    .lt-dot.marriage{background:var(--gold);}
+    .lt-dot.oil{background:#3D5A80;}
+    .lt-year{font-size:9px;font-weight:600;color:var(--text);}
+    .lt-event{font-size:9px;color:var(--muted);text-align:center;line-height:1.3;max-width:90px;}
+    .lt-event.death{color:var(--unv);}
+    .lt-event.marriage{color:#7A5C00;}
+    .lt-event.oil{color:#3D5A80;}
+    .fam-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .fam-group-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
+    .fam-person{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+    .fam-avatar{width:30px;height:30px;border-radius:50%;background:var(--parch);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
+    .fam-name{font-size:11px;color:var(--link);font-weight:500;text-decoration:none;display:block;}
+    .fam-name:hover{text-decoration:underline;}
+    .fam-name.ext{color:var(--muted);font-weight:400;}
+    .fam-dates{font-size:9px;color:var(--muted);}
+    .children-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+    .child-item{padding:3px 0;}
+    .child-name{font-size:10px;color:var(--link);text-decoration:none;display:block;}
+    .child-name:hover{text-decoration:underline;}
+    .child-name.ext{color:var(--muted);font-weight:400;}
+    .child-dates{font-size:9px;color:var(--muted);}
+    .fam-key{font-size:10px;color:var(--muted);margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;}
+    .sources-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .source-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+    .source-item{font-size:10px;color:var(--muted);padding-left:12px;position:relative;line-height:1.5;}
+    .source-item::before{content:'·';position:absolute;left:0;}
+    .research-note{font-size:10px;color:var(--muted);line-height:1.6;background:var(--white);border:1px solid var(--border);padding:10px;}
+    .research-note.flag{border-color:var(--unv);}
+    .last-updated{font-size:9px;color:var(--muted);text-align:right;margin-top:8px;}
+    .contrib-intro{font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.6;}
+    .contrib-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+    .contrib-field{display:flex;flex-direction:column;gap:3px;}
+    .contrib-field.full{grid-column:1/-1;}
+    .contrib-lbl{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .contrib-input{font-size:11px;padding:6px 8px;border:1px solid var(--border);background:var(--cream);color:var(--text);width:100%;font-family:'Inter',sans-serif;}
+    .contrib-input:focus{outline:none;border-color:var(--forest-light);}
+    textarea.contrib-input{resize:vertical;min-height:70px;}
+    .file-area{border:1.5px dashed var(--border);padding:14px;text-align:center;cursor:pointer;background:var(--cream);transition:border-color 0.15s;}
+    .file-area:hover{border-color:var(--forest-light);}
+    .file-area span{font-size:10px;color:var(--muted);line-height:1.5;display:block;}
+    .file-area input{display:none;}
+    .file-list{font-size:10px;color:var(--forest-light);margin-top:4px;min-height:14px;}
+    .contrib-footer{display:flex;align-items:center;gap:12px;margin-top:10px;}
+    .contrib-note{font-size:9px;color:var(--muted);flex:1;line-height:1.5;}
+    .contrib-btn{font-size:11px;padding:8px 20px;background:var(--forest);color:#fff;border:none;cursor:pointer;letter-spacing:0.06em;flex-shrink:0;font-family:'Inter',sans-serif;}
+    .contrib-btn:hover{background:var(--forest-light);}
     #footer{background:var(--forest);border-top:1px solid rgba(200,168,75,0.1);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
     #ft-l{font-size:10px;color:rgba(255,255,255,0.32);font-family:'Source Serif 4',serif;font-style:italic;max-width:380px;line-height:1.6;}
     #ft-r{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(200,168,75,0.45);}
+    @media(max-width:600px){
+      .bio-header{flex-direction:column;}
+      .fam-grid,.contrib-grid,.sources-cols{grid-template-columns:1fr;}
+      .children-grid{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
+
 <nav id="nav">
   <div id="nav-in">
-    <a class="ni" href="../index.html">People Timeline</a><div class="ns"></div>
-    <a class="ni" href="../about.html">About</a>
+    <a class="ni" href="../index.html">👥 People Timeline</a><div class="ns"></div>
+    <a class="ni" href="#">📷 The Cemetery</a><div class="ns"></div>
+    <a class="ni" href="#">👨‍👩‍👧 Families</a><div class="ns"></div>
+    <a class="ni" href="#">🗺 Historical Maps</a><div class="ns"></div>
+    <a class="ni" href="#">🖼 Photo Gallery</a><div class="ns"></div>
+    <a class="ni" href="#">📄 Documents</a><div class="ns"></div>
+    <a class="ni" href="../about.html">ℹ About</a>
   </div>
 </nav>
-<div class="wrap">
-  <a class="back" href="../index.html">&larr; Back to timeline</a>
-  <div class="pending-card">
-    <div class="pending-icon">📜</div>
-    <div class="pending-eyebrow">English Settlement Cemetery &middot; Rome Township, PA</div>
-    <div class="pending-name">David Crossley</div>
-    <div class="pending-dates">1817 &ndash; 1880</div>
-    <div class="pending-fam">Crossley family</div>
-    <div class="pending-badge">Research Pending</div>
-    <div class="pending-msg">This person's biography is currently being researched. Historical records are being reviewed and verified before publication to ensure accuracy. Check back soon, or contribute what you know below.</div>
-    <div class="contrib-note">Have information about David Crossley? Contact Scott Morris at <a href="mailto:scotty8828@gmail.com">scotty8828@gmail.com</a> to contribute photographs, documents, or family history.</div>
+
+<div class="bio-wrap">
+
+  <a class="bio-back" href="../index.html">← Back to timeline</a>
+
+  <!-- HEADER -->
+  <div class="bio-header">
+    <div class="bio-photo-col">
+      <div class="bio-photo">
+        <span style="font-size:36px;">👤</span>
+        <span style="font-size:10px;margin-top:6px;">No photograph<br>yet found</span>
+      </div>
+      <div class="bio-photo-credit">English Settlement Cemetery<br>Rome Township, PA</div>
+    </div>
+    <div>
+      <div class="bio-eyebrow">English Settlement Cemetery · Crawford County, PA</div>
+      <div class="bio-name">David Crossley</div>
+      <div class="bio-tagline">Carried to America as a boy by his grandmother. Pioneer oil producer. Freemason.</div>
+      <div class="bio-dates">17 March 1817 – 11 October 1880</div>
+      <div class="bio-age">Died aged 63 years</div>
+      <div class="bio-fam-tag">Crossley family</div>
+      <div class="vital-strip">
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Born</div>
+            <div class="vital-val">17 Mar 1817 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Blackburn, Lancashire, England</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">⛵</div>
+          <div>
+            <div class="vital-label">Emigrated</div>
+            <div class="vital-val">As a boy <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Landed New York City, brought by his grandmother</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">💍</div>
+          <div>
+            <div class="vital-label">Married</div>
+            <div class="vital-val">17 Mar 1839 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Jane Alston, in New York City — his own 22nd birthday</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">🛢️</div>
+          <div>
+            <div class="vital-label">Struck oil</div>
+            <div class="vital-val">Winter 1859–60 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Near the Drake Well — 200 barrels a day</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Died</div>
+            <div class="vital-val">11 Oct 1880 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Titusville, PA — after a long illness</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">🪦</div>
+          <div>
+            <div class="vital-label">Buried</div>
+            <div class="vital-val">English Settlement Cemetery</div>
+            <div class="vital-sub">With Masonic honors</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- BIOGRAPHY -->
+  <div class="bio-section">
+    <div class="section-label">Biography</div>
+    <div class="bio-prose">
+      <p>David Crossley was born 17 March 1817 in Blackburn, Lancashire, England, the son of Robert Crossley and Anne (also recorded as Ann or Nancy) Harrison Crossley — Anne being a daughter of Jane Inskip Harrison, the matriarch whose family would found the English Settlement a generation later. Family tradition, recorded in his 1880 obituary, held that David was brought to America as a child by his grandmother. Two independently published historical accounts tell a different, more dramatic story: David ran away from home and crossed the Atlantic as a stowaway in 1828, at eleven years old. One working theory holds that both accounts are true at once — that David stowed away aboard the very ship his grandmother's household was sailing on, running from home to join a crossing he wasn't officially part of, which would explain how a later, secondhand telling simplified his journey to "brought by his grandmother." Confirming this would likely require matching a ship's manifest to Jane's own documented household, since stowaways rarely appear on passenger lists themselves. He found relatives at Paterson, New Jersey, and lived with them for roughly seven years before apprenticing himself out to learn blacksmithing in New York, a trade he worked at for about twelve years.</p>
+      <p>David grew to manhood in New York City. There, on 17 March 1839 — his own twenty-second birthday — he married Jane Alston, daughter of Thomas Alston. In the winter of 1841–42, David walked from New York to Titusville, Pennsylvania, to scout the area for a place to settle, then walked back to New York that spring. That autumn, he brought his family west for good. David and Jane were, in fact, second cousins: both descended from the two Inskip sisters, Jane Inskip Harrison and Ann Inskip Alston, who married the founders of two different branches of this extended family.</p>
+      <p>The Crossleys tried farming for a few years before David returned to blacksmithing in Titusville. They raised at least ten children, seven of whom died young, most within a devastating span in the winters of 1860 and 1861 — that story, and Jane's own, are documented on her biography page elsewhere on this site. Of the children who survived to adulthood, son James P. Crossley and daughter Jennie S. Crossley Burns lived on well past their parents; a third, Thomas J. Crossley, is also documented on this site, having died in 1875 and leaving two children of his own, Cora and David.</p>
+      <p>David's "energetic spirit" — in the words of his obituary — found its outlet in the discovery of petroleum. In partnership with William Barnsdall, William H. Abbott, and P. T. Witherop, under the firm name Crossley, Witherop & Company, David helped drill what several historical accounts describe as the world's third oil well, completed 10 March 1860 — just months after Edwin Drake's landmark well had proven the region's oil could be commercially produced. The well, sunk 140 feet using a spring-pole rig, is credited in David's obituary with 200 barrels a day; a more technical 1898 account puts sustained production at 70 to 75 barrels a day. Both figures are likely accurate at different moments — the shallow, coarse sands typical of this earliest phase of the boom often produced a dramatic initial surge that quickly settled into a lower, steadier rate. Production declined that autumn and the well was abandoned, but David wasn't finished: in 1865 he bought out his partners and drilled deeper, to 550 feet, only to abandon it again due to water. In 1872, working alongside his own sons, he tried again, eventually managing the water well enough to turn the property profitable. In 1873, David partnered with William Barnsdall once more to drill the first producing well in the Bradford oil field — a second, separate chapter in the region's oil history. His health failed in 1875, and he retired from the business.</p>
+      <p>Not every part of David's Titusville life was straightforward. David had purchased his blacksmith shop's land from Jonathan Titus, the town's original proprietor, back in 1855, well before the oil boom transformed the area. As Titusville's population and street grid exploded through the 1860s, the city moved to redesign and open Martin Street directly through ground David had occupied and built on for over a decade. He resisted, refusing to give up an established business and property on the city's say-so, and the dispute went to court: in 1869 David and his son Thomas J. Crossley were convicted of obstructing the street, and a protracted legal fight continued into 1870, eventually drawing in Jane's estate after her death and their daughter Jennie's own claim to the land. Read one way, it's a conviction; read another, it's a longtime property owner standing his ground against a rapidly growing city trying to redraw the map through land he'd held since before the boom that made the city grow.</p>
+      <p>David was also a committed Freemason. He was initiated into Oil Creek Lodge on 22 December 1856, barely three weeks after the lodge itself was founded, and served as its Master twice, in 1859 and again in 1864.</p>
+      <p>David fell ill and, after a long decline, died at a quarter before three in the morning of 11 October 1880, at the home of his old friend and business partner William Barnsdall, at 63 years old. He was buried at English Settlement Cemetery with Masonic honors. His detailed will, registered that October, named his son James P. Crossley as executor and trustee, distributed his oil interests and Titusville properties among his surviving children and Thomas's two young children, and named witnesses including his own brother-in-law, Ambrose Alston. The will also reveals that David had served as trustee under the will of his father-in-law, Thomas Alston, appointing his son James to succeed him in that role — a formal record of the same devotion Thomas's own obituary described, when it noted that David had cared for his lonely father-in-law through his final illness and administered his affairs afterward.</p>
+      <p class="placeholder">Additional biography will be added as research deepens. If you have information about David Crossley, please use the contribution form below.</p>
+    </div>
+  </div>
+
+  <!-- OBITUARY -->
+  <div class="bio-section">
+    <div class="section-label">Obituary — Titusville Morning Herald, 11 October 1880</div>
+    <div class="letter-box">
+      <div class="letter-head">Published the day of his death.</div>
+      <p>Death of David Crossley — At a quarter before 3 o'clock this morning David Crossley, who has been sick for a long time, breathed his last at his home in Hon. William Barnsdall's house. Deceased was 63 years of age and has lived in this section of Pennsylvania for the past thirty-five years, having come to America from his native country, England, at an early age. He leaves one daughter, Mrs. Burns, and one son. The burial will take place next Wednesday and the Masons will take charge of the funeral.</p>
+      <p>Yesterday morning we were pained to chronicle the death of David Crossley, one of our oldest and most esteemed citizens. His soul passed peacefully away to rest. Mr. Crossley was born in England and when a child was brought to the United States by his grandmother, landing in New York city. In the Metropolis he grew to manhood and married Miss Alston, daughter of Mr. Thomas Alston. Removing to this section of the state thirty-five years ago, Mr. and Mrs. Crossley took up their residence in the English Settlement.</p>
+      <p>The discovery of petroleum found Mr. Crossley's energetic spirit in the field of adventure, and he, together with Hon. William Barnsdall and Mr. P. T. Witherop, put down a well not far from the Drake well, in the winter of 1859–60, a few months after Colonel Drake had achieved his glorious success. Mr. Crossley's well was, of course, among the earliest drilled, and it gave to its owner the distinction of being among the real pioneer producers of oil, 200 barrels per day being the result of the new venture. This was a production thought to be marvelous in those days, and the excitement that was created spread far and wide, even attracting more attention in eastern cities than the Drake well. Mr. Crossley and his partners were "oil princes" then in the eyes of the hundreds of people who flocked into Titusville from all parts of the country.</p>
+      <p>This well, which to-day has a paying production, was followed by other enterprises of good, bad, and indifferent character, Mr. Crossley all the while showing a penchant for "wild-catting." He was associated with Messrs. Barnsdall and Watson in most of his operations. In his social and business habits Mr. Crossley was as near being exemplary as human nature could be. He was an upright, true conscientious man in every respect, and drew about him many valuable friends, who, beside his son and daughter, will deeply mourn his demise. His career as a Mason is prominent, being at the time of his death Past Master of Oil Creek Lodge AYM 308. This lodge was instituted Dec. 1st, 1856, and he was initiated as a member on the 22nd of the same month. He was Master in 1859 and again in 1864. This lodge will take charge of the funeral, which will be held in the Universalist church to-morrow morning at 10 o'clock. Mr. O. P. Kellogg, of Ohio, will officiate. The body will be buried with Masonic honors in the English Settlement cemetery.</p>
+      <div class="letter-credit">Transcribed and shared on Find A Grave by contributor Robert Wheatall. Spelling and punctuation lightly regularized for readability.</div>
+    </div>
+  </div>
+
+  <!-- LIFE TIMELINE -->
+  <div class="bio-section">
+    <div class="section-label">Life timeline</div>
+    <div class="lt-wrap">
+      <div class="lt-track">
+        <div class="lt-line"></div>
+        <div class="lt-dots">
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1817</div>
+            <div class="lt-event">Born<br>Blackburn, Lancashire</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1828</div>
+            <div class="lt-event">Emigrated<br>as a stowaway, age 11</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot marriage"></div>
+            <div class="lt-year">1839</div>
+            <div class="lt-event marriage">Married<br>Jane Alston, NYC</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1842</div>
+            <div class="lt-event">Settled<br>English Settlement, Rome Twp.</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1856</div>
+            <div class="lt-event">Initiated<br>Oil Creek Lodge</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot oil"></div>
+            <div class="lt-year" style="color:#3D5A80;">1860</div>
+            <div class="lt-event oil">World's 3rd<br>oil well completed</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot oil"></div>
+            <div class="lt-year" style="color:#3D5A80;">1873</div>
+            <div class="lt-event oil">First producing well<br>Bradford oil field</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot death"></div>
+            <div class="lt-year" style="color:#A32D2D;">1880</div>
+            <div class="lt-event death">Died<br>11 Oct 1880</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAMILY CONNECTIONS -->
+  <div class="bio-section">
+    <div class="section-label">Family connections</div>
+    <div class="fam-grid">
+      <div>
+        <div class="fam-group-label">👪 Parents</div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <span class="fam-name ext">Robert Crossley</span>
+            <div class="fam-dates">m. Anne Harrison, 24 Dec 1815, Leyland, Lancashire</div>
+          </div>
+        </div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <span class="fam-name ext">Anne Harrison Crossley</span>
+            <div class="fam-dates">b. c.1786 · Not buried here</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="fam-group-label">❤️ Spouse</div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <a class="fam-name" href="jane-alston-crossley.html">Jane Alston Crossley</a>
+              <div class="fam-dates">1821 – 1869 · m. 17 Mar 1839 · Buried here</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="fam-group-label">📍 Origin</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6;">
+            Grandson of <a href="jane-inskip-harrison.html" style="color:var(--link);">Jane Inskip Harrison</a>, one of the settlement's founding figures.
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="fam-group-label">👶 Children — 10 known</div>
+        <div class="children-grid">
+          <div class="child-item">
+            <a class="child-name" href="anne-crossley.html">Anne Crossley</a>
+            <div class="child-dates">1840 – 1842 · Buried here</div>
+          </div>
+          <div class="child-item">
+            <a class="child-name" href="thomas-j-crossley.html">Thomas J. Crossley</a>
+            <div class="child-dates">1844 – 1875 · Buried here · father of Cora &amp; David</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name ext">Elizabeth Crossley</span>
+            <div class="child-dates">1847 – 1848</div>
+          </div>
+          <div class="child-item">
+            <a class="child-name" href="david-a-crossley.html">David A. Crossley</a>
+            <div class="child-dates">1849 – 1860</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name ext">James P. Crossley</span>
+            <div class="child-dates">1852 – 1915 · Not buried here · executor of David's will</div>
+          </div>
+          <div class="child-item">
+            <a class="child-name" href="anna-crossley.html">Anna Crossley</a>
+            <div class="child-dates">1854 – 1860</div>
+          </div>
+          <div class="child-item">
+            <a class="child-name" href="mary-e-crossley.html">Mary E. Crossley</a>
+            <div class="child-dates">1857 – 1858 · Buried here</div>
+          </div>
+          <div class="child-item">
+            <a class="child-name" href="fidelia-k-crossley.html">Fidelia K. Crossley</a>
+            <div class="child-dates">1859 – 1861</div>
+          </div>
+          <div class="child-item">
+            <a class="child-name" href="alice-crossley.html">Alice Crossley</a>
+            <div class="child-dates">1861 – 1861 · Buried here</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name ext">Jennie S. Crossley Burns</span>
+            <div class="child-dates">Not buried here · m. William H. Burns</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="fam-group-label">✅ Resolved</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6;">
+            David's 1880 obituary named surviving children "one daughter, Mrs. Burns, and one son" — a 1870 court record identifies her directly as Jennie S. Crossley Burns, a previously undocumented tenth child.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fam-key">
+      <span>Names in blue = page available on this site</span>
+      <span>Grey names = not yet built or not buried here</span>
+    </div>
+  </div>
+
+  <!-- MONUMENT -->
+  <div class="bio-section">
+    <div class="section-label">Monument</div>
+    <div style="background:var(--white);border:1px solid var(--border);padding:12px;">
+      <div style="font-size:11px;color:var(--muted);font-style:italic;text-align:center;padding:10px;border:1px dashed var(--border);margin-bottom:10px;">A monument photograph exists on Find A Grave (shared by contributor Robert Wheatall) but has not yet been examined or transcribed in detail for this page.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Type</span>Not yet field-documented</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Condition</span>Not yet field-documented</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Epitaph</span>Pending transcription</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Find A Grave</span><span style="color:var(--muted);font-size:10px;">Memorial #13912119</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="bio-section">
+    <div class="section-label">Sources &amp; notes</div>
+    <div class="sources-cols">
+      <ul class="source-list">
+        <li class="source-item">Find A Grave memorial #13912119 — obituary, Titusville Morning Herald, 11 Oct 1880, transcribed and photographed by contributor Robert Wheatall</li>
+        <li class="source-item">John J. McLaurin, <em>Sketches in Oil</em> (1898), pp. 79–80 — detailed account of David's stowaway emigration, blacksmithing apprenticeship, walk to Titusville, and full oil well history through 1873</li>
+        <li class="source-item">"The English Settlement," Crawford County Genealogy article, 1990 — corroborates the 1828 stowaway emigration and 1841–42 scouting trip on foot</li>
+        <li class="source-item">Biography from the David Crossley file, Drake Well Museum (source publication not noted) — additional detail on the oil wells drilled 1859–1873</li>
+        <li class="source-item">Titusville Herald, 30 Apr and 2 May 1870 — court record naming daughter Jennie S. Crossley Burns and her husband William H. Burns, resolving the "Mrs. Burns" identity from David's own obituary; also documents the land dispute and 1869 conviction, including that David's title traced to an 1855 purchase from Jonathan Titus, predating the oil boom</li>
+        <li class="source-item">Titusville Herald, 12 Oct 1880, "A Pioneer Operator – His Career" — a second, longer obituary with additional detail on David's Masonic career and oil business</li>
+        <li class="source-item">Will of David Crossley, registered 27 Oct 1880, Crawford County Will Book E, pp. 324–327 — names all surviving children and grandchildren, appoints James P. Crossley executor, references David's role as trustee under Thomas Alston's will</li>
+        <li class="source-item">FamilySearch and IGI records — baptism 25 Jun 1820 at St. Paul's, Blackburn (birth year given there as 1818, an outlier — see note); IGI independently confirms 17 Mar 1817 and the 17 Mar 1839 marriage date</li>
+        <li class="source-item">Craig Thornber, "The Inskip Family of Bolton by Bowland" (thornber.net) — confirms parents Robert Crossley and Anne Harrison, marriage 24 Dec 1815, Leyland, Lancashire</li>
+        <li class="source-item">English Settlement Cemetery master record</li>
+        <li class="source-item">Cross-referenced with Jane Alston Crossley, Thomas J. Crossley, and Jane Inskip Harrison biography pages</li>
+      </ul>
+      <div>
+        <div class="research-note">One FamilySearch record gives David's birth year as 1818 (from a baptism dated 25 Jun 1820), a year later than the 1817 used throughout this page. The IGI record, Ancestry, and the arithmetic of his own obituary — which gives his age as 63 at his October 1880 death — all support 1817 instead; the 1818 figure is treated as a likely error in that single record.</div>
+        <div class="research-note" style="margin-top:8px;">David's emigration story exists in two different forms. His 1880 obituary, a secondhand recollection published at his death, says he was "brought to the United States by his grandmother." Two independently published, more detailed historical accounts — an 1898 mining history and a 1990 genealogy article — instead describe an eleven-year-old boy running away from home and crossing as a stowaway in 1828. Scott Morris's own working theory reconciles the two: David stowed away specifically aboard the same ship his grandmother Jane Inskip Harrison and her household were sailing on, running from home to join a crossing he wasn't officially part of, rather than boarding a separate vessel entirely. This would explain why the later obituary simplified the story to "brought by his grandmother," while the more detailed published accounts preserved the more dramatic reality. Unconfirmed pending a ship's manifest — stowaways, by nature, don't typically appear on official passenger lists, so proving this may depend on matching the sailing date and port to Jane's own documented household rather than finding David named directly.</div>
+        <div class="research-note" style="margin-top:8px;">The production figure for David's first oil well is given as 200 barrels a day in his 1880 obituary, but as 70–75 barrels a day in the more technical 1898 account in <em>Sketches in Oil</em>. Rather than a contradiction, both figures likely describe the same well at different points in its short life: the shallow, coarse producing sands common to this earliest phase of the Pennsylvania oil boom were known for a dramatic initial burst of production that quickly tapered off to a lower, steadier rate — the obituary's 200 barrels most likely reflects the well's brief early peak, and the 70–75 barrel figure its production once it settled.</div>
+        <div class="last-updated">Last updated: August 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTRIBUTE -->
+  <div class="bio-section">
+    <div class="section-label">Contribute information</div>
+    <div class="contrib-intro">Do you have photographs, documents, family memories, or corrections relating to David Crossley? Submissions are reviewed by the museum curator before publication and will be credited to you by name.</div>
+    <div class="contrib-grid">
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your name</div>
+        <input class="contrib-input" type="text" placeholder="Jane Smith">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Email address</div>
+        <input class="contrib-input" type="email" placeholder="jane@example.com">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your connection</div>
+        <input class="contrib-input" type="text" placeholder="Descendant, historian, researcher…">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Source or evidence</div>
+        <input class="contrib-input" type="text" placeholder="Census record, family Bible, photograph…">
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Information or correction</div>
+        <textarea class="contrib-input" placeholder="Describe what you know and where the information comes from…"></textarea>
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Attach photos or documents</div>
+        <div class="file-area" onclick="document.getElementById('file-in').click()">
+          <span style="font-size:20px;display:block;margin-bottom:4px;">📎</span>
+          <span>Click to attach photos, scanned documents, or other files</span>
+          <span style="font-size:9px;">JPG, PNG, PDF, TIFF · max 10MB per file</span>
+          <input id="file-in" type="file" multiple accept="image/*,.pdf,.tiff" onchange="showFiles(this)">
+        </div>
+        <div class="file-list" id="file-list"></div>
+      </div>
+    </div>
+    <div class="contrib-footer">
+      <div class="contrib-note">Submissions are reviewed before publication. You will be contacted at your email address if we have questions or wish to use your contribution.</div>
+      <button class="contrib-btn" onclick="submitContribution()">Submit for review →</button>
+    </div>
+  </div>
+
 </div>
+
 <footer id="footer">
-  <div id="ft-l">English Settlement Cemetery Digital Museum &middot; Rome Township, Crawford County, Pennsylvania</div>
-  <div id="ft-r">Research &nbsp;&middot;&nbsp; Preserve &nbsp;&middot;&nbsp; Remember</div>
+  <div id="ft-l">English Settlement Cemetery Digital Museum · Rome Township, Crawford County, Pennsylvania</div>
+  <div id="ft-r">Research &nbsp;·&nbsp; Preserve &nbsp;·&nbsp; Remember</div>
 </footer>
+
+<script>
+function showFiles(input){
+  const list=document.getElementById('file-list');
+  if(input.files.length===0){list.textContent='';return;}
+  list.textContent=input.files.length+' file(s) selected: '+[...input.files].map(f=>f.name).join(', ');
+}
+function submitContribution(){
+  const name=document.querySelector('input[placeholder="Jane Smith"]').value;
+  const email=document.querySelector('input[type="email"]').value;
+  const connect=document.querySelector('input[placeholder="Descendant, historian, researcher…"]').value;
+  const source=document.querySelector('input[placeholder="Census record, family Bible, photograph…"]').value;
+  const info=document.querySelector('textarea').value;
+  const subject=encodeURIComponent('Contribution: David Crossley (1817-1880) — English Settlement Cemetery');
+  const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nConnection: '+connect+'\nSource: '+source+'\n\nInformation:\n'+info);
+  window.location.href='mailto:scotty8828@gmail.com?subject='+subject+'&body='+body;
+}
+</script>
+
 </body>
 </html>
