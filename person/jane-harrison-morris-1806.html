@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jane Harrison Morris — English Settlement Cemetery</title>
-  <meta name="description" content="Biography of Jane Harrison Morris (1806–1887), daughter of Jane Inskip Harrison, and pioneer of the English Settlement, Rome Township, Crawford County, Pennsylvania.">
+  <meta name="description" content="Biography of Jane Harrison Morris (1806–1887), Yorkshire-born weaver, wife of Richard Morris, Rome Township, Crawford County, Pennsylvania — the first person from Crawford County to be cremated.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;1,8..60,300&family=Inter:wght@300;400;500;600&display=swap">
   <style>
@@ -18,18 +18,25 @@
       --link:#1A3A6A;
     }
     html,body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);font-size:14px;line-height:1.6;}
+
+    /* NAV */
     #nav{background:#243D30;border-bottom:1px solid rgba(200,168,75,0.15);position:sticky;top:0;z-index:100;}
     #nav-in{display:flex;align-items:center;max-width:900px;margin:0 auto;padding:0 20px;overflow-x:auto;gap:0;}
     #nav-in::-webkit-scrollbar{display:none;}
     .ni{font-size:9px;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.48);padding:11px 10px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.15s;font-weight:500;flex-shrink:0;text-decoration:none;display:block;}
     .ni:hover{color:#fff;border-bottom-color:var(--gold);}
     .ns{width:1px;height:14px;background:rgba(255,255,255,0.1);flex-shrink:0;margin:auto 0;}
+
+    /* WRAP */
     .bio-wrap{max-width:900px;margin:0 auto;padding:0 0 3rem;}
     .bio-back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;transition:color 0.15s;}
     .bio-back:hover{color:var(--forest);}
+
+    /* HEADER */
     .bio-header{display:flex;gap:20px;align-items:flex-start;padding:0 20px 20px;border-bottom:2px solid var(--border);}
     .bio-photo-col{flex-shrink:0;width:140px;text-align:center;}
     .bio-photo{width:140px;height:180px;background:var(--parch);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--muted);text-align:center;padding:12px;overflow:hidden;position:relative;}
+    .bio-photo img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
     .bio-photo-credit{font-size:9px;color:var(--muted);margin-top:6px;line-height:1.4;}
     .bio-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
     .bio-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text);margin-bottom:4px;letter-spacing:0.02em;}
@@ -47,14 +54,28 @@
     .conf-doc{color:var(--doc);border:1px solid var(--doc);}
     .conf-prob{color:var(--prob);border:1px solid var(--prob);}
     .conf-unv{color:var(--unv);border:1px solid var(--unv);}
+
+    /* SECTIONS */
     .bio-section{padding:16px 20px;border-bottom:1px solid var(--border);}
     .section-label{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
     .section-label::after{content:'';flex:1;height:0.5px;background:var(--border);}
+
+    /* PROSE */
     .bio-prose{font-size:13px;line-height:1.85;color:var(--text);}
     .bio-prose p+p{margin-top:10px;}
     .bio-prose .placeholder{color:var(--muted);font-style:italic;font-size:12px;}
+
+    /* OBITUARY / SOURCE BOX */
+    .obit-box{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--gold);padding:14px 16px;}
+    .obit-box+.obit-box{margin-top:14px;}
+    .obit-cite{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
+    .obit-text{font-family:'Source Serif 4',serif;font-style:italic;font-size:13px;line-height:1.75;color:var(--text);}
+    .obit-text p+p{margin-top:8px;}
+    .obit-caveat{font-size:10px;color:var(--prob);margin-top:10px;font-style:normal;font-family:'Inter',sans-serif;background:var(--parch);border:1px solid var(--border);padding:8px;}
+
+    /* LIFE TIMELINE */
     .lt-wrap{background:var(--white);border:1px solid var(--border);padding:14px;overflow-x:auto;}
-    .lt-track{position:relative;padding-bottom:28px;min-width:600px;}
+    .lt-track{position:relative;padding-bottom:28px;min-width:760px;}
     .lt-line{position:absolute;top:6px;left:0;right:0;height:1px;background:var(--border);}
     .lt-dots{display:flex;justify-content:space-between;position:relative;}
     .lt-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
@@ -65,6 +86,8 @@
     .lt-event{font-size:9px;color:var(--muted);text-align:center;line-height:1.3;max-width:90px;}
     .lt-event.death{color:var(--unv);}
     .lt-event.marriage{color:#7A5C00;}
+
+    /* FAMILY */
     .fam-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
     .fam-group-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
     .fam-person{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
@@ -79,12 +102,18 @@
     .child-name:hover{text-decoration:underline;}
     .child-dates{font-size:9px;color:var(--muted);}
     .fam-key{font-size:10px;color:var(--muted);margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;}
+    .fam-extra{margin-top:16px;padding-top:14px;border-top:1px solid var(--border);}
+
+    /* SOURCES */
     .sources-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
     .source-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
     .source-item{font-size:10px;color:var(--muted);padding-left:12px;position:relative;line-height:1.5;}
     .source-item::before{content:'·';position:absolute;left:0;}
     .research-note{font-size:10px;color:var(--muted);line-height:1.6;background:var(--white);border:1px solid var(--border);padding:10px;}
+    .research-note+.research-note{margin-top:8px;}
     .last-updated{font-size:9px;color:var(--muted);text-align:right;margin-top:8px;}
+
+    /* CONTRIBUTE */
     .contrib-intro{font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.6;}
     .contrib-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
     .contrib-field{display:flex;flex-direction:column;gap:3px;}
@@ -102,9 +131,12 @@
     .contrib-note{font-size:9px;color:var(--muted);flex:1;line-height:1.5;}
     .contrib-btn{font-size:11px;padding:8px 20px;background:var(--forest);color:#fff;border:none;cursor:pointer;letter-spacing:0.06em;flex-shrink:0;font-family:'Inter',sans-serif;}
     .contrib-btn:hover{background:var(--forest-light);}
+
+    /* FOOTER */
     #footer{background:var(--forest);border-top:1px solid rgba(200,168,75,0.1);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
     #ft-l{font-size:10px;color:rgba(255,255,255,0.32);font-family:'Source Serif 4',serif;font-style:italic;max-width:380px;line-height:1.6;}
     #ft-r{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(200,168,75,0.45);}
+
     @media(max-width:600px){
       .bio-header{flex-direction:column;}
       .fam-grid,.contrib-grid,.sources-cols{grid-template-columns:1fr;}
@@ -141,42 +173,26 @@
     </div>
     <div>
       <div class="bio-eyebrow">English Settlement Cemetery · Crawford County, PA</div>
-      <div class="bio-name">Jane Harrison Morris</div>
-      <div class="bio-tagline">Daughter of the English Settlement's founding matriarch.</div>
-      <div class="bio-dates">27 January 1806 – 2 January 1887</div>
-      <div class="bio-age">Aged 80 years at death</div>
-      <div class="bio-fam-tag">Morris family · born Harrison</div>
+      <div class="bio-name">Jane <em>Harrison</em> Morris</div>
+      <div class="bio-tagline">Yorkshire weaver. Wife of Richard Morris. Crawford County's first cremation.</div>
+      <div class="bio-dates">1806 – 2 January 1887</div>
+      <div class="bio-age">Aged 80–81</div>
+      <div class="bio-fam-tag">Morris family</div>
       <div class="vital-strip">
         <div class="vital-block">
           <div class="vital-ico">📅</div>
           <div>
             <div class="vital-label">Born</div>
-            <div class="vital-val">27 Jan 1806 <span class="conf conf-doc">Documented</span></div>
-            <div class="vital-sub">Lancashire, England</div>
-          </div>
-        </div>
-        <div class="vital-block">
-          <div class="vital-ico">⛵</div>
-          <div>
-            <div class="vital-label">Immigrated</div>
-            <div class="vital-val">1827 <span class="conf conf-prob">Probable</span></div>
-            <div class="vital-sub">To Paterson, New Jersey, with her mother and siblings</div>
+            <div class="vital-val">1806 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Yorkshire, England</div>
           </div>
         </div>
         <div class="vital-block">
           <div class="vital-ico">💍</div>
           <div>
             <div class="vital-label">Married</div>
-            <div class="vital-val">23 Apr 1830 <span class="conf conf-doc">Documented</span></div>
-            <div class="vital-sub">Wyckoff, New Jersey (Second Reformed Church)</div>
-          </div>
-        </div>
-        <div class="vital-block">
-          <div class="vital-ico">🌾</div>
-          <div>
-            <div class="vital-label">Settled</div>
-            <div class="vital-val">1833 <span class="conf conf-prob">Probable</span></div>
-            <div class="vital-sub">Rome Township, with husband and two brothers</div>
+            <div class="vital-val">1837 <span class="conf conf-prob">Probable</span></div>
+            <div class="vital-sub">Richard Morris · Paterson, NJ</div>
           </div>
         </div>
         <div class="vital-block">
@@ -184,7 +200,7 @@
           <div>
             <div class="vital-label">Died</div>
             <div class="vital-val">2 Jan 1887 <span class="conf conf-doc">Documented</span></div>
-            <div class="vital-sub">Rome Township, PA</div>
+            <div class="vital-sub">Rome Township, PA · 1:15 PM</div>
           </div>
         </div>
         <div class="vital-block">
@@ -192,7 +208,7 @@
           <div>
             <div class="vital-label">Buried</div>
             <div class="vital-val">English Settlement Cemetery</div>
-            <div class="vital-sub">Shares a memorial with Richard Morris</div>
+            <div class="vital-sub">After cremation, 5 Jan 1887</div>
           </div>
         </div>
       </div>
@@ -203,18 +219,45 @@
   <div class="bio-section">
     <div class="section-label">Biography</div>
     <div class="bio-prose">
-      <p style="font-weight:600;color:var(--forest);margin-bottom:2px;">Early Life &amp; The Loom</p>
-      <p>Born in Yorkshire, England, in 1806 to Benjamin Harrison and Jane Inskip Harrison, Jane moved to the industrial hub of Lancashire as an infant. There, she mastered the complex craft of textile weaving, operating power looms with six to eight treadles to produce fine, flowered fabrics. Following her father's death in 1824, twenty-year-old Jane emigrated to America alongside her widowed mother and her brothers, Benjamin and Inskip.</p>
-      <p>She quickly found highly regarded work in the booming textile centers of the Northeast, including Paterson (NJ), Fall River (MA), Columbiaville (NY), and Lowell (MA). In Lowell, Jane and an elite group of weavers were chosen to produce the finest "show cloth" of the era. It was during a snowy Massachusetts winter that Jane caused a local stir by wearing traditional English pattens — elevated wooden overshoes raised on oval iron rings. Churchgoers, unfamiliar with the strange iron tracks left in the snow on the church floor, briefly panicked, mistaking them for the footprints of the devil. Jane eventually returned to the New York area, where on 23 April 1830 she married fellow Lancashire emigrant Richard Morris at the Second Reformed Church in Wyckoff, New Jersey.</p>
-      <p style="font-weight:600;color:var(--forest);margin-top:14px;margin-bottom:2px;">The Journey West &amp; Settling Rome Township</p>
-      <p>Seeking a life beyond the industrial mills, Jane, Richard, and her brothers purchased a 400-acre tract of wilderness land from the Holland Land Company in Crawford County, Pennsylvania. Their journey west was a grueling expedition into a territory of virgin pine forest where roads were little more than underbrushed trails.</p>
-      <p>During the move, one of their horses fell ill, forcing the family to abandon their wagons and household goods in the deep woods overnight, just north of where the local settlers Bert Rowley and Ira Fish would later reside. While Richard sought help, Jane and her young son James sought shelter nearby, spending a cold frontier night under the hospitable roof of Hugh Coyle's home along the Titusville road. The next day, relatives arrived to haul their goods to the family's new homestead. Together, they established a prosperous farm and raised a large family. In total, Jane gave birth to eight children — seven sons and one daughter. Tragically, her only daughter and one infant son died while the family was still based in New York City, leaving six sons — Edward, James, William, Benjamin, John, and Inskip — to grow to adulthood on the Pennsylvania frontier.</p>
-      <p style="font-weight:600;color:var(--forest);margin-top:14px;margin-bottom:2px;">Resilience Through War and Heritage</p>
-      <p>The American Civil War brought severe heartache to the Morris household. In 1862, against Richard's wishes, their second son, James, enlisted in a Pennsylvania volunteer regiment. He was mortally wounded on the front lines at Gettysburg in July 1863, later succumbing to his injuries at Fort Schuyler, New York. Without her husband's knowledge, Jane made secret, difficult arrangements to have James's body brought home from Fort Schuyler to Rome Township, where he was laid to rest in the family plot. His full story is told in a dedicated biography.</p>
-      <p>Throughout every hardship, Jane remained the anchoring heart of the family, later raising her grandson Fred after his mother, Lucy, died young. Driven by a deep pride in her family roots, Jane embarked on a four-month voyage back to England in May 1860, successfully tracing her lineage back several generations — though her "Yankee" sons often teased her about her pride in English aristocracy.</p>
-      <p style="font-weight:600;color:var(--forest);margin-top:14px;margin-bottom:2px;">A Final Pioneer Act: The 1887 Cremation</p>
-      <p>Jane Harrison Morris passed away on 2 January 1887, at the age of 80. For the final ten years of her life, she harbored a profound fear of premature burial and left strict, unyielding instructions to be cremated — a practice virtually unknown in rural 19th-century Crawford County.</p>
-      <p>To honor her final wishes, her surviving sons consulted and cast lots to decide who would make the trip. The lot fell to William and Inskip. Dressed in a fine black silk dress, with her original 1830 wedding dress placed beside her in the casket because it no longer fit, Jane was escorted by her sons to the train station in Titusville. William and Inskip transported her remains to a crematory in Pittsburgh, managing the entire journey and process for a total cost of $70 to $75. Following the cremation, her ashes were returned to Rome Township and interred at English Settlement Cemetery alongside Richard. She is remembered as the first documented person in Crawford County history to be cremated.</p>
+      <p>Jane Harrison was born in Yorkshire, England, in 1806, daughter of Benjamin Harrison and Jane Inskip Harrison — the same couple already documented on this site as founders of the Harrison family at the English Settlement. While Jane was still an infant, the family moved from Yorkshire to Lancashire, the heart of England's textile country. There she learned to weave as a girl at her mother's side, on a handloom, in the old domestic tradition — cloth made at home, by hand, the way English weavers had worked for generations.</p>
+      <p>The trade Jane was born into had once paid reasonably well. During the wartime boom of the Napoleonic Wars, a skilled handloom weaver in Lancashire could earn a solid working wage, sometimes 20 shillings a week or more for good, steady work. That world collapsed within Jane's own childhood and youth. England fell into a severe economic depression after the wars ended in 1815 — high unemployment, expensive food under the Corn Laws, and thousands of demobilized soldiers competing for scarce work — and at the same time, factory power looms began outproducing individual handloom weavers many times over. By the 1820s, as Jane came of age, handloom weavers' wages in Lancashire had collapsed to a fraction of their wartime level, in some accounts as little as 5 to 8 shillings a week for work that had once paid several times as much. It was a trade dying in front of her. Still in her teens, Jane would have witnessed the unrest that followed: in 1826, handloom weavers and their allies across Lancashire rioted, smashing and burning the power looms in the newly built factories that were replacing them and driving their wages down. That same year, by her son's own account, Jane emigrated to the United States — a timing close enough that both the riots and the wage collapse behind them are plausible factors, among others, in the family's decision to leave.</p>
+      <p>The American mills paid better. Young women running power looms in Lowell, Massachusetts, and similar New England mills through the 1820s and 1830s typically earned in the range of two to four dollars a week in cash after board was deducted — modest wages by later standards, but a real improvement over what a handloom weaver could earn in Lancashire by the time Jane left, and money a working woman controlled directly, which was itself unusual for the era. Jane found herself on the other side of the same revolution that had driven her out of England, working power looms and treadle looms in the very kind of mills that had displaced hand weavers back home: Paterson, New Jersey; Fall River, Massachusetts; Columbiaville on the Hudson River; and Lowell, Massachusetts. Family memory holds that her mill wages helped raise part of the money that later let the Harrison and Morris families buy their first land in Rome Township. She remembered Lowell, too, for a superstition her weaving companions accidentally caused: walking to church on a snowy Sunday in wooden pattens that raised her feet above the wet sidewalk, she and the other girls left a trail of tracks that some churchgoers, not recognizing the mark of the pattens, took for the devil's own footprints.</p>
+      <p>Jane returned to Paterson, where she married Richard Morris, a fellow Lancashire native, in 1837. The couple soon moved to what would become the English Settlement in Rome Township, then still a wilderness. Family memory of the journey includes a sick horse that forced the family to leave their goods in the woods overnight, and a night's kind lodging with the Coyle family along the way. Jane and Richard raised their family on the homestead that followed. Richard died in 1871; Jane continued living there for the rest of her own life.</p>
+      <p>Jane and Richard had eight children. A daughter and a son both died young in New York City, and neither has yet been identified by name. Six sons are documented: Edward, James, Benjamin, William, John, and Inskip. James enlisted to fight in the Civil War and died of wounds received at the Battle of Gettysburg, in 1863, a story told at length on his own page elsewhere on this site. The remaining five sons — Edward, Benjamin, William, John, and Inskip — were all still living at the time of Jane's death.</p>
+      <p>In 1860, Jane sailed from New York to visit relatives and friends in England, returning that September. While there she traced her own family lineage, tracing it, in her own estimation, to some of the best blood England was thought to produce — a heritage she took real pride in, even as her American-born sons showed little patience for English aristocracy and less for her interest in it.</p>
+      <p>Jane had spent her final ten years afraid of being buried alive, and had asked her sons to have her cremated when she died — a request she repeated in her last days. She died on 2 January 1887 at 1:15 in the afternoon. Her sons, deciding two of them should accompany her remains to Pittsburgh for the cremation, could not agree on who should go and settled it by casting lots; the choice fell to William and Inskip. Her funeral service was held on 4 January and the cremation carried out the following day, at a total cost of between $70 and $75. She had long wished to be buried in her own wedding dress, kept all those years, but it no longer fit; she was cremated in a black silk dress instead, with the wedding dress placed in the casket beside her. She was the first person from Crawford County to be formally cremated — a choice her sons defended publicly against "wild stories" circulating in the community, and one a later descendant would instead call a scandal and "a disgrace." Both accounts are preserved below in full.</p>
+    </div>
+  </div>
+
+  <!-- SON'S MEMOIR -->
+  <div class="bio-section">
+    <div class="section-label">Primary source: her son's memoir</div>
+    <div class="obit-box">
+      <div class="obit-cite">Written by one of Jane's surviving sons (Edward, Benjamin, or John Morris — author not identified by name), shortly after her death in January 1887, to correct errors circulating in a local newspaper</div>
+      <div class="obit-text">
+        <p>"I saw in your issue of the 7th an account of the death and funeral of the late Jane Morris, my mother, and as there are some mistakes in your journal and also in the Titusville Herald, I write to rectify those and many others that are being circulated among the people. I will give an account of the life, death, and cremation of my mother. Some people censure her sons for the cremation of their mother. Below I give the reasons why.</p>
+        <p>My mother was born in Yorkshire, England in 1806, and when still an infant was moved to Lancashire, where she lived until she was about twenty years old. In 1826 she emigrated to the United States. She was a weaver by trade. I have heard her tell of using six or eight treadles in weaving flowered cloth. After she came to this country she worked in the weaving and woolen mills at Paterson, N.J., and at Fall River, Mass., Columbiaville on the Hudson River, and Lowell, Mass. It was at this place where she got the dislike of the girls, because she and her companions were appointed to weave the show cloth. The people in Lowell were very superstitious. She went to church one Sunday when the sidewalks were wet with soft snow, and wore on her feet a kind of thing she called pattens. They fit similar to a skate and keep a person's feet off the ground about two inches, and make a track like an oval piece of hoop iron about five inches long and four wide. Some of the people at church saw those tracks leading into the church and thought the devil had been there, until they saw what made the tracks. There is a pair of those pattens in the house now. She went back to Paterson, where she and my father were married in 1837, then moved to what is now the English Settlement in Rome Township. It was a wilderness at that time. One of the horses which was moving our goods got sick, and we had to leave the goods in the woods all night. The road was just underbrushed. The next day my father got some of our relatives to draw our goods to our journey's end. My mother and my brother who died in the war stayed all night at Hugh Coyle's and were treated very kindly.</p>
+        <p>Her husband, Richard Morris, died in 1871, and she lived on the old Morris homestead up to the time of her death. She had seven sons and one daughter. The daughter and one son died in New York City while young. One died at Fort Schuyler from a wound received at the Battle of Gettysburg. The other five are still alive — Edward, Benjamin, William, John, and Inskip. My mother was one who always lived a little below her income. In 1860 she went back to England to visit relatives and friends. She sailed from New York in May and returned in September. When in England, she hunted up some of her lineage and could trace it back to some of the best blood that England is supposed to produce. Of this she was very proud, and it hurt her feelings when her Yankee sons ridiculed the English aristocracy and took so little interest in the account.</p>
+        <p>My mother was afraid of being buried alive, so for the last ten years she had requested us to have her cremated after she died. She repeated the request a few days before her death. After she died her sons consulted on the matter. It was decided that two of us should go with the remains to Pittsburg and have them cremated. My health being very bad I could not go, but they could not decide which should go, so they cast lots, and it fell on William and Inskip. Four of the sons accompanied the remains to Titusville, and four also accompanied them back from Titusville to the English Settlement cemetery, where they were interred. As there are some wild stories going about the cost of the cremation, I will here give an account. From leaving the house to returning, the cost was between $70 and $75. The body was taken out of the casket at the crematory and laid on a sheet of iron. A cloth dipped in alum was spread over the body. This cloth keeps its form and keeps the ashes together. The furnace was heated by burning gas and was hot enough to melt iron. After cremation the ashes were returned to the casket.</p>
+        <p>The above named lady died Jan. 2, 1887, at 1:15 P.M. The funeral service was held on the 4th and the corpse was cremated on the 5th. She was dressed in a black silk dress. She had wished a good many years ago to be buried in her wedding dress, which she had kept all these years, but it was too small, so it was put in the casket and buried with her. She was the first one from Crawford County who was regularly cremated. I believe after death she looked younger and handsomer than she had for the last twenty years."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RAYMOND FOLEY ACCOUNT -->
+  <div class="bio-section">
+    <div class="section-label">Family history: "Great-Grandmother: Jane Harrison Morris"</div>
+    <div class="obit-box">
+      <div class="obit-cite">Written and typed by Raymond Foley, a later descendant, drawing on family memory rather than his own firsthand knowledge</div>
+      <div class="obit-text">
+        <p>"In the early nineteenth century, the textile industry in the United States was in its very beginnings. England dominated the industry by her control of the patents on the machinery and would not permit its export to any other country. The United States were recruiting workers in the mills of England to build and operate the new machines. Among them was Jane Harrison, a young operator of power looms. She came to this country with her parents and two brothers, Ben and Inskip. The family settled in New Jersey, where she worked in a textile mill.</p>
+        <p>The family lived in New Jersey and the New York City area for around twenty years. In about 1845, the families of Ben and Inskip Harrison and Richard Morris decided to move to northwestern Pennsylvania, where the Holland Land Company had lots originally given to soldiers of the Revolutionary War. A Dutch company had bought up many of the soldiers' claims and, after holding them about fifty years, was selling them at a tidy profit. The main office of the company was in Meadville, where Marmaduke Huidekoper, the general agent, lived.</p>
+        <p>The three families set out on their long trip to Crawford County. They went up the Hudson, probably by steamboat, then by canal boat on the Erie Canal to Buffalo, then by ship to Erie, then by horse power to their new home in Rome Township. They spent the last night on the road with a Coyle family, who lived on the Titusville road at the Rome-Sparta line. They made a contract to buy six hundred acres along the north side of the road west from Vrooman, from the Holland Land Company. In great-grandmother's opinion they had landed in a terrible place, and the sooner they got out the better — people could not live in such a savage place. She did not seem to have convinced the rest of the family, and they all stayed on.</p>
+        <p>Sometime in this period, great-grandmother returned to England on a visit, taking her youngest son, Inskip, with her. At some point in this period she also adopted a small girl whose parents had died. I don't recall her name, but when she grew up she married a man named Homer Stearns, though at some point they left the community.</p>
+        <p>In 1862, Uncle Jim, the second son, defied his father's orders and enlisted in a volunteer regiment at Meadville. His father promptly removed him from the regiment; he later served with the regiment until the Battle of Gettysburg, where he was wounded in the first days of fighting and placed in a barn with other wounded. He remained there for the next two days, as the barn stood between the lines of the two armies. When the battle was over and the wounded were picked up, he was sent to a fort in New York harbor, where he died a few days later. When the family was notified of his death, his father refused to have anything to do with the matter, but his mother, without her husband's knowledge, arranged to have his body sent home for burial. He was secretly buried at night, so his father would not know, in the little cemetery at Vrooman.</p>
+        <p>Influenced by the horror stories of the time about being buried alive, great-grandmother decided it would not happen to her. According to her wish, her remains were taken to Pittsburgh by her sons Edward and Will for cremation. This created quite a scandal in the community — such things were not done. Instead of a decent Christian burial, she was given, in the eyes of some, a heathenish cremation. A disgrace to the community!"</p>
+      </div>
+      <div class="obit-caveat">This account, written later by a descendant rather than a direct witness, contains at least one apparent error: it lists "Jim" among the sons who enlisted and died at Gettysburg while separately treating his death as settled fact, yet the family's own contemporary memoir (above) is explicit that James did not survive the war. It also gives a different account of who accompanied the cremation (Edward and Will, rather than William and Inskip) and a later settlement date for Rome Township (about 1845, versus the 1837 given elsewhere). See research notes below.</div>
     </div>
   </div>
 
@@ -228,32 +271,42 @@
           <div class="lt-dot-wrap">
             <div class="lt-dot"></div>
             <div class="lt-year">1806</div>
-            <div class="lt-event">Born<br>Lancashire, England</div>
+            <div class="lt-event">Born<br>Yorkshire, England</div>
           </div>
           <div class="lt-dot-wrap">
             <div class="lt-dot"></div>
-            <div class="lt-year">1827</div>
-            <div class="lt-event">Immigrated<br>Paterson, NJ</div>
+            <div class="lt-year">c.1826</div>
+            <div class="lt-event">Emigrates to<br>the United States</div>
           </div>
           <div class="lt-dot-wrap">
             <div class="lt-dot marriage"></div>
-            <div class="lt-year">1830</div>
-            <div class="lt-event marriage">Married<br>Richard Morris<br>New York area</div>
+            <div class="lt-year">1837</div>
+            <div class="lt-event marriage">Married<br>Richard Morris<br>Paterson, NJ</div>
           </div>
           <div class="lt-dot-wrap">
             <div class="lt-dot"></div>
-            <div class="lt-year">1833</div>
-            <div class="lt-event">Settled<br>Rome Township, PA</div>
+            <div class="lt-year">1837–1849</div>
+            <div class="lt-event">Eight children<br>born</div>
           </div>
           <div class="lt-dot-wrap">
-            <div class="lt-dot death"></div>
-            <div class="lt-year" style="color:#A32D2D;">1863</div>
-            <div class="lt-event death">Son James dies<br>Civil War</div>
+            <div class="lt-dot"></div>
+            <div class="lt-year">1860</div>
+            <div class="lt-event">Returns to<br>England, visits</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1863</div>
+            <div class="lt-event">Son James dies<br>of Gettysburg wound</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1871</div>
+            <div class="lt-event">Husband<br>Richard dies</div>
           </div>
           <div class="lt-dot-wrap">
             <div class="lt-dot death"></div>
             <div class="lt-year" style="color:#A32D2D;">1887</div>
-            <div class="lt-event death">Died<br>2 Jan 1887</div>
+            <div class="lt-event death">Died<br>2 Jan, cremated 5 Jan</div>
           </div>
         </div>
       </div>
@@ -265,65 +318,105 @@
     <div class="section-label">Family connections</div>
     <div class="fam-grid">
       <div>
-        <div class="fam-group-label">👨‍👩‍👦 Parents</div>
+        <div class="fam-group-label">❤️ Spouse</div>
         <div class="fam-person">
           <div class="fam-avatar">👤</div>
           <div>
-            <span class="fam-name ext">Benjamin Harrison</span>
-            <div class="fam-dates">1759 – 1824 · Not buried here</div>
+            <a class="fam-name" href="richard-morris.html">Richard Morris</a>
+            <div class="fam-dates">m. 1837 · Paterson, NJ</div>
+            <div class="fam-dates">1810 – 1871 · Buried here</div>
           </div>
         </div>
-        <div class="fam-person">
-          <div class="fam-avatar">👤</div>
-          <div>
-            <a class="fam-name" href="jane-inskip-harrison.html">Jane Inskip Harrison</a>
-            <div class="fam-dates">1766 – 1845 · Buried here</div>
-          </div>
-        </div>
-        <div style="margin-top:14px;">
-          <div class="fam-group-label">❤️ Spouse</div>
+        <div class="fam-extra" style="margin-top:14px;padding-top:0;border-top:none;">
+          <div class="fam-group-label">👪 Parents</div>
           <div class="fam-person">
             <div class="fam-avatar">👤</div>
             <div>
-              <a class="fam-name" href="richard-morris.html">Richard Morris</a>
-              <div class="fam-dates">16 Jul 1810 – 19 May 1871 · Shares this memorial</div>
+              <span class="fam-name" style="color:var(--muted);">Benjamin Harrison</span>
+              <div class="fam-dates">1759 – 1824 · Not buried here</div>
+            </div>
+          </div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <a class="fam-name" href="jane-inskip-harrison.html">Jane Inskip Harrison</a>
+              <div class="fam-dates">1766 – 1845 · Buried here</div>
+            </div>
+          </div>
+        </div>
+        <div class="fam-extra">
+          <div class="fam-group-label">🤝 Siblings (known)</div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <a class="fam-name" href="richard-harrison.html">Richard Harrison</a>
+              <div class="fam-dates">1785 – 1867 · Buried here</div>
+            </div>
+          </div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <a class="fam-name" href="benjamin-inskip-harrison.html">Benjamin Inskip Harrison</a>
+              <div class="fam-dates">1797 – 1875 · Buried here</div>
+            </div>
+          </div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <a class="fam-name" href="elizabeth-harrison-gregory.html">Elizabeth Harrison Gregory</a>
+              <div class="fam-dates">1794 – 1881 · Buried here</div>
+            </div>
+          </div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <span class="fam-name" style="color:var(--muted);">Inskip Harrison</span>
+              <div class="fam-dates">1812 – 1888 · Buried here</div>
             </div>
           </div>
         </div>
       </div>
       <div>
-        <div class="fam-group-label">👶 Children — 6 named</div>
+        <div class="fam-group-label">👶 Children — 6 identified of 8</div>
         <div class="children-grid">
           <div class="child-item">
             <span class="child-name" style="color:var(--muted);">Edward Morris</span>
-            <div class="child-dates">1831 – 1912 · Not yet confirmed buried here</div>
+            <div class="child-dates">1831 – 1912 · Buried here</div>
           </div>
           <div class="child-item">
-            <a class="child-name" href="pvt-james-morris-1837.html">James Morris</a>
-            <div class="child-dates">1837 – 1863 · Pvt., buried here</div>
+            <a class="child-name" href="pvt-james-morris-1837.html">Pvt. James Morris</a>
+            <div class="child-dates">1837 – 1863 · Buried here</div>
           </div>
           <div class="child-item">
             <span class="child-name" style="color:var(--muted);">Benjamin Morris</span>
-            <div class="child-dates">1840 – 1915 · Not yet confirmed buried here</div>
+            <div class="child-dates">1840 – 1915 · Buried here</div>
           </div>
           <div class="child-item">
             <span class="child-name" style="color:var(--muted);">William S. Morris</span>
-            <div class="child-dates">1842 – 1891 · Not yet matched — see note</div>
+            <div class="child-dates">1842 – 1891 · Link unconfirmed</div>
           </div>
           <div class="child-item">
             <span class="child-name" style="color:var(--muted);">John Morris</span>
-            <div class="child-dates">1845 – 1928 · Not yet confirmed buried here</div>
+            <div class="child-dates">1845 – 1928 · Buried here, see note</div>
           </div>
           <div class="child-item">
             <span class="child-name" style="color:var(--muted);">Inskip Morris</span>
-            <div class="child-dates">1849 – 1930 · Not yet confirmed buried here</div>
+            <div class="child-dates">1849 – 1930 · Buried here</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name" style="color:var(--unv);">Unnamed daughter</span>
+            <div class="child-dates">Died young, New York City · Not identified</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name" style="color:var(--unv);">Unnamed son</span>
+            <div class="child-dates">Died young, New York City · Not identified</div>
           </div>
         </div>
       </div>
     </div>
     <div class="fam-key">
-      <span>Blue names link to a documented page here</span>
-      <span>Grey names are not yet linked or confirmed</span>
+      <span>Names in blue = buried in English Settlement Cemetery, page exists</span>
+      <span>Grey names = not yet built, unconfirmed, or not buried here</span>
     </div>
   </div>
 
@@ -331,10 +424,12 @@
   <div class="bio-section">
     <div class="section-label">Monument</div>
     <div style="background:var(--white);border:1px solid var(--border);padding:12px;">
-      <div style="font-size:11px;color:var(--muted);font-style:italic;text-align:center;padding:10px;border:1px dashed var(--border);margin-bottom:10px;">Monument photograph pending field visit</div>
+      <div style="font-size:11px;color:var(--muted);font-style:italic;text-align:center;padding:10px;border:1px dashed var(--border);margin-bottom:10px;">No Find A Grave memorial or monument photograph has been provided for Jane yet — pending field visit or source</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
-        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Shared memorial</span>Richard Morris</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Type</span>Not yet recorded</div>
         <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Condition</span>Not yet recorded</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Epitaph</span>Pending examination</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Find A Grave</span><span style="color:var(--muted);font-size:10px;">Not yet linked</span></div>
       </div>
     </div>
   </div>
@@ -344,17 +439,27 @@
     <div class="section-label">Sources &amp; notes</div>
     <div class="sources-cols">
       <ul class="source-list">
-        <li class="source-item">Ancestry.com family tree record: Jane Harrison Morris (b. 27 Jan 1806, d. 2 Jan 1887)</li>
-        <li class="source-item">Marriage record: Second Reformed Church, Wyckoff, NJ — Richard Morris &amp; Jane Harrison, 23 Apr 1830</li>
-        <li class="source-item">Family memoir (descendant letter, written after Jane's death) — narrative detail on her weaving career, 1860 England trip, and 1887 cremation</li>
-        <li class="source-item">Family memoir (Raymond Foley) — narrative detail on the move west and family stories two generations later</li>
+        <li class="source-item">Jane Morris's own inscription in the front of her family Bible, dated 1874, bequeathing it to her nephew David Crossley — family collection, provenance Bob Foley → Mary Foley Nazimczyc (c. 1989) → Scott Morris</li>
+        <li class="source-item">Memoir by one of Jane's surviving sons, written shortly after her death in January 1887, correcting newspaper errors about her death, funeral, and cremation — family collection</li>
+        <li class="source-item">"Great-Grandmother: Jane Harrison Morris," written and typed by descendant Raymond Foley — family collection</li>
+        <li class="source-item">Ancestry.com family tree (Scott Morris) · Jane Harrison profile · children's birth and death records</li>
         <li class="source-item">English Settlement Cemetery master record</li>
-        <li class="source-item">Jane Inskip Harrison biography (mother), this site</li>
-        <li class="source-item">Descendant family memoir (later source — narrative context only, dates not independently verified)</li>
         <li class="source-item">Research by Scott Morris</li>
       </ul>
       <div>
-        <div class="research-note">Jane Harrison Morris is the confirmed link between the Harrison and Morris families at English Settlement — her marriage brought together two separately-emigrated Lancashire families, both of whom ended up settled and buried in the same small cemetery. The master cemetery record currently lists her as not buried here, which conflicts with the confirmed shared memorial with Richard Morris; this should be corrected in the data file. As with Richard's page, several children (Edward, Benjamin, John, Inskip) are not yet marked as buried here despite being documented family members, and William S. Morris has an unresolved date conflict with the existing "William S. Morris Jr." cemetery record — that record likely belongs to a different William Morris. Much of this biography's narrative detail (the loom work, the move west, the cremation) comes from two family memoirs written by descendants; specific dates and figures within them have not all been independently verified, though the marriage date and location are now confirmed by a primary church record.</div>
+        <div class="research-note"><strong>Settlement date — now a three-way conflict:</strong> Sources for the Morris family's move to Rome Township now give three different dates: 1834 (an earlier-flagged family memoir), 1837 (this page's son's memoir, tied directly to Jane and Richard's marriage), and about 1845 (Raymond Foley's account, describing a joint move by the Harrison and Morris families). Not resolved.</div>
+        <div class="research-note"><strong>Acreage figure differs:</strong> Family memory (per Scott Morris) holds the first Rome Township land purchase was 400 acres, funded in part by Jane's own mill wages. Raymond Foley's account, quoted above, states six hundred acres. Worth reconciling against Holland Land Company records if they can be located.</div>
+        <div class="research-note"><strong>1826 riots as a factor in emigration:</strong> No document yet states directly that the Lancashire power loom riots influenced the family's decision to leave England. The connection rests on timing — Jane was about twenty when the riots broke out, and her son's memoir places her emigration in that same year — and is presented here as a plausible, reasoned inference rather than a documented fact.</div>
+        <div class="research-note"><strong>Wage figures are general historical context, not Jane's personal pay records:</strong> The wartime and postwar handloom weaver wages, and the Lowell-era American mill wages, cited above reflect general economic conditions for weavers of the period rather than any documented record of Jane's own earnings. No pay records for Jane herself have been found. These figures are included to illustrate the scale of the change she lived through, not as specific facts about her.</div>
+        <div class="research-note"><strong>A first marriage, unconfirmed:</strong> Raymond Foley's account states Jane was married once before Richard Morris, to a man who died in poor health, with no children from that marriage. Her own son's 1887 memoir makes no mention of any marriage besides the 1837 marriage to Richard Morris. Given the son's account is closer to Jane in both time and relationship, it is treated as more reliable here, but the discrepancy is unresolved.</div>
+        <div class="research-note"><strong>Raymond Foley's account contains an apparent error:</strong> it lists "Jim" among the sons but separately confirms he died from his Gettysburg wound — the family's own 1887 memoir and this project's existing page for Pvt. James Morris are clear that he did not survive the war. Foley's account may be conflating James's story with a genuine survivor.</div>
+        <div class="research-note"><strong>Two unidentified children:</strong> the son's memoir states a daughter and a son both died young in New York City, apart from the six sons documented by name and dates. Neither has yet been identified in Ancestry or the cemetery master record.</div>
+        <div class="research-note"><strong>William S. Morris (1842–1891):</strong> listed on Ancestry as a son of Jane and Richard, but no matching entry has been found yet in the cemetery's master record — possibly not buried here, or a research gap worth checking.</div>
+        <div class="research-note"><strong>"John Brown Morris" (1845–1928) is very likely John Morris:</strong> this Ancestry data, matching the son's memoir naming, strongly supports the hypothesis already flagged on Jane Harrison Morris (1818)'s page — that the cemetery master record's "John Brown Morris (1845–1928)" entry is actually John Morris, son of Richard and this Jane, misnamed after his first cousin John Brown Morris (1855–1926). Scott Morris's own great-grandfather.</div>
+        <div class="research-note"><strong>Possible identification — the adopted daughter:</strong> Raymond Foley describes an unnamed adopted daughter who married a Homer Stearns and later left the community. Mary Jane Harrison Stearns (1856–1895), already in the cemetery master record, is a plausible match by name and dates, though unconfirmed. Jane E. Stearns and Edward Stearns, both of whom died in 1887 and are also in the master record, may be her children — also unconfirmed.</div>
+        <div class="research-note"><strong>"Uncle Fred," unidentified:</strong> Foley's account describes a grandson, Fred, raised by Jane after an early parental death, later living with his father's family at a place transcribed uncertainly as "Red Oak" near Cleverdale/Cleveland. Not yet matched to a documented family member.</div>
+        <div class="research-note"><strong>James Morris's Gettysburg story, cross-referenced:</strong> Raymond Foley's account of James's death and secret night burial closely matches family tradition already flagged as unverified oral history on Pvt. James Morris's own page. This document may be the original source of that tradition — worth revisiting his page with this material.</div>
+        <div class="research-note"><strong>The Bible and David Crossley:</strong> Jane's 1874 Bible inscription independently confirms that David Crossley's mother — Jane's sister — died relatively young, having once planned and then abandoned a move to South America. This is consistent with, and adds texture to, the already-documented account of David's 1828 emigration with his grandmother Jane Inskip Harrison's household rather than his own mother.</div>
         <div class="last-updated">Last updated: August 2026</div>
       </div>
     </div>
@@ -363,7 +468,7 @@
   <!-- CONTRIBUTE -->
   <div class="bio-section">
     <div class="section-label">Contribute information</div>
-    <div class="contrib-intro">Do you have photographs, documents, family memories, or corrections relating to Jane Harrison Morris? Submissions are reviewed by the museum curator before publication and will be credited to you by name.</div>
+    <div class="contrib-intro">Do you have photographs, documents, family memories, or corrections relating to Jane Harrison Morris (1806–1887)? Submissions are reviewed by the museum curator before publication and will be credited to you by name.</div>
     <div class="contrib-grid">
       <div class="contrib-field">
         <div class="contrib-lbl">Your name</div>
@@ -421,7 +526,7 @@ function submitContribution(){
   const connect=document.querySelector('input[placeholder="Descendant, historian, researcher…"]').value;
   const source=document.querySelector('input[placeholder="Census record, family Bible, photograph…"]').value;
   const info=document.querySelector('textarea').value;
-  const subject=encodeURIComponent('Contribution: Jane Harrison Morris — English Settlement Cemetery');
+  const subject=encodeURIComponent('Contribution: Jane Harrison Morris (1806) — English Settlement Cemetery');
   const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nConnection: '+connect+'\nSource: '+source+'\n\nInformation:\n'+info);
   window.location.href='mailto:scotty8828@gmail.com?subject='+subject+'&body='+body;
 }
