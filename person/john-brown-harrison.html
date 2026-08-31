@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>John Brown Harrison — English Settlement Cemetery</title>
-  <meta name="description" content="John Brown Harrison (1824 &ndash; 1905), English Settlement Cemetery, Rome Township, Crawford County, Pennsylvania. Biography research in progress.">
+  <meta name="description" content="Biography of John Brown Harrison (1824–1905), son of Benjamin Inskip Harrison, farmer at Rome Township, Crawford County, Pennsylvania.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;1,8..60,300&family=Inter:wght@300;400;500;600&display=swap">
   <style>
@@ -13,9 +13,13 @@
       --forest:#1B3028;--forest-light:#3D6B50;
       --cream:#F2EDE3;--parch:#E8E0D0;--white:#FDFAF4;
       --gold:#C8A84B;--text:#1C1408;--muted:#6B5A3E;
-      --border:#D0C4A8;--link:#1A3A6A;
+      --border:#D0C4A8;--border-dk:#B8A888;
+      --doc:#3B6D11;--prob:#854F0B;--unv:#A32D2D;
+      --link:#1A3A6A;
     }
     html,body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);font-size:14px;line-height:1.6;}
+
+    /* NAV */
     #nav{background:#243D30;border-bottom:1px solid rgba(200,168,75,0.15);position:sticky;top:0;z-index:100;}
     #nav-in{display:flex;align-items:center;max-width:900px;margin:0 auto;padding:0 20px;overflow-x:auto;gap:0;}
     #nav-in::-webkit-scrollbar{display:none;}
@@ -23,56 +27,453 @@
     .ni:hover{color:#fff;border-bottom-color:var(--gold);}
     .ns{width:1px;height:14px;background:rgba(255,255,255,0.1);flex-shrink:0;margin:auto 0;}
 
-    .wrap{max-width:600px;margin:0 auto;padding:0 0 3rem;}
-    .back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;}
-    .back:hover{color:var(--forest);}
+    /* WRAP */
+    .bio-wrap{max-width:900px;margin:0 auto;padding:0 0 3rem;}
+    .bio-back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+    .bio-back:hover{color:var(--forest);}
 
-    .pending-card{
-      margin:20px;background:var(--white);border:1px solid var(--border);
-      padding:40px 30px;text-align:center;
-    }
-    .pending-icon{font-size:32px;margin-bottom:16px;opacity:0.5;}
-    .pending-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-    .pending-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:var(--text);margin-bottom:6px;}
-    .pending-dates{font-size:14px;color:var(--muted);margin-bottom:20px;font-family:'Source Serif 4',serif;}
-    .pending-badge{
-      display:inline-block;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
-      padding:6px 16px;border:1px solid var(--gold);color:#7A5C00;
-      background:rgba(200,168,75,0.1);margin-bottom:20px;font-weight:500;
-    }
-    .pending-msg{font-size:12px;color:var(--muted);font-family:'Source Serif 4',serif;font-style:italic;line-height:1.7;max-width:420px;margin:0 auto 20px;}
-    .pending-fam{font-size:11px;color:var(--muted);margin-bottom:4px;}
-    .contrib-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:16px;border-top:1px solid var(--border);padding-top:16px;}
-    .contrib-note a{color:var(--link);}
+    /* HEADER */
+    .bio-header{display:flex;gap:20px;align-items:flex-start;padding:0 20px 20px;border-bottom:2px solid var(--border);}
+    .bio-photo-col{flex-shrink:0;width:140px;text-align:center;}
+    .bio-photo{width:140px;height:180px;background:var(--parch);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--muted);text-align:center;padding:12px;overflow:hidden;position:relative;}
+    .bio-photo img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+    .bio-photo-credit{font-size:9px;color:var(--muted);margin-top:6px;line-height:1.4;}
+    .bio-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    .bio-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text);margin-bottom:4px;letter-spacing:0.02em;}
+    .bio-tagline{font-family:'Source Serif 4',serif;font-style:italic;font-size:13px;color:var(--muted);margin-bottom:8px;}
+    .bio-dates{font-size:15px;color:var(--muted);margin-bottom:4px;font-family:'Source Serif 4',serif;}
+    .bio-age{font-size:12px;color:var(--muted);margin-bottom:8px;}
+    .bio-fam-tag{display:inline-block;font-size:10px;padding:3px 10px;border:1px solid var(--border);color:var(--muted);background:var(--white);letter-spacing:0.06em;}
+    .vital-strip{display:flex;gap:20px;flex-wrap:wrap;margin-top:12px;}
+    .vital-block{display:flex;align-items:flex-start;gap:6px;}
+    .vital-ico{font-size:14px;color:var(--muted);margin-top:1px;}
+    .vital-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .vital-val{font-size:12px;color:var(--text);font-weight:500;}
+    .vital-sub{font-size:10px;color:var(--muted);}
+    .conf{display:inline-block;font-size:8px;padding:1px 5px;border-radius:1px;margin-left:4px;vertical-align:middle;letter-spacing:0.06em;text-transform:uppercase;}
+    .conf-doc{color:var(--doc);border:1px solid var(--doc);}
+    .conf-prob{color:var(--prob);border:1px solid var(--prob);}
+    .conf-unv{color:var(--unv);border:1px solid var(--unv);}
 
+    /* SECTIONS */
+    .bio-section{padding:16px 20px;border-bottom:1px solid var(--border);}
+    .section-label{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+    .section-label::after{content:'';flex:1;height:0.5px;background:var(--border);}
+
+    /* PROSE */
+    .bio-prose{font-size:13px;line-height:1.85;color:var(--text);}
+    .bio-prose p+p{margin-top:10px;}
+    .bio-prose .placeholder{color:var(--muted);font-style:italic;font-size:12px;}
+
+    /* OBITUARY / SOURCE BOX */
+    .obit-box{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--gold);padding:14px 16px;}
+    .obit-box+.obit-box{margin-top:14px;}
+    .obit-cite{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
+    .obit-text{font-family:'Source Serif 4',serif;font-style:italic;font-size:13px;line-height:1.75;color:var(--text);}
+
+    /* LIFE TIMELINE */
+    .lt-wrap{background:var(--white);border:1px solid var(--border);padding:14px;overflow-x:auto;}
+    .lt-track{position:relative;padding-bottom:28px;min-width:600px;}
+    .lt-line{position:absolute;top:6px;left:0;right:0;height:1px;background:var(--border);}
+    .lt-dots{display:flex;justify-content:space-between;position:relative;}
+    .lt-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
+    .lt-dot{width:10px;height:10px;border-radius:50%;background:#2A5A3A;border:2px solid var(--white);position:relative;z-index:1;flex-shrink:0;}
+    .lt-dot.death{background:var(--unv);}
+    .lt-dot.marriage{background:var(--gold);}
+    .lt-year{font-size:9px;font-weight:600;color:var(--text);}
+    .lt-event{font-size:9px;color:var(--muted);text-align:center;line-height:1.3;max-width:90px;}
+    .lt-event.death{color:var(--unv);}
+    .lt-event.marriage{color:#7A5C00;}
+
+    /* FAMILY */
+    .fam-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .fam-group-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
+    .fam-person{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+    .fam-avatar{width:30px;height:30px;border-radius:50%;background:var(--parch);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
+    .fam-name{font-size:11px;color:var(--link);font-weight:500;text-decoration:none;display:block;}
+    .fam-name:hover{text-decoration:underline;}
+    .fam-name.ext{color:var(--muted);font-weight:400;}
+    .fam-dates{font-size:9px;color:var(--muted);}
+    .children-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+    .child-item{padding:3px 0;}
+    .child-name{font-size:10px;color:var(--link);text-decoration:none;display:block;}
+    .child-name:hover{text-decoration:underline;}
+    .child-dates{font-size:9px;color:var(--muted);}
+    .fam-key{font-size:10px;color:var(--muted);margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;}
+    .fam-extra{margin-top:16px;padding-top:14px;border-top:1px solid var(--border);}
+
+    /* SOURCES */
+    .sources-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .source-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+    .source-item{font-size:10px;color:var(--muted);padding-left:12px;position:relative;line-height:1.5;}
+    .source-item::before{content:'·';position:absolute;left:0;}
+    .research-note{font-size:10px;color:var(--muted);line-height:1.6;background:var(--white);border:1px solid var(--border);padding:10px;}
+    .research-note+.research-note{margin-top:8px;}
+    .last-updated{font-size:9px;color:var(--muted);text-align:right;margin-top:8px;}
+
+    /* CONTRIBUTE */
+    .contrib-intro{font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.6;}
+    .contrib-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+    .contrib-field{display:flex;flex-direction:column;gap:3px;}
+    .contrib-field.full{grid-column:1/-1;}
+    .contrib-lbl{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .contrib-input{font-size:11px;padding:6px 8px;border:1px solid var(--border);background:var(--cream);color:var(--text);width:100%;font-family:'Inter',sans-serif;}
+    .contrib-input:focus{outline:none;border-color:var(--forest-light);}
+    textarea.contrib-input{resize:vertical;min-height:70px;}
+    .file-area{border:1.5px dashed var(--border);padding:14px;text-align:center;cursor:pointer;background:var(--cream);transition:border-color 0.15s;}
+    .file-area:hover{border-color:var(--forest-light);}
+    .file-area span{font-size:10px;color:var(--muted);line-height:1.5;display:block;}
+    .file-area input{display:none;}
+    .file-list{font-size:10px;color:var(--forest-light);margin-top:4px;min-height:14px;}
+    .contrib-footer{display:flex;align-items:center;gap:12px;margin-top:10px;}
+    .contrib-note{font-size:9px;color:var(--muted);flex:1;line-height:1.5;}
+    .contrib-btn{font-size:11px;padding:8px 20px;background:var(--forest);color:#fff;border:none;cursor:pointer;letter-spacing:0.06em;flex-shrink:0;font-family:'Inter',sans-serif;}
+    .contrib-btn:hover{background:var(--forest-light);}
+
+    /* FOOTER */
     #footer{background:var(--forest);border-top:1px solid rgba(200,168,75,0.1);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
     #ft-l{font-size:10px;color:rgba(255,255,255,0.32);font-family:'Source Serif 4',serif;font-style:italic;max-width:380px;line-height:1.6;}
     #ft-r{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(200,168,75,0.45);}
+
+    @media(max-width:600px){
+      .bio-header{flex-direction:column;}
+      .fam-grid,.contrib-grid,.sources-cols{grid-template-columns:1fr;}
+      .children-grid{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
+
 <nav id="nav">
   <div id="nav-in">
-    <a class="ni" href="../index.html">People Timeline</a><div class="ns"></div>
-    <a class="ni" href="../about.html">About</a>
+    <a class="ni" href="../index.html">👥 People Timeline</a><div class="ns"></div>
+    <a class="ni" href="#">📷 The Cemetery</a><div class="ns"></div>
+    <a class="ni" href="#">👨‍👩‍👧 Families</a><div class="ns"></div>
+    <a class="ni" href="#">🗺 Historical Maps</a><div class="ns"></div>
+    <a class="ni" href="#">🖼 Photo Gallery</a><div class="ns"></div>
+    <a class="ni" href="#">📄 Documents</a><div class="ns"></div>
+    <a class="ni" href="../about.html">ℹ About</a>
   </div>
 </nav>
-<div class="wrap">
-  <a class="back" href="../index.html">&larr; Back to timeline</a>
-  <div class="pending-card">
-    <div class="pending-icon">📜</div>
-    <div class="pending-eyebrow">English Settlement Cemetery &middot; Rome Township, PA</div>
-    <div class="pending-name">John Brown Harrison</div>
-    <div class="pending-dates">1824 &ndash; 1905</div>
-    <div class="pending-fam">Harrison family</div>
-    <div class="pending-badge">Research Pending</div>
-    <div class="pending-msg">This person's biography is currently being researched. Historical records are being reviewed and verified before publication to ensure accuracy. Check back soon, or contribute what you know below.</div>
-    <div class="contrib-note">Have information about John Brown Harrison? Contact Scott Morris at <a href="mailto:scotty8828@gmail.com">scotty8828@gmail.com</a> to contribute photographs, documents, or family history.</div>
+
+<div class="bio-wrap">
+
+  <a class="bio-back" href="../index.html">← Back to timeline</a>
+
+  <!-- HEADER -->
+  <div class="bio-header">
+    <div class="bio-photo-col">
+      <div class="bio-photo">
+        <span style="font-size:36px;">👤</span>
+        <span style="font-size:10px;margin-top:6px;">No photograph<br>yet found</span>
+      </div>
+      <div class="bio-photo-credit">English Settlement Cemetery<br>Rome Township, PA</div>
+    </div>
+    <div>
+      <div class="bio-eyebrow">English Settlement Cemetery · Crawford County, PA</div>
+      <div class="bio-name">John Brown Harrison</div>
+      <div class="bio-tagline">Farmer. Son of one of the Settlement's founding landowners.</div>
+      <div class="bio-dates">2 April 1824 – 12 December 1905</div>
+      <div class="bio-age">Aged 81</div>
+      <div class="bio-fam-tag">Harrison family</div>
+      <div class="vital-strip">
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Born</div>
+            <div class="vital-val">2 Apr 1824 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">England</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">💍</div>
+          <div>
+            <div class="vital-label">Married</div>
+            <div class="vital-val">Ellen Harrison <span class="conf conf-prob">Probable</span></div>
+            <div class="vital-sub">By c.1847 · exact date unknown</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Died</div>
+            <div class="vital-val">12 Dec 1905 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Rome Township, PA</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">🪦</div>
+          <div>
+            <div class="vital-label">Buried</div>
+            <div class="vital-val">English Settlement Cemetery</div>
+            <div class="vital-sub">Rome Township, Crawford County, PA</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- BIOGRAPHY -->
+  <div class="bio-section">
+    <div class="section-label">Biography</div>
+    <div class="bio-prose">
+      <p>John Brown Harrison was born in England on 2 April 1824, the son of Benjamin Inskip Harrison and Nancy Brown Harrison. His father was one of the three original landowners named in the 5 April 1834 deed for the Rome Township settlement — already documented at length on this site — making John a member of the second generation of the founding Harrison family, born before his parents ever set foot in America.</p>
+      <p>The family's emigration and settlement can be traced with unusual precision through the birthdates of John's siblings. His sister Elizabeth was still born in England in March 1826, so the family had not yet crossed by that date. By March 1829 another brother, Thomas, was born in Paterson, Passaic County, New Jersey — placing the family's emigration sometime in those three years. They remained in New Jersey through at least December 1830, when sister Sarah was born there. By May 1836, when sister Ellen was born, the family was in Rome Township, Crawford County, Pennsylvania. John's own 1905 obituary independently confirms this same timeline in his own words: the family came to Paterson in 1826, and moved to Rome Township in 1836 — matching the birthplaces of his siblings almost exactly. John would have been about twelve years old at the family's arrival in Rome Township.</p>
+      <p>John spent the rest of his life on that same farm. He married his first cousin, Ellen Harrison — documented independently through the 1930 death certificate of their son, Richard, which records his mother's maiden name as Ellen Harrison. John's father, Benjamin Inskip Harrison, and Ellen's father, Richard Harrison (1786–1867), were brothers, both sons of Benjamin Harrison (1759–1824) and Jane Inskip Harrison, already documented at length on this site. John and Ellen were far from the only cousin marriage in this generation of the family: Ellen's sister Margaret married James Morris, William Morris Sr.'s brother, and Ellen's brother William Harrison married a Sarah Harrison of his own. John and Ellen's first child, Richard, was born in February 1848, placing their marriage at approximately 1847 or earlier. A daughter, Eleanora, followed in 1849.</p>
+      <p>Later in life John suffered a lasting hardship: his obituary records that "for a number of years" he was totally blind. He farmed the family land regardless, remaining on the same ground his parents had settled in 1836 for the rest of his life. He died at home in Rome Township on 12 December 1905, in his eighty-second year, and was remembered in his obituary as "an honest, industrious man, respected by all who knew him." His funeral was held at the United Presbyterian church. He was survived by his wife Ellen, his son Richard, his daughter Eleanora Morris, and several siblings named in his obituary — a fuller record of those family connections follows below.</p>
+    </div>
+  </div>
+
+  <!-- OBITUARY -->
+  <div class="bio-section">
+    <div class="section-label">Obituary</div>
+    <div class="obit-box">
+      <div class="obit-cite">Newspaper obituary, December 1905 (publication not yet identified) · clipping via Find A Grave, added by 4ever a Young</div>
+      <div class="obit-text">"Mr. John Harrison died at his home at this place Tuesday, December 12th, 1905. He was in his 82nd year. Mr. Harrison was born in England in 1824. He came with his parents to Paterson, N.J., in 1826, and in 1836 moved to this place, where he has lived on the same farm ever since. For a number of years Mr. Harrison suffered the disadvantage of being totally blind. He is survived by an aged wife and one son, Richard, and one daughter, Mrs. Eleanora Morris. He is also survived by four brothers, Thomas, Richard and Edward, of this place, and George, of Oil City, and one sister, Mrs. Edward Morris, of this place. He was an honest, industrious man, respected by all who knew him. Funeral was held at the United Presbyterian church."</div>
+    </div>
+    <div class="research-note" style="margin-top:10px;">The final line of this obituary clipping is faint and only partly legible; the sentence following "United Presbyterian church" has been omitted here rather than guessed at. The full clipping is on file and can be re-examined if a clearer copy becomes available. The exact newspaper this ran in has also not yet been identified.</div>
+  </div>
+
+  <!-- LIFE TIMELINE -->
+  <div class="bio-section">
+    <div class="section-label">Life timeline</div>
+    <div class="lt-wrap">
+      <div class="lt-track">
+        <div class="lt-line"></div>
+        <div class="lt-dots">
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1824</div>
+            <div class="lt-event">Born<br>England</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1826–29</div>
+            <div class="lt-event">Family emigrates<br>to Paterson, NJ</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1836</div>
+            <div class="lt-event">Family settles<br>Rome Township, PA</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot marriage"></div>
+            <div class="lt-year">by 1847</div>
+            <div class="lt-event marriage">Married<br>Ellen Harrison</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1848–49</div>
+            <div class="lt-event">Children Richard<br>and Eleanora born</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot death"></div>
+            <div class="lt-year" style="color:#A32D2D;">1905</div>
+            <div class="lt-event death">Died<br>12 Dec 1905</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAMILY CONNECTIONS -->
+  <div class="bio-section">
+    <div class="section-label">Family connections</div>
+    <div class="fam-grid">
+      <div>
+        <div class="fam-group-label">❤️ Spouse</div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <span class="fam-name" style="color:var(--muted);">Ellen Harrison Harrison</span>
+            <div class="fam-dates">m. by c.1847</div>
+            <div class="fam-dates">1828 – 1911 · Buried here · page not yet built</div>
+          </div>
+        </div>
+        <div class="fam-extra" style="margin-top:14px;padding-top:0;border-top:none;">
+          <div class="fam-group-label">👪 Parents</div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <a class="fam-name" href="benjamin-inskip-harrison.html">Benjamin Inskip Harrison</a>
+              <div class="fam-dates">1797 – 1875 · Buried here</div>
+            </div>
+          </div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <a class="fam-name" href="nancy-brown-harrison.html">Nancy Brown Harrison</a>
+              <div class="fam-dates">1794 – 1840 · Buried here</div>
+            </div>
+          </div>
+        </div>
+        <div class="fam-extra">
+          <div class="fam-group-label">🤝 Siblings (known)</div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <a class="fam-name" href="jane-harrison-morris-1818.html">Jane Harrison Morris</a>
+              <div class="fam-dates">1818 – 1885 · Buried here</div>
+            </div>
+          </div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <a class="fam-name" href="benjamin-harrison.html">Benjamin Harrison</a>
+              <div class="fam-dates">1822 – 1901 · Buried here</div>
+            </div>
+          </div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <a class="fam-name" href="elizabeth-betsy-harrison-gilson.html">Elizabeth "Betsy" Harrison Gilson</a>
+              <div class="fam-dates">1826 – 1904 · Buried here</div>
+            </div>
+          </div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <span class="fam-name" style="color:var(--muted);">Thomas Harrison</span>
+              <div class="fam-dates">1829 – 1906 · Not yet confirmed buried here</div>
+            </div>
+          </div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <a class="fam-name" href="sarah-harrison-harrison.html">Sarah Harrison Harrison</a>
+              <div class="fam-dates">1830 – 1887 · Buried here</div>
+            </div>
+          </div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <span class="fam-name" style="color:var(--muted);">Richard Christopher Harrison</span>
+              <div class="fam-dates">1838 – 1911 · Buried here · page not yet built</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="fam-group-label">👶 Children — 2 known</div>
+        <div class="children-grid">
+          <div class="child-item">
+            <span class="child-name" style="color:var(--muted);">Richard B Harrison</span>
+            <div class="child-dates">1848 – 1930 · Buried here · page not yet built</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name" style="color:var(--muted);">Eleanora Harrison Morris</span>
+            <div class="child-dates">1849 – 1925 · Not buried here</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fam-key">
+      <span>Names in blue = buried in English Settlement Cemetery, page exists</span>
+      <span>Grey names = not yet built, unconfirmed, or not buried here</span>
+    </div>
+  </div>
+
+  <!-- MONUMENT -->
+  <div class="bio-section">
+    <div class="section-label">Monument</div>
+    <div style="background:var(--white);border:1px solid var(--border);padding:12px;">
+      <div style="font-size:11px;color:var(--muted);font-style:italic;text-align:center;padding:10px;border:1px dashed var(--border);margin-bottom:10px;">Monument photograph pending field visit (photo on file at Find A Grave, credit Rusty Davis)</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Type</span>Upright monument, family surname "Harrison" · shared with wife Ellen</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Condition</span>Not yet examined in person</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Epitaph</span>Pending examination — not yet transcribed</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Find A Grave</span><a href="https://www.findagrave.com/memorial/13911980" target="_blank" style="color:var(--link);font-size:10px;">View memorial (#13911980)</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="bio-section">
+    <div class="section-label">Sources &amp; notes</div>
+    <div class="sources-cols">
+      <ul class="source-list">
+        <li class="source-item">Find A Grave · Memorial #13911980 · Harrison Cemetery, Crawford County, PA · photo added by Rusty Davis, obituary clipping added by 4ever a Young</li>
+        <li class="source-item">Ancestry.com · birth/family timeline for John Brown Harrison, sourced to Pennsylvania, U.S., Death Certificates, 1906–1972 and U.S., Find A Grave Index, 1600s-current</li>
+        <li class="source-item">Death certificate of Richard B Harrison (son), 19 Feb 1930, Spartansburg, Crawford County, PA — confirms parents John B. Harrison (b. England) and Ellen Harrison (maiden name, b. England)</li>
+        <li class="source-item">English Settlement Cemetery master record</li>
+        <li class="source-item">Research by Scott Morris</li>
+      </ul>
+      <div>
+        <div class="research-note"><strong>Family settlement chronology, unusually well-documented:</strong> The birthplaces of John's siblings — Elizabeth in England (Mar 1826), Thomas in Paterson, NJ (Mar 1829), Sarah in New Jersey (Dec 1830), Ellen in Rome Township, PA (May 1836) — independently corroborate his own obituary's account of the family's move (Paterson in 1826, Rome Township in 1836). This is one of the more precisely dated family migrations documented on this site.</div>
+        <div class="research-note"><strong>Two Ellen Harrisons in this family — do not conflate:</strong> John's wife, Ellen Harrison Harrison (1828–1911), and John's own sister, Ellen Harrison, later Ellen Harrison Morris (1836–1906), shared the same maiden name and given name but are two different women.</div>
+        <div class="research-note"><strong>Cousin marriage confirmed:</strong> John and Ellen were first cousins. John's father, Benjamin Inskip Harrison, and Ellen's father, Richard Harrison (1786–1867), were brothers — both sons of Benjamin Harrison (1759–1824) and Jane Inskip Harrison. This is one of several cousin marriages found in this generation of the family, alongside Ellen's sister Margaret's marriage to James Morris and Ellen's brother William Harrison's marriage to a Sarah Harrison — part of the pattern of intermarriage this site's broader research is tracking across the Harrison, Morris, and related families.</div>
+        <div class="research-note"><strong>Obituary's surviving siblings, partly unconfirmed:</strong> The 1905 obituary names surviving brothers Thomas, Richard, Edward, and George, and a surviving sister, "Mrs. Edward Morris." Richard is confirmed as Richard Christopher Harrison (1838–1911). "Mrs. Edward Morris" is almost certainly John's sister Ellen, whose married name is documented elsewhere on this site as Ellen Harrison Morris — an Edward Morris (1831–1912) is separately documented in the cemetery master record, consistent with this reading, though not yet directly confirmed as her husband. "Edward" and "George" have not yet been matched with confidence to specific individuals in the master record and are not linked above.</div>
+        <div class="last-updated">Last updated: August 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTRIBUTE -->
+  <div class="bio-section">
+    <div class="section-label">Contribute information</div>
+    <div class="contrib-intro">Do you have photographs, documents, family memories, or corrections relating to John Brown Harrison? Submissions are reviewed by the museum curator before publication and will be credited to you by name.</div>
+    <div class="contrib-grid">
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your name</div>
+        <input class="contrib-input" type="text" placeholder="Jane Smith">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Email address</div>
+        <input class="contrib-input" type="email" placeholder="jane@example.com">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your connection</div>
+        <input class="contrib-input" type="text" placeholder="Descendant, historian, researcher…">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Source or evidence</div>
+        <input class="contrib-input" type="text" placeholder="Census record, family Bible, photograph…">
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Information or correction</div>
+        <textarea class="contrib-input" placeholder="Describe what you know and where the information comes from…"></textarea>
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Attach photos or documents</div>
+        <div class="file-area" onclick="document.getElementById('file-in').click()">
+          <span style="font-size:20px;display:block;margin-bottom:4px;">📎</span>
+          <span>Click to attach photos, scanned documents, or other files</span>
+          <span style="font-size:9px;">JPG, PNG, PDF, TIFF · max 10MB per file</span>
+          <input id="file-in" type="file" multiple accept="image/*,.pdf,.tiff" onchange="showFiles(this)">
+        </div>
+        <div class="file-list" id="file-list"></div>
+      </div>
+    </div>
+    <div class="contrib-footer">
+      <div class="contrib-note">Submissions are reviewed before publication. You will be contacted at your email address if we have questions or wish to use your contribution.</div>
+      <button class="contrib-btn" onclick="submitContribution()">Submit for review →</button>
+    </div>
+  </div>
+
 </div>
+
 <footer id="footer">
-  <div id="ft-l">English Settlement Cemetery Digital Museum &middot; Rome Township, Crawford County, Pennsylvania</div>
-  <div id="ft-r">Research &nbsp;&middot;&nbsp; Preserve &nbsp;&middot;&nbsp; Remember</div>
+  <div id="ft-l">English Settlement Cemetery Digital Museum · Rome Township, Crawford County, Pennsylvania</div>
+  <div id="ft-r">Research &nbsp;·&nbsp; Preserve &nbsp;·&nbsp; Remember</div>
 </footer>
+
+<script>
+function showFiles(input){
+  const list=document.getElementById('file-list');
+  if(input.files.length===0){list.textContent='';return;}
+  list.textContent=input.files.length+' file(s) selected: '+[...input.files].map(f=>f.name).join(', ');
+}
+function submitContribution(){
+  const name=document.querySelector('input[placeholder="Jane Smith"]').value;
+  const email=document.querySelector('input[type="email"]').value;
+  const connect=document.querySelector('input[placeholder="Descendant, historian, researcher…"]').value;
+  const source=document.querySelector('input[placeholder="Census record, family Bible, photograph…"]').value;
+  const info=document.querySelector('textarea').value;
+  const subject=encodeURIComponent('Contribution: John Brown Harrison — English Settlement Cemetery');
+  const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nConnection: '+connect+'\nSource: '+source+'\n\nInformation:\n'+info);
+  window.location.href='mailto:scotty8828@gmail.com?subject='+subject+'&body='+body;
+}
+</script>
+
 </body>
 </html>
