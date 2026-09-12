@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>John Brown Morris — English Settlement Cemetery</title>
-  <meta name="description" content="John Brown Morris (1845 &ndash; 1928), English Settlement Cemetery, Rome Township, Crawford County, Pennsylvania. Biography research in progress.">
+  <meta name="description" content="Biography of John Brown Morris (1855–1926) and his wife Seraph Matilda Chase Morris, Rome Township, Crawford County, Pennsylvania.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;1,8..60,300&family=Inter:wght@300;400;500;600&display=swap">
   <style>
@@ -13,9 +13,12 @@
       --forest:#1B3028;--forest-light:#3D6B50;
       --cream:#F2EDE3;--parch:#E8E0D0;--white:#FDFAF4;
       --gold:#C8A84B;--text:#1C1408;--muted:#6B5A3E;
-      --border:#D0C4A8;--link:#1A3A6A;
+      --border:#D0C4A8;--border-dk:#B8A888;
+      --doc:#3B6D11;--prob:#854F0B;--unv:#A32D2D;
+      --link:#1A3A6A;
     }
     html,body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);font-size:14px;line-height:1.6;}
+
     #nav{background:#243D30;border-bottom:1px solid rgba(200,168,75,0.15);position:sticky;top:0;z-index:100;}
     #nav-in{display:flex;align-items:center;max-width:900px;margin:0 auto;padding:0 20px;overflow-x:auto;gap:0;}
     #nav-in::-webkit-scrollbar{display:none;}
@@ -23,56 +26,440 @@
     .ni:hover{color:#fff;border-bottom-color:var(--gold);}
     .ns{width:1px;height:14px;background:rgba(255,255,255,0.1);flex-shrink:0;margin:auto 0;}
 
-    .wrap{max-width:600px;margin:0 auto;padding:0 0 3rem;}
-    .back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;}
-    .back:hover{color:var(--forest);}
+    .bio-wrap{max-width:900px;margin:0 auto;padding:0 0 3rem;}
+    .bio-back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+    .bio-back:hover{color:var(--forest);}
 
-    .pending-card{
-      margin:20px;background:var(--white);border:1px solid var(--border);
-      padding:40px 30px;text-align:center;
-    }
-    .pending-icon{font-size:32px;margin-bottom:16px;opacity:0.5;}
-    .pending-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-    .pending-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:var(--text);margin-bottom:6px;}
-    .pending-dates{font-size:14px;color:var(--muted);margin-bottom:20px;font-family:'Source Serif 4',serif;}
-    .pending-badge{
-      display:inline-block;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
-      padding:6px 16px;border:1px solid var(--gold);color:#7A5C00;
-      background:rgba(200,168,75,0.1);margin-bottom:20px;font-weight:500;
-    }
-    .pending-msg{font-size:12px;color:var(--muted);font-family:'Source Serif 4',serif;font-style:italic;line-height:1.7;max-width:420px;margin:0 auto 20px;}
-    .pending-fam{font-size:11px;color:var(--muted);margin-bottom:4px;}
-    .contrib-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:16px;border-top:1px solid var(--border);padding-top:16px;}
-    .contrib-note a{color:var(--link);}
+    .bio-header{display:flex;gap:20px;align-items:flex-start;padding:0 20px 20px;border-bottom:2px solid var(--border);}
+    .bio-photo-col{flex-shrink:0;width:140px;text-align:center;}
+    .bio-photo{width:140px;height:180px;background:var(--parch);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--muted);text-align:center;padding:12px;overflow:hidden;position:relative;}
+    .bio-photo img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+    .bio-photo-credit{font-size:9px;color:var(--muted);margin-top:6px;line-height:1.4;}
+    .bio-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    .bio-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text);margin-bottom:4px;letter-spacing:0.02em;}
+    .bio-tagline{font-family:'Source Serif 4',serif;font-style:italic;font-size:13px;color:var(--muted);margin-bottom:8px;}
+    .bio-dates{font-size:15px;color:var(--muted);margin-bottom:4px;font-family:'Source Serif 4',serif;}
+    .bio-age{font-size:12px;color:var(--muted);margin-bottom:8px;}
+    .bio-fam-tag{display:inline-block;font-size:10px;padding:3px 10px;border:1px solid var(--border);color:var(--muted);background:var(--white);letter-spacing:0.06em;}
+    .vital-strip{display:flex;gap:20px;flex-wrap:wrap;margin-top:12px;}
+    .vital-block{display:flex;align-items:flex-start;gap:6px;}
+    .vital-ico{font-size:14px;color:var(--muted);margin-top:1px;}
+    .vital-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .vital-val{font-size:12px;color:var(--text);font-weight:500;}
+    .vital-sub{font-size:10px;color:var(--muted);}
+    .conf{display:inline-block;font-size:8px;padding:1px 5px;border-radius:1px;margin-left:4px;vertical-align:middle;letter-spacing:0.06em;text-transform:uppercase;}
+    .conf-doc{color:var(--doc);border:1px solid var(--doc);}
+    .conf-prob{color:var(--prob);border:1px solid var(--prob);}
+    .conf-unv{color:var(--unv);border:1px solid var(--unv);}
+
+    .bio-section{padding:16px 20px;border-bottom:1px solid var(--border);}
+    .section-label{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+    .section-label::after{content:'';flex:1;height:0.5px;background:var(--border);}
+
+    .bio-prose{font-size:13px;line-height:1.85;color:var(--text);}
+    .bio-prose p+p{margin-top:10px;}
+    .bio-prose .placeholder{color:var(--muted);font-style:italic;font-size:12px;}
+
+    .spouse-block{background:var(--white);border:1px solid var(--border);padding:14px;margin-top:10px;}
+    .spouse-name{font-family:'Playfair Display',serif;font-size:17px;color:var(--text);margin-bottom:2px;}
+    .spouse-dates{font-size:11px;color:var(--muted);font-family:'Source Serif 4',serif;margin-bottom:10px;}
+
+    .obit-box{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--gold);padding:12px 14px;margin-top:10px;}
+    .obit-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
+    .obit-text{font-family:'Source Serif 4',serif;font-style:italic;font-size:12px;line-height:1.75;color:var(--text);}
+    .obit-text p+p{margin-top:8px;}
+    .obit-cite{font-size:9px;color:var(--muted);margin-top:8px;font-style:normal;}
+
+    .lt-wrap{background:var(--white);border:1px solid var(--border);padding:14px;overflow-x:auto;}
+    .lt-track{position:relative;padding-bottom:28px;min-width:500px;}
+    .lt-line{position:absolute;top:6px;left:0;right:0;height:1px;background:var(--border);}
+    .lt-dots{display:flex;justify-content:space-between;position:relative;}
+    .lt-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
+    .lt-dot{width:10px;height:10px;border-radius:50%;background:#2A5A3A;border:2px solid var(--white);position:relative;z-index:1;flex-shrink:0;}
+    .lt-dot.death{background:var(--unv);}
+    .lt-dot.marriage{background:var(--gold);}
+    .lt-year{font-size:9px;font-weight:600;color:var(--text);}
+    .lt-event{font-size:9px;color:var(--muted);text-align:center;line-height:1.3;max-width:110px;}
+    .lt-event.death{color:var(--unv);}
+    .lt-event.marriage{color:#7A5C00;}
+
+    .fam-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .fam-group-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
+    .fam-person{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+    .fam-avatar{width:30px;height:30px;border-radius:50%;background:var(--parch);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
+    .fam-name{font-size:11px;color:var(--link);font-weight:500;text-decoration:none;display:block;}
+    .fam-name:hover{text-decoration:underline;}
+    .fam-name.ext{color:var(--muted);font-weight:400;}
+    .fam-dates{font-size:9px;color:var(--muted);}
+    .children-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+    .child-item{padding:3px 0;}
+    .child-name{font-size:10px;color:var(--link);text-decoration:none;display:block;}
+    .child-name:hover{text-decoration:underline;}
+    .child-name.ext{color:var(--muted);}
+    .child-dates{font-size:9px;color:var(--muted);}
+    .fam-key{font-size:10px;color:var(--muted);margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;}
+
+    .sources-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .source-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+    .source-item{font-size:10px;color:var(--muted);padding-left:12px;position:relative;line-height:1.5;}
+    .source-item::before{content:'·';position:absolute;left:0;}
+    .research-note{font-size:10px;color:var(--muted);line-height:1.6;background:var(--white);border:1px solid var(--border);padding:10px;margin-bottom:8px;}
+    .last-updated{font-size:9px;color:var(--muted);text-align:right;margin-top:8px;}
+
+    .contrib-intro{font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.6;}
+    .contrib-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+    .contrib-field{display:flex;flex-direction:column;gap:3px;}
+    .contrib-field.full{grid-column:1/-1;}
+    .contrib-lbl{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .contrib-input{font-size:11px;padding:6px 8px;border:1px solid var(--border);background:var(--cream);color:var(--text);width:100%;font-family:'Inter',sans-serif;}
+    .contrib-input:focus{outline:none;border-color:var(--forest-light);}
+    textarea.contrib-input{resize:vertical;min-height:70px;}
+    .file-area{border:1.5px dashed var(--border);padding:14px;text-align:center;cursor:pointer;background:var(--cream);transition:border-color 0.15s;}
+    .file-area:hover{border-color:var(--forest-light);}
+    .file-area span{font-size:10px;color:var(--muted);line-height:1.5;display:block;}
+    .file-area input{display:none;}
+    .file-list{font-size:10px;color:var(--forest-light);margin-top:4px;min-height:14px;}
+    .contrib-footer{display:flex;align-items:center;gap:12px;margin-top:10px;}
+    .contrib-note{font-size:9px;color:var(--muted);flex:1;line-height:1.5;}
+    .contrib-btn{font-size:11px;padding:8px 20px;background:var(--forest);color:#fff;border:none;cursor:pointer;letter-spacing:0.06em;flex-shrink:0;font-family:'Inter',sans-serif;}
+    .contrib-btn:hover{background:var(--forest-light);}
 
     #footer{background:var(--forest);border-top:1px solid rgba(200,168,75,0.1);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
     #ft-l{font-size:10px;color:rgba(255,255,255,0.32);font-family:'Source Serif 4',serif;font-style:italic;max-width:380px;line-height:1.6;}
     #ft-r{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(200,168,75,0.45);}
+
+    @media(max-width:600px){
+      .bio-header{flex-direction:column;}
+      .fam-grid,.contrib-grid,.sources-cols{grid-template-columns:1fr;}
+      .children-grid{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
+
 <nav id="nav">
   <div id="nav-in">
-    <a class="ni" href="../index.html">People Timeline</a><div class="ns"></div>
-    <a class="ni" href="../about.html">About</a>
+    <a class="ni" href="../index.html">👥 People Timeline</a><div class="ns"></div>
+    <a class="ni" href="#">📷 The Cemetery</a><div class="ns"></div>
+    <a class="ni" href="#">👨‍👩‍👧 Families</a><div class="ns"></div>
+    <a class="ni" href="#">🗺 Historical Maps</a><div class="ns"></div>
+    <a class="ni" href="#">🖼 Photo Gallery</a><div class="ns"></div>
+    <a class="ni" href="#">📄 Documents</a><div class="ns"></div>
+    <a class="ni" href="../about.html">ℹ About</a>
   </div>
 </nav>
-<div class="wrap">
-  <a class="back" href="../index.html">&larr; Back to timeline</a>
-  <div class="pending-card">
-    <div class="pending-icon">📜</div>
-    <div class="pending-eyebrow">English Settlement Cemetery &middot; Rome Township, PA</div>
-    <div class="pending-name">John Brown Morris</div>
-    <div class="pending-dates">1845 &ndash; 1928</div>
-    <div class="pending-fam">Morris family</div>
-    <div class="pending-badge">Research Pending</div>
-    <div class="pending-msg">This person's biography is currently being researched. Historical records are being reviewed and verified before publication to ensure accuracy. Check back soon, or contribute what you know below.</div>
-    <div class="contrib-note">Have information about John Brown Morris? Contact Scott Morris at <a href="mailto:scotty8828@gmail.com">scotty8828@gmail.com</a> to contribute photographs, documents, or family history.</div>
+
+<div class="bio-wrap">
+
+  <a class="bio-back" href="../index.html">← Back to timeline</a>
+
+  <!-- HEADER -->
+  <div class="bio-header">
+    <div class="bio-photo-col">
+      <div class="bio-photo">
+        <span style="font-size:36px;">👤</span>
+        <span style="font-size:10px;margin-top:6px;">No photograph<br>yet found</span>
+      </div>
+      <div class="bio-photo-credit">English Settlement Cemetery<br>Rome Township, PA</div>
+    </div>
+    <div>
+      <div class="bio-eyebrow">English Settlement Cemetery · Crawford County, PA</div>
+      <div class="bio-name">John Brown Morris</div>
+      <div class="bio-tagline">A good neighbor and friend, near Buell, in Rome Township.</div>
+      <div class="bio-dates">14 September 1855 – 5 February 1926</div>
+      <div class="bio-age">Aged 70 years, 4 months, 22 days</div>
+      <div class="bio-fam-tag">Morris family</div>
+      <div class="vital-strip">
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Born</div>
+            <div class="vital-val">14 Sep 1855 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Crawford County, PA</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">💍</div>
+          <div>
+            <div class="vital-label">Married</div>
+            <div class="vital-val">Seraph Matilda Chase</div>
+            <div class="vital-sub">Date not yet documented</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Died</div>
+            <div class="vital-val">5 Feb 1926 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Rome Township, Crawford Co., PA</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">🪦</div>
+          <div>
+            <div class="vital-label">Buried</div>
+            <div class="vital-val">Harrison Cemetery</div>
+            <div class="vital-sub">Recorded as "Vrooman"</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- BIOGRAPHY -->
+  <div class="bio-section">
+    <div class="section-label">Biography</div>
+    <div class="bio-prose">
+      <p>John Brown Morris was born 14 September 1855 in Crawford County, a son of William "Billie" Morris Sr. (1811–1890) and Jane Harrison Morris (1818–1885), both already documented on this site. He had at least five siblings: William S. Morris Jr. (1837–1915), Sarah Ann Morris Myers (1839–1906), Nancy Elizabeth Morris Magee (1844–1874), Mary Jane Morris Sedden (1846–1930), James L. "Jimmy" Morris (1848–1921), and Benjamin Harrison Morris (1852–1901) — all but Sarah and Nancy already documented on this site.</p>
+      <p>He was a farmer near Buell, in Rome Township, and lived there most of his life. He died 5 February 1926 after an illness of about two months, which one obituary attributes to Bright's disease — a period term for chronic kidney disease. His funeral was held at the family home, with Rev. Fred Smith of Centerville, pastor of the United Brethren church, officiating; the pallbearers were neighbors and friends Frank Henton, Roy Mitchell, Charles Farrell, and William Morgan. He was buried at what his obituaries record as "Vrooman" or "Vrooman cemetery" — this site's own Harrison Cemetery. One obituary summed him up simply: "a good citizen, a kind neighbor and friend, husband and father."</p>
+    </div>
+
+    <div class="spouse-block">
+      <div class="spouse-name">His wife — Seraph Matilda Chase Morris</div>
+      <div class="spouse-dates">27 October 1861 – 31 August 1926</div>
+      <p style="font-size:13px;line-height:1.85;">Seraph was born in Rome Township, a daughter of James Henry Chase (1837–1921) and Nancy A. Fish Chase (1837–1909) — a separate Fish family line from Saraph Fish Morris, already documented on this site, who was John Morris's first wife. She and John Brown Morris had one daughter, Zelma (1878–1964), whose married name appears in the records as both "Boles" and "Peterson" — possibly two successive marriages, not resolved here.</p>
+      <p style="font-size:13px;line-height:1.85;margin-top:8px;">Seraph outlived John by just under seven months, dying 31 August 1926 at their home at Buell Corners after a three-year illness. Unlike her husband, she was not buried at Harrison Cemetery — her own burial was at what her obituary calls the "Mageetown cemetery," formally Immaculate Conception Cemetery in Centerville, Crawford County. She does not have a separate page on this site; her information is recorded here alongside her husband's.</p>
+    </div>
+
+    <div class="obit-box">
+      <div class="obit-label">Primary sources — his obituaries, February 1926</div>
+      <div class="obit-text">
+        <p>"Centerville, Pa. — The funeral of John B. Morris was held Monday afternoon at 2:00 o'clock from the family residence, and interment was made in Harrison Cemetery, at Vrooman. Mr. Morris died Friday evening after an illness of about two months, aged 71 years. The widow, Mrs. Seraph Morris, and one daughter, Mrs. Zelma Boles, survive." (The Erie Times, 11 Feb 1926)</p>
+        <p>"Funeral services in memory of John B. Morris were conducted from the family home near Buell in Rome township, Rev. Fred Smith of Centerville, pastor of the United Brethren church officiating, the minister speaking words of comfort to the bereaved family. The interment was made in the church cemetery at Vrooman, the pallbearers being neighbors and friends, Frank Henton, Roy Mitchell, Charles Farrell and William Morgan. Mr. Morris is survived by his wife and one daughter, Mrs. Zelma Boles, who has been faithful and untiring in her devotion throughout the long illness of her father. Mr. Morris was a good neighbor and friend and will be greatly missed in the neighborhood where he resided so long." (Titusville Herald, 12 Feb 1926)</p>
+        <p>"The demise of John B. Morris, one of the best-known citizens of Rome township, while death was not unexpected, came nevertheless as a shock to his numerous friends. Mr. Morris had passed his 'three score and ten years,' death being the result of 'Bright's disease.'" (Titusville Herald, 11 Feb 1926, p.7)</p>
+        <div class="obit-cite">— as reproduced on Find A Grave. Note: the Erie Times gives his age as 71; his own documented birth and death dates work out to 70 years, 4 months, 22 days, matching Find A Grave's header — treated here as the more reliable figure.</div>
+      </div>
+    </div>
+
+    <div class="obit-box">
+      <div class="obit-label">Primary source — her obituary, Titusville Herald, 1 September 1926, p.5</div>
+      <div class="obit-text">
+        <p>"Mrs. Seraph M. Morris, aged 64 years, 10 months and three days, died at her home at Buell Corners, yesterday afternoon at 12:30 o'clock after an illness of three years. She is survived by one daughter, Zelma Boles, who resides at home. Funeral services in her memory will be held from the Mageetown church on Thursday morning at 9 o'clock. Interment will be made in the Mageetown cemetery."</p>
+        <div class="obit-cite">— Titusville Herald, 1 September 1926, p.5, as reproduced on Find A Grave</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIFE TIMELINE -->
+  <div class="bio-section">
+    <div class="section-label">Life timeline</div>
+    <div class="lt-wrap">
+      <div class="lt-track">
+        <div class="lt-line"></div>
+        <div class="lt-dots">
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1855</div>
+            <div class="lt-event">Born<br>Crawford County</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot marriage"></div>
+            <div class="lt-year">—</div>
+            <div class="lt-event marriage">Married<br>Seraph Chase</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1878</div>
+            <div class="lt-event">Daughter Zelma born</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot death"></div>
+            <div class="lt-year" style="color:#A32D2D;">Feb 1926</div>
+            <div class="lt-event death">Died<br>Rome Township</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot death"></div>
+            <div class="lt-year">Aug 1926</div>
+            <div class="lt-event death">Seraph dies<br>7 months later</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAMILY CONNECTIONS -->
+  <div class="bio-section">
+    <div class="section-label">Family connections</div>
+    <div class="fam-grid">
+      <div>
+        <div class="fam-group-label">👪 Parents</div>
+        <div class="fam-person">
+          <a href="william-billie-morris-sr.html" style="text-decoration:none;">
+            <div class="fam-avatar">👤</div>
+          </a>
+          <div>
+            <a class="fam-name" href="william-billie-morris-sr.html">William "Billie" Morris Sr.</a>
+            <div class="fam-dates">1811 – 1890 · Buried here</div>
+          </div>
+        </div>
+        <div class="fam-person">
+          <a href="jane-harrison-morris-1818.html" style="text-decoration:none;">
+            <div class="fam-avatar">👤</div>
+          </a>
+          <div>
+            <a class="fam-name" href="jane-harrison-morris-1818.html">Jane Harrison Morris</a>
+            <div class="fam-dates">1818 – 1885 · Buried here</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="fam-group-label">❤️ Spouse</div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <span class="fam-name ext">Seraph Matilda Chase Morris</span>
+              <div class="fam-dates">1861 – 1926 · Not buried here</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="fam-group-label">🧑‍🤝‍🧑 Siblings — 6 known</div>
+        <div class="children-grid">
+          <div class="child-item">
+            <a class="child-name" href="william-s-morris-jr.html">William S. Morris Jr.</a>
+            <div class="child-dates">1837 – 1915 · Buried here</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name ext">Sarah Ann Morris Myers</span>
+            <div class="child-dates">1839 – 1906 · Not buried here</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name ext">Nancy Elizabeth Morris Magee</span>
+            <div class="child-dates">1844 – 1874 · Not buried here</div>
+          </div>
+          <div class="child-item">
+            <a class="child-name" href="mary-jane-morris-sedden.html">Mary Jane Morris Sedden</a>
+            <div class="child-dates">1846 – 1930 · Buried here</div>
+          </div>
+          <div class="child-item">
+            <a class="child-name" href="james-l-jimmy-morris.html">James L. "Jimmy" Morris</a>
+            <div class="child-dates">1848 – 1921 · Buried here</div>
+          </div>
+          <div class="child-item">
+            <a class="child-name" href="benjamin-harrison-morris.html">Benjamin Harrison Morris</a>
+            <div class="child-dates">1852 – 1901 · Buried here</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;">
+          <div class="fam-group-label">👶 Daughter</div>
+          <div class="fam-person">
+            <div class="fam-avatar">👤</div>
+            <div>
+              <span class="fam-name ext">Zelma Morris (Boles / Peterson)</span>
+              <div class="fam-dates">1878 – 1964 · Not buried here</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fam-key">
+      <span>Names in blue = buried in English Settlement Cemetery, page built</span>
+      <span>Grey names = not confirmed buried here</span>
+    </div>
+  </div>
+
+  <!-- MONUMENT -->
+  <div class="bio-section">
+    <div class="section-label">Monument</div>
+    <div style="background:var(--white);border:1px solid var(--border);padding:12px;">
+      <div style="font-size:11px;color:var(--muted);line-height:1.6;padding:10px;border:1px dashed var(--border);margin-bottom:10px;">Find A Grave photographs (contributed by JNicholson and Rusty Davis) show a marker reading "JOHN BROWN MORRIS, 1855–1926."</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Type</span>Upright marker</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Condition</span>Legible per photograph</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Epitaph</span>"JOHN BROWN MORRIS, 1855–1926"</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Find A Grave</span><a href="https://www.findagrave.com/memorial/13912539" target="_blank" style="color:var(--link);font-size:10px;">View memorial (#13912539)</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="bio-section">
+    <div class="section-label">Sources &amp; notes</div>
+    <div class="sources-cols">
+      <ul class="source-list">
+        <li class="source-item">Obituaries · The Erie Times (11 Feb 1926) and Titusville Herald (11 &amp; 12 Feb 1926), as reproduced on Find A Grave</li>
+        <li class="source-item">Find A Grave · Memorial #13912539 (John), #110328813 (Seraph)</li>
+        <li class="source-item">Obituary · Seraph M. Morris · Titusville Herald, 1 Sept 1926, p.5, as reproduced on Find A Grave</li>
+        <li class="source-item">1860, 1870, 1880, 1900, and 1910 U.S. Census records</li>
+        <li class="source-item">History of Crawford County, Pennsylvania (1885), p. 975 — Ira W. Fish and Waterman Guy Goodrich biographies</li>
+        <li class="source-item">Ancestry.com family tree (Scott Morris) · Morris/Chase/Fish family lines</li>
+        <li class="source-item">English Settlement Cemetery master record</li>
+        <li class="source-item">Research by Scott Morris</li>
+      </ul>
+      <div>
+        <div class="research-note"><b>Long-standing confusion with a cousin, now resolved.</b> John Brown Morris (1855–1926) was for some time difficult to distinguish from a separately-documented John Morris of the same generation, since both men married women who went by "Seraph"/"Saraph" — this John's wife was Seraph Matilda Chase (1861–1926), daughter of Nancy A. Fish Chase; the other man's wife was Saraph Fish Morris (already documented on this site), daughter of Ira W. Fish. Census records for 1860, 1870, 1880, 1900, and 1910 — the last showing John and Seraph living in Crawford County, Illinois during the local oil boom, with a Guy Goodrich boarding with them — confirmed the two men as entirely separate people with separate wives, both coincidentally connected to different Fish family lines.</div>
+        <div class="research-note"><b>Daughter's married name.</b> Zelma appears as "Zelma Boles" in both her parents' 1926 obituaries, but as "Zelma Morris Peterson" in family tree records — possibly two successive marriages, not resolved here.</div>
+        <div class="last-updated">Last updated: September 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTRIBUTE -->
+  <div class="bio-section">
+    <div class="section-label">Contribute information</div>
+    <div class="contrib-intro">Do you have photographs, documents, family memories, or corrections relating to John Brown Morris or Seraph Matilda Chase Morris? Submissions are reviewed by the museum curator before publication and will be credited to you by name.</div>
+    <div class="contrib-grid">
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your name</div>
+        <input class="contrib-input" type="text" placeholder="Jane Smith">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Email address</div>
+        <input class="contrib-input" type="email" placeholder="jane@example.com">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your connection</div>
+        <input class="contrib-input" type="text" placeholder="Descendant, historian, researcher…">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Source or evidence</div>
+        <input class="contrib-input" type="text" placeholder="Census record, family Bible, photograph…">
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Information or correction</div>
+        <textarea class="contrib-input" placeholder="Describe what you know and where the information comes from…"></textarea>
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Attach photos or documents</div>
+        <div class="file-area" onclick="document.getElementById('file-in').click()">
+          <span style="font-size:20px;display:block;margin-bottom:4px;">📎</span>
+          <span>Click to attach photos, scanned documents, or other files</span>
+          <span style="font-size:9px;">JPG, PNG, PDF, TIFF · max 10MB per file</span>
+          <input id="file-in" type="file" multiple accept="image/*,.pdf,.tiff" onchange="showFiles(this)">
+        </div>
+        <div class="file-list" id="file-list"></div>
+      </div>
+    </div>
+    <div class="contrib-footer">
+      <div class="contrib-note">Submissions are reviewed before publication. You will be contacted at your email address if we have questions or wish to use your contribution.</div>
+      <button class="contrib-btn" onclick="submitContribution()">Submit for review →</button>
+    </div>
+  </div>
+
 </div>
+
 <footer id="footer">
-  <div id="ft-l">English Settlement Cemetery Digital Museum &middot; Rome Township, Crawford County, Pennsylvania</div>
-  <div id="ft-r">Research &nbsp;&middot;&nbsp; Preserve &nbsp;&middot;&nbsp; Remember</div>
+  <div id="ft-l">English Settlement Cemetery Digital Museum · Rome Township, Crawford County, Pennsylvania</div>
+  <div id="ft-r">Research &nbsp;·&nbsp; Preserve &nbsp;·&nbsp; Remember</div>
 </footer>
+
+<script>
+function showFiles(input){
+  const list=document.getElementById('file-list');
+  if(input.files.length===0){list.textContent='';return;}
+  list.textContent=input.files.length+' file(s) selected: '+[...input.files].map(f=>f.name).join(', ');
+}
+function submitContribution(){
+  const name=document.querySelector('input[placeholder="Jane Smith"]').value;
+  const email=document.querySelector('input[type="email"]').value;
+  const connect=document.querySelector('input[placeholder="Descendant, historian, researcher…"]').value;
+  const source=document.querySelector('input[placeholder="Census record, family Bible, photograph…"]').value;
+  const info=document.querySelector('textarea').value;
+  const subject=encodeURIComponent('Contribution: John Brown Morris — English Settlement Cemetery');
+  const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nConnection: '+connect+'\nSource: '+source+'\n\nInformation:\n'+info);
+  window.location.href='mailto:scotty8828@gmail.com?subject='+subject+'&body='+body;
+}
+</script>
+
 </body>
 </html>
