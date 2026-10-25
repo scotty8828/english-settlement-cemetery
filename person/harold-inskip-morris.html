@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Harold Inskip Morris — English Settlement Cemetery</title>
-  <meta name="description" content="Harold Inskip Morris (1907 &ndash; 1937), English Settlement Cemetery, Rome Township, Crawford County, Pennsylvania. Biography research in progress.">
+  <meta name="description" content="Biography of Harold Inskip Morris (1907–1937), twin son of Reuben and Anna Morris, born in Rome Township, Crawford County, Pennsylvania; moulder at Erie.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;1,8..60,300&family=Inter:wght@300;400;500;600&display=swap">
   <style>
@@ -13,9 +13,13 @@
       --forest:#1B3028;--forest-light:#3D6B50;
       --cream:#F2EDE3;--parch:#E8E0D0;--white:#FDFAF4;
       --gold:#C8A84B;--text:#1C1408;--muted:#6B5A3E;
-      --border:#D0C4A8;--link:#1A3A6A;
+      --border:#D0C4A8;--border-dk:#B8A888;
+      --doc:#3B6D11;--prob:#854F0B;--unv:#A32D2D;
+      --link:#1A3A6A;
     }
     html,body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);font-size:14px;line-height:1.6;}
+
+    /* NAV */
     #nav{background:#243D30;border-bottom:1px solid rgba(200,168,75,0.15);position:sticky;top:0;z-index:100;}
     #nav-in{display:flex;align-items:center;max-width:900px;margin:0 auto;padding:0 20px;overflow-x:auto;gap:0;}
     #nav-in::-webkit-scrollbar{display:none;}
@@ -23,56 +27,441 @@
     .ni:hover{color:#fff;border-bottom-color:var(--gold);}
     .ns{width:1px;height:14px;background:rgba(255,255,255,0.1);flex-shrink:0;margin:auto 0;}
 
-    .wrap{max-width:600px;margin:0 auto;padding:0 0 3rem;}
-    .back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;}
-    .back:hover{color:var(--forest);}
+    /* WRAP */
+    .bio-wrap{max-width:900px;margin:0 auto;padding:0 0 3rem;}
+    .bio-back{display:inline-flex;align-items:center;gap:6px;padding:12px 20px;font-size:11px;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+    .bio-back:hover{color:var(--forest);}
 
-    .pending-card{
-      margin:20px;background:var(--white);border:1px solid var(--border);
-      padding:40px 30px;text-align:center;
-    }
-    .pending-icon{font-size:32px;margin-bottom:16px;opacity:0.5;}
-    .pending-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-    .pending-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:var(--text);margin-bottom:6px;}
-    .pending-dates{font-size:14px;color:var(--muted);margin-bottom:20px;font-family:'Source Serif 4',serif;}
-    .pending-badge{
-      display:inline-block;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
-      padding:6px 16px;border:1px solid var(--gold);color:#7A5C00;
-      background:rgba(200,168,75,0.1);margin-bottom:20px;font-weight:500;
-    }
-    .pending-msg{font-size:12px;color:var(--muted);font-family:'Source Serif 4',serif;font-style:italic;line-height:1.7;max-width:420px;margin:0 auto 20px;}
-    .pending-fam{font-size:11px;color:var(--muted);margin-bottom:4px;}
-    .contrib-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:16px;border-top:1px solid var(--border);padding-top:16px;}
-    .contrib-note a{color:var(--link);}
+    /* HEADER */
+    .bio-header{display:flex;gap:20px;align-items:flex-start;padding:0 20px 20px;border-bottom:2px solid var(--border);}
+    .bio-photo-col{flex-shrink:0;width:140px;text-align:center;}
+    .bio-photo{width:140px;height:180px;background:var(--parch);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--muted);text-align:center;padding:12px;overflow:hidden;position:relative;}
+    .bio-photo img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+    .bio-photo-credit{font-size:9px;color:var(--muted);margin-top:6px;line-height:1.4;}
+    .bio-eyebrow{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+    .bio-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--text);margin-bottom:4px;letter-spacing:0.02em;}
+    .bio-tagline{font-family:'Source Serif 4',serif;font-style:italic;font-size:13px;color:var(--muted);margin-bottom:8px;}
+    .bio-dates{font-size:15px;color:var(--muted);margin-bottom:4px;font-family:'Source Serif 4',serif;}
+    .bio-age{font-size:12px;color:var(--muted);margin-bottom:8px;}
+    .bio-fam-tag{display:inline-block;font-size:10px;padding:3px 10px;border:1px solid var(--border);color:var(--muted);background:var(--white);letter-spacing:0.06em;}
+    .vital-strip{display:flex;gap:20px;flex-wrap:wrap;margin-top:12px;}
+    .vital-block{display:flex;align-items:flex-start;gap:6px;}
+    .vital-ico{font-size:14px;color:var(--muted);margin-top:1px;}
+    .vital-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .vital-val{font-size:12px;color:var(--text);font-weight:500;}
+    .vital-sub{font-size:10px;color:var(--muted);}
+    .conf{display:inline-block;font-size:8px;padding:1px 5px;border-radius:1px;margin-left:4px;vertical-align:middle;letter-spacing:0.06em;text-transform:uppercase;}
+    .conf-doc{color:var(--doc);border:1px solid var(--doc);}
+    .conf-prob{color:var(--prob);border:1px solid var(--prob);}
+    .conf-unv{color:var(--unv);border:1px solid var(--unv);}
 
+    /* SECTIONS */
+    .bio-section{padding:16px 20px;border-bottom:1px solid var(--border);}
+    .section-label{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+    .section-label::after{content:'';flex:1;height:0.5px;background:var(--border);}
+
+    /* PROSE */
+    .bio-prose{font-size:13px;line-height:1.85;color:var(--text);}
+    .bio-prose p+p{margin-top:10px;}
+    .bio-prose .placeholder{color:var(--muted);font-style:italic;font-size:12px;}
+
+    /* LIFE TIMELINE */
+    .lt-wrap{background:var(--white);border:1px solid var(--border);padding:14px;overflow-x:auto;}
+    .lt-track{position:relative;padding-bottom:28px;min-width:680px;}
+    .lt-line{position:absolute;top:6px;left:0;right:0;height:1px;background:var(--border);}
+    .lt-dots{display:flex;justify-content:space-between;position:relative;}
+    .lt-dot-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
+    .lt-dot{width:10px;height:10px;border-radius:50%;background:#2A5A3A;border:2px solid var(--white);position:relative;z-index:1;flex-shrink:0;}
+    .lt-dot.death{background:var(--unv);}
+    .lt-dot.marriage{background:var(--gold);}
+    .lt-year{font-size:9px;font-weight:600;color:var(--text);}
+    .lt-event{font-size:9px;color:var(--muted);text-align:center;line-height:1.3;max-width:90px;}
+    .lt-event.death{color:var(--unv);}
+    .lt-event.marriage{color:#7A5C00;}
+
+    /* FAMILY */
+    .fam-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .fam-group-label{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
+    .fam-person{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+    .fam-avatar{width:30px;height:30px;border-radius:50%;background:var(--parch);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
+    .fam-name{font-size:11px;color:var(--link);font-weight:500;text-decoration:none;display:block;}
+    .fam-name:hover{text-decoration:underline;}
+    .fam-name.ext{color:var(--muted);font-weight:400;}
+    .fam-dates{font-size:9px;color:var(--muted);}
+    .children-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+    .child-item{padding:3px 0;}
+    .child-name{font-size:10px;color:var(--link);text-decoration:none;display:block;}
+    .child-name:hover{text-decoration:underline;}
+    .child-dates{font-size:9px;color:var(--muted);}
+    .fam-key{font-size:10px;color:var(--muted);margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;}
+    .fam-extra{margin-top:16px;padding-top:14px;border-top:1px solid var(--border);}
+
+    /* SOURCES */
+    .sources-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .source-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+    .source-item{font-size:10px;color:var(--muted);padding-left:12px;position:relative;line-height:1.5;}
+    .source-item::before{content:'·';position:absolute;left:0;}
+    .obit-box{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--gold);padding:14px 16px;margin:12px 0;}
+    .obit-cite{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;}
+    .obit-text{font-family:'Source Serif 4',serif;font-style:italic;font-size:13px;line-height:1.75;color:var(--text);}
+    .obit-caveat{font-size:10px;color:var(--muted);line-height:1.6;margin-top:8px;}
+    .research-note{font-size:10px;color:var(--muted);line-height:1.6;background:var(--white);border:1px solid var(--border);padding:10px;}
+    .research-note+.research-note{margin-top:8px;}
+    .last-updated{font-size:9px;color:var(--muted);text-align:right;margin-top:8px;}
+
+    /* CONTRIBUTE */
+    .contrib-intro{font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.6;}
+    .contrib-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+    .contrib-field{display:flex;flex-direction:column;gap:3px;}
+    .contrib-field.full{grid-column:1/-1;}
+    .contrib-lbl{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+    .contrib-input{font-size:11px;padding:6px 8px;border:1px solid var(--border);background:var(--cream);color:var(--text);width:100%;font-family:'Inter',sans-serif;}
+    .contrib-input:focus{outline:none;border-color:var(--forest-light);}
+    textarea.contrib-input{resize:vertical;min-height:70px;}
+    .file-area{border:1.5px dashed var(--border);padding:14px;text-align:center;cursor:pointer;background:var(--cream);transition:border-color 0.15s;}
+    .file-area:hover{border-color:var(--forest-light);}
+    .file-area span{font-size:10px;color:var(--muted);line-height:1.5;display:block;}
+    .file-area input{display:none;}
+    .file-list{font-size:10px;color:var(--forest-light);margin-top:4px;min-height:14px;}
+    .contrib-footer{display:flex;align-items:center;gap:12px;margin-top:10px;}
+    .contrib-note{font-size:9px;color:var(--muted);flex:1;line-height:1.5;}
+    .contrib-btn{font-size:11px;padding:8px 20px;background:var(--forest);color:#fff;border:none;cursor:pointer;letter-spacing:0.06em;flex-shrink:0;font-family:'Inter',sans-serif;}
+    .contrib-btn:hover{background:var(--forest-light);}
+
+    /* FOOTER */
     #footer{background:var(--forest);border-top:1px solid rgba(200,168,75,0.1);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
     #ft-l{font-size:10px;color:rgba(255,255,255,0.32);font-family:'Source Serif 4',serif;font-style:italic;max-width:380px;line-height:1.6;}
     #ft-r{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(200,168,75,0.45);}
+
+    @media(max-width:600px){
+      .bio-header{flex-direction:column;}
+      .fam-grid,.contrib-grid,.sources-cols{grid-template-columns:1fr;}
+      .children-grid{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
+
 <nav id="nav">
   <div id="nav-in">
-    <a class="ni" href="../index.html">People Timeline</a><div class="ns"></div>
-    <a class="ni" href="../about.html">About</a>
+    <a class="ni" href="../index.html">👥 People Timeline</a><div class="ns"></div>
+    <a class="ni" href="#">📷 The Cemetery</a><div class="ns"></div>
+    <a class="ni" href="#">👨‍👩‍👧 Families</a><div class="ns"></div>
+    <a class="ni" href="#">🗺 Historical Maps</a><div class="ns"></div>
+    <a class="ni" href="#">🖼 Photo Gallery</a><div class="ns"></div>
+    <a class="ni" href="#">📄 Documents</a><div class="ns"></div>
+    <a class="ni" href="../about.html">ℹ About</a>
   </div>
 </nav>
-<div class="wrap">
-  <a class="back" href="../index.html">&larr; Back to timeline</a>
-  <div class="pending-card">
-    <div class="pending-icon">📜</div>
-    <div class="pending-eyebrow">English Settlement Cemetery &middot; Rome Township, PA</div>
-    <div class="pending-name">Harold Inskip Morris</div>
-    <div class="pending-dates">1907 &ndash; 1937</div>
-    <div class="pending-fam">Morris family</div>
-    <div class="pending-badge">Research Pending</div>
-    <div class="pending-msg">This person's biography is currently being researched. Historical records are being reviewed and verified before publication to ensure accuracy. Check back soon, or contribute what you know below.</div>
-    <div class="contrib-note">Have information about Harold Inskip Morris? Contact Scott Morris at <a href="mailto:scotty8828@gmail.com">scotty8828@gmail.com</a> to contribute photographs, documents, or family history.</div>
+
+<div class="bio-wrap">
+
+  <a class="bio-back" href="../index.html">← Back to timeline</a>
+
+  <!-- HEADER -->
+  <div class="bio-header">
+    <div class="bio-photo-col">
+      <div class="bio-photo">
+        <span style="font-size:36px;">👤</span>
+        <span style="font-size:10px;margin-top:6px;">Photograph<br>pending</span>
+      </div>
+      <div class="bio-photo-credit">English Settlement Cemetery<br>Rome Township, PA</div>
+    </div>
+    <div>
+      <div class="bio-eyebrow">English Settlement Cemetery · Crawford County, PA</div>
+      <div class="bio-name">Harold Inskip Morris</div>
+      <div class="bio-tagline">Twin son of Reuben and Anna Morris; moulder at Erie; husband of Magdelene and of Alice; father of four.</div>
+      <div class="bio-dates">2 February 1907 – 12 March 1937</div>
+      <div class="bio-age">Aged 30 years, 1 month, 10 days</div>
+      <div class="bio-fam-tag">Morris family</div>
+      <div class="vital-strip">
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Born</div>
+            <div class="vital-val">2 Feb 1907 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Rome Township, Crawford County, PA · one of twins</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">📅</div>
+          <div>
+            <div class="vital-label">Died</div>
+            <div class="vital-val">12 Mar 1937 <span class="conf conf-doc">Documented</span></div>
+            <div class="vital-sub">Hamot Hospital, Erie, PA · lobar pneumonia</div>
+          </div>
+        </div>
+        <div class="vital-block">
+          <div class="vital-ico">🪦</div>
+          <div>
+            <div class="vital-label">Buried</div>
+            <div class="vital-val">English Settlement Cemetery</div>
+            <div class="vital-sub">Rome Township · burial 15 Mar 1937</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- BIOGRAPHY -->
+  <div class="bio-section">
+    <div class="section-label">Biography</div>
+    <div class="bio-prose">
+      <p>Harold Inskip Morris was born 2 February 1907 in Rome Township, one of twin sons of <a href="reuben-morris.html" style="color:var(--link);">Reuben Morris</a> (1875–1917), a farmer, and <a href="anna-morris-dailey.html" style="color:var(--link);">Anna Morris</a> (1879–1954). Reuben and Anna were first cousins; Anna's father was <a href="inskip-morris.html" style="color:var(--link);">Inskip Morris</a>, whose name Harold carried as his middle name. The state birth certificate, filed 13 February 1907, was signed by Dr. E. E. Maitland of Spartansburg. It gives Reuben's age as 31 and Anna's as 27, and records six children living for this mother. That matches the four children Anna had earlier had with Patrick Dailey, plus the twins. His twin brother was Gerald James "Gerry" Morris (1907–1944).</p>
+      <p>Harold was ten when his father died in September 1917. The unusual history of his mother's marriages is told on her page.</p>
+      <p>On 1 May 1923, at Jamestown, New York, Harold married Magdelene Clara Smith (1905–1930) of Meadville, known as "Peg." Witnesses were Mrs. Maude Dailey and Ethel A. Eddy, and the record was filed on 25 June 1923. The groom's entry gives his residence as Meadville, his trade as moulder, his age as 22, and his parents as Reuben Morris and Anna Morris. He was in fact 16: his birth certificate gives 2 February 1907. The form has a section for a parent's written consent when a party is a minor, and it is blank. A stated age of 22 would have avoided needing one, but the record does not say why the age was given.</p>
+      <p>Find A Grave lists four children as Harold's: Granville James "Granny" (1923–2011), Donna Gloria (1925–2008), Ronald DeWitt "Jack" Clark (1930–2017) and Duane Harold (1935–1991). Which wife was the mother of each is not shown there. Peg died in 1930, and Ronald, who carries the surname Clark, was born that year; the circumstances have not been documented. In 1933 Harold married Alice Nora Tranmel (1901–1999), the date as given on Find A Grave; the marriage record itself has not been seen.</p>
+      <p>By 1937 the couple lived at 1011 Walnut Street, Erie. Harold's death certificate gives his trade as moulder, with ten years in the work, and the industry as "Erie Malleable." His half-brother Martin Dailey was also recorded as a moulder in 1917. Harold died on Friday, 12 March 1937, at Hamot Hospital in Erie, at 30 years, 1 month and 10 days. The cause was lobar pneumonia, and the physician had attended him from 10 March. His wife Alice is named as his wife, and his mother, then "Mrs. Anna Daily" of 632 South Franklin Street, Titusville, signed as informant. He was buried on Monday, 15 March 1937. His twin Gerald died seven years later, and their mother outlived them both.</p>
+      <p class="placeholder">Additional biography will be added as research deepens. If you have information about Harold Inskip Morris, please use the contribution form below.</p>
+    </div>
+  </div>
+
+  <!-- LIFE TIMELINE -->
+  <div class="bio-section">
+    <div class="section-label">Life timeline</div>
+    <div class="lt-wrap">
+      <div class="lt-track">
+        <div class="lt-line"></div>
+        <div class="lt-dots">
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">1907</div>
+            <div class="lt-event">Born 2 Feb,<br>twin of Gerald</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot death"></div>
+            <div class="lt-year">1917</div>
+            <div class="lt-event death">Father Reuben<br>dies, age 10</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot marriage"></div>
+            <div class="lt-year">1923</div>
+            <div class="lt-event marriage">Marries Magdelene<br>Smith, Jamestown NY</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot death"></div>
+            <div class="lt-year">1930</div>
+            <div class="lt-event death">Magdelene<br>dies</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot marriage"></div>
+            <div class="lt-year">1933</div>
+            <div class="lt-event marriage">Marries<br>Alice Tranmel</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot death"></div>
+            <div class="lt-year">1937</div>
+            <div class="lt-event death">Dies at Erie,<br>age 30</div>
+          </div>
+          <div class="lt-dot-wrap">
+            <div class="lt-dot"></div>
+            <div class="lt-year">Mar 1937</div>
+            <div class="lt-event">Buried near<br>Vrooman, 15 Mar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAMILY CONNECTIONS -->
+  <div class="bio-section">
+    <div class="section-label">Family connections</div>
+    <div class="fam-grid">
+      <div>
+        <div class="fam-group-label">👪 Parents</div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <a class="fam-name" href="reuben-morris.html">Reuben Morris</a>
+            <div class="fam-dates">1875 – 1917 · Buried here</div>
+          </div>
+        </div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <a class="fam-name" href="anna-morris-dailey.html">Anna Morris Dailey</a>
+            <div class="fam-dates">1879 – 1954 · Buried here</div>
+          </div>
+        </div>
+        <div class="fam-group-label" style="margin-top:14px;">💍 Spouses</div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <span class="fam-name ext">Magdelene Clara "Peg" Smith Morris</span>
+            <div class="fam-dates">1905 – 1930 · m. 1 May 1923 · Burial place not yet checked</div>
+          </div>
+        </div>
+        <div class="fam-person">
+          <div class="fam-avatar">👤</div>
+          <div>
+            <span class="fam-name ext">Alice Nora Tranmel Morris</span>
+            <div class="fam-dates">1901 – 1999 · m. 1933 · Burial place not yet checked</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="fam-group-label">👫 Twin brother</div>
+        <div class="children-grid">
+          <div class="child-item">
+            <span class="child-name" style="color:var(--muted);">Gerald James "Gerry" Morris</span>
+            <div class="child-dates">1907 – 1944 · Not buried here</div>
+          </div>
+        </div>
+        <div class="fam-group-label" style="margin-top:14px;">👫 Half-siblings (children of Anna and Patrick Dailey) — 4</div>
+        <div class="children-grid">
+          <div class="child-item">
+            <span class="child-name" style="color:var(--muted);">Martin Carl Dailey</span>
+            <div class="child-dates">1898 – 1952 · Not buried here</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name" style="color:var(--muted);">Lloyd K. Dailey</span>
+            <div class="child-dates">1900 – 1953 · Not buried here</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name" style="color:var(--muted);">Laura Dailey Clark</span>
+            <div class="child-dates">1901 – 1988 · Not buried here</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name" style="color:var(--muted);">Neva Dailey Williams</span>
+            <div class="child-dates">1904 – 1986 · Not buried here</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fam-extra">
+      <div class="fam-group-label">👶 Children — 4 listed on Find A Grave (mother of each not shown)</div>
+      <div class="children-grid">
+          <div class="child-item">
+            <span class="child-name" style="color:var(--muted);">Granville James "Granny" Morris</span>
+            <div class="child-dates">1923 – 2011</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name" style="color:var(--muted);">Donna Gloria Morris Steele</span>
+            <div class="child-dates">1925 – 2008</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name" style="color:var(--muted);">Ronald DeWitt "Jack" Clark</span>
+            <div class="child-dates">1930 – 2017 · Surname Clark; relationship not documented here</div>
+          </div>
+          <div class="child-item">
+            <span class="child-name" style="color:var(--muted);">Duane Harold Morris</span>
+            <div class="child-dates">1935 – 1991</div>
+          </div>
+      </div>
+    </div>
+    <div class="fam-key">
+      <span>Names in blue = buried in English Settlement Cemetery</span>
+      <span>Grey names = not yet linked, or not buried here</span>
+      <span>Dates for people other than Harold are from Find A Grave family links</span>
+    </div>
+  </div>
+
+  <!-- MONUMENT -->
+  <div class="bio-section">
+    <div class="section-label">Monument</div>
+    <div style="background:var(--white);border:1px solid var(--border);padding:12px;">
+      <div style="font-size:11px;color:var(--muted);font-style:italic;text-align:center;padding:10px;border:1px dashed var(--border);margin-bottom:10px;">Monument photograph pending field visit (photos on file at Find A Grave)</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Type</span>Small flat granite marker (as seen in the Find A Grave photograph)</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Condition</span>Inscription legible; some growth around the edges</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Epitaph</span>"HAROLD I. MORRIS · 1907 – 1937"</div>
+        <div><span style="color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:0.06em;display:block;">Find A Grave</span><a href="https://www.findagrave.com/memorial/53085144" target="_blank" style="color:var(--link);font-size:10px;">View memorial (#53085144)</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="bio-section">
+    <div class="section-label">Sources &amp; notes</div>
+    <div class="sources-cols">
+      <ul class="source-list">
+        <li class="source-item">Find A Grave · Memorial #53085144 · Harrison Cemetery, Crawford County, PA · dates, burial, family links; headstone photograph by Virginia Bates-Hulings; portraits by Debra Orris</li>
+        <li class="source-item">Pennsylvania Department of Health, Certificate of Birth, Harold I. Morris, 2 February 1907, Rome, Crawford County, file no. 12590 (Pennsylvania Historical and Museum Commission, via Ancestry.com)</li>
+        <li class="source-item">Pennsylvania Department of Health, Certificate of Death, Harold I. Morris, Erie, 12 March 1937, registered no. 366 (Pennsylvania Historical and Museum Commission, via Ancestry.com)</li>
+        <li class="source-item">New York, U.S., County Marriage Records, Chautauqua County, 1921–1923, registered no. 154, Harold Inskip Morris and Magdelene Clara Smith, Jamestown, 1 May 1923 (via Ancestry.com)</li>
+        <li class="source-item">New York, U.S., County Marriage Records, Chautauqua County, 1914–1919, no. 2865, Martin C. Dailey, 1917 (occupation of Harold's half-brother)</li>
+        <li class="source-item">Anna Morris Dailey and Reuben Morris pages, as built here</li>
+        <li class="source-item">Headstone inscription, as photographed</li>
+        <li class="source-item">English Settlement Cemetery master record</li>
+        <li class="source-item">Research by Scott Morris</li>
+      </ul>
+      <div>
+        <div class="research-note"><strong>His age on the 1923 license:</strong> The record gives Harold as 22 on 1 May 1923. His birth certificate and Find A Grave both give 2 February 1907, which made him 16. His half-brother Martin Dailey's 1917 record (age given as 21, probably 19) overstates age in the same way, which lends support to the view that Find A Grave's 1898 birth year for Martin is right and the record's age is wrong. The handwriting on the 1923 form is difficult, and the bride's age was not read.</div>
+        <div class="research-note"><strong>Parents documented:</strong> The birth certificate, death certificate and 1923 marriage record all name his parents as Reuben Morris and Anna Morris, so the father's identity does not rest on family tradition. The certificates also place Anna's later surname: on 12 March 1937 she signed as "Mrs. Anna Daily," so she was using Dailey by then.</div>
+        <div class="research-note"><strong>The twin:</strong> The birth certificate marks the birth as twins, but the entry for order of birth is hard to read, so it is not known which twin was born first. Gerald's own record has not been seen.</div>
+        <div class="research-note"><strong>Name of the cemetery:</strong> The death certificate gives the place of burial as Titusville, Crawford County, and the date as 15 March 1937. Find A Grave and the master record place him at Harrison Cemetery. Local records of the time call this ground Vrooman or Maple Grove; the museum treats these as names for one burial ground.</div>
+        <div class="research-note"><strong>Children and wives:</strong> The children's mothers, Ronald Clark's place in the family, the 1933 marriage and the burial places of Peg and Alice are not yet documented here.</div>
+        <div class="last-updated">Last updated: October 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTRIBUTE -->
+  <div class="bio-section">
+    <div class="section-label">Contribute information</div>
+    <div class="contrib-intro">Do you have photographs, documents, family memories, or corrections relating to Harold Inskip Morris? Submissions are reviewed by the museum curator before publication and will be credited to you by name.</div>
+    <div class="contrib-grid">
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your name</div>
+        <input class="contrib-input" type="text" placeholder="Jane Smith">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Email address</div>
+        <input class="contrib-input" type="email" placeholder="jane@example.com">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Your connection</div>
+        <input class="contrib-input" type="text" placeholder="Descendant, historian, researcher…">
+      </div>
+      <div class="contrib-field">
+        <div class="contrib-lbl">Source or evidence</div>
+        <input class="contrib-input" type="text" placeholder="Census record, family Bible, photograph…">
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Information or correction</div>
+        <textarea class="contrib-input" placeholder="Describe what you know and where the information comes from…"></textarea>
+      </div>
+      <div class="contrib-field full">
+        <div class="contrib-lbl">Attach photos or documents</div>
+        <div class="file-area" onclick="document.getElementById('file-in').click()">
+          <span style="font-size:20px;display:block;margin-bottom:4px;">📎</span>
+          <span>Click to attach photos, scanned documents, or other files</span>
+          <span style="font-size:9px;">JPG, PNG, PDF, TIFF · max 10MB per file</span>
+          <input id="file-in" type="file" multiple accept="image/*,.pdf,.tiff" onchange="showFiles(this)">
+        </div>
+        <div class="file-list" id="file-list"></div>
+      </div>
+    </div>
+    <div class="contrib-footer">
+      <div class="contrib-note">Submissions are reviewed before publication. You will be contacted at your email address if we have questions or wish to use your contribution.</div>
+      <button class="contrib-btn" onclick="submitContribution()">Submit for review →</button>
+    </div>
+  </div>
+
 </div>
+
 <footer id="footer">
-  <div id="ft-l">English Settlement Cemetery Digital Museum &middot; Rome Township, Crawford County, Pennsylvania</div>
-  <div id="ft-r">Research &nbsp;&middot;&nbsp; Preserve &nbsp;&middot;&nbsp; Remember</div>
+  <div id="ft-l">English Settlement Cemetery Digital Museum · Rome Township, Crawford County, Pennsylvania</div>
+  <div id="ft-r">Research &nbsp;·&nbsp; Preserve &nbsp;·&nbsp; Remember</div>
 </footer>
+
+<script>
+function showFiles(input){
+  const list=document.getElementById('file-list');
+  if(input.files.length===0){list.textContent='';return;}
+  list.textContent=input.files.length+' file(s) selected: '+[...input.files].map(f=>f.name).join(', ');
+}
+function submitContribution(){
+  const name=document.querySelector('input[placeholder="Jane Smith"]').value;
+  const email=document.querySelector('input[type="email"]').value;
+  const connect=document.querySelector('input[placeholder="Descendant, historian, researcher…"]').value;
+  const source=document.querySelector('input[placeholder="Census record, family Bible, photograph…"]').value;
+  const info=document.querySelector('textarea').value;
+  const subject=encodeURIComponent('Contribution: Harold Inskip Morris — English Settlement Cemetery');
+  const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nConnection: '+connect+'\nSource: '+source+'\n\nInformation:\n'+info);
+  window.location.href='mailto:scotty8828@gmail.com?subject='+subject+'&body='+body;
+}
+</script>
+
 </body>
 </html>
